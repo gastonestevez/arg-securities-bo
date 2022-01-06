@@ -18,8 +18,25 @@ import { Declaraciones } from "../../components/Inscription/Declaraciones"
 import { DomiciliosUrbanos } from "../../components/Inscription/DomiciliosUrbanos"
 import { InformacionPatrimonial } from "../../components/Inscription/InformacionPatrimonial"
 import { MediosDeComunicacion } from "../../components/Inscription/MediosDeComunicacion"
+import { useFormik } from "formik"
+import * as yup from "yup"
 
 export const InscriptionForm = () => {
+    const validationSchema = yup.object({
+        email: yup
+            .string()
+            .email("Enter a valid email")
+            .required("Email is required"),
+    })
+
+    const formik = useFormik({
+        initialValues: {},
+        validationSchema: undefined,
+        onSubmit: (values) => {
+            console.log(values)
+        },
+    })
+
     const handleOnSubmit = () => {
         console.log("ok submit")
     }
@@ -41,12 +58,12 @@ export const InscriptionForm = () => {
                 <Box
                     component="form"
                     noValidate
-                    onSubmit={handleOnSubmit}
+                    onSubmit={formik.handleSubmit}
                     sx={{ mt: 4 }}
                 >
                     <Grid container spacing={2}>
-                        <DatosPrincipales />
-                        <DatosFiscalesNacionales />
+                        <DatosPrincipales fmk={formik} />
+                        {/* <DatosFiscalesNacionales />
                         <DatosPersonales />
                         <MediosDeComunicacion />
                         <DomiciliosUrbanos />
@@ -55,8 +72,8 @@ export const InscriptionForm = () => {
                         <DatosConyuge />
                         <InformacionPatrimonial />
                         <Actividades />
-                        <Declaraciones />
-                        <Grid item md={8}/>
+                        <Declaraciones /> */}
+                        <Grid item md={8} />
                         <Grid item xs={12} md={4}>
                             <Button fullWidth type="submit" variant="contained">
                                 Registrarse
