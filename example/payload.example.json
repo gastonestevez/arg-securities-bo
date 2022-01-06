@@ -1,0 +1,620 @@
+{
+    "idCuenta": "string",
+    "clase": "string",
+    "codigoCartera": "string",
+    "codigoCategoria": "string",
+    "titular": {
+        "personaFisica": true,
+        "datosFiscales": {
+            "tipoCodigo": "string",
+            "cuit": "string",
+            "tipoResponsableIVA": "string",
+            "tipoResponsableGanancias": "string",
+            "codigosActividades": [
+                "string"
+            ]
+        },
+        "datosFiscalesProvinciales": {
+            "validoDesde": "string",
+            "validoHasta": "string",
+            "tipoResponsableIIBB": "string",
+            "regimenIIBB": "string",
+            "numeroInscripcion": "string",
+            "validoDesdeAle": "string"
+        },
+        "residenciaFiscalExterior": [
+            {
+                "residenciaFiscalExterior": "string",
+                "tipoIdExterior": "string",
+                "idFiscalExterior": "string"
+            }
+        ],
+        "mediocomunicacion": [
+            {
+                "tipo": "string",
+                "medio": "string",
+                "uso": "string",
+                "principal": true,
+                "notas": "string"
+            }
+        ],
+        "domicilioUrbano": [
+            {
+                "uso": "string",
+                "barrio": "string",
+                "calle": "string",
+                "numero": 0,
+                "torre": "string",
+                "piso": 0,
+                "departamento": "string",
+                "lugar": "string",
+                "codigoPostal": "string",
+                "notas": "string"
+            }
+        ],
+        "domicilioSimple": [
+            {
+                "uso": "string",
+                "pais": "string",
+                "direccion": "string",
+                "ubicacion": "string",
+                "ciudad": "string",
+                "codigoPostal": "string",
+                "provincia": "string",
+                "notas": "string"
+            }
+        ],
+        "domicilioRural": [
+            {
+                "uso": "string",
+                "pais": "string",
+                "direccion": "string",
+                "ubicacion": "string",
+                "codigoPostal": "string",
+                "notas": "string"
+            }
+        ],
+        "cuentaBancaria": [
+            {
+                "cbu": "string",
+                "alias": "string",
+                "interbanking": true,
+                "titular": "string",
+                "tipo": "string",
+                "moneda": "string",
+                "numero": "string",
+                "denominacion": "string",
+                "uso": "string",
+                "notas": "string",
+                "tipoID": "string"
+            }
+        ],
+        "cuentaBancariaExterior": [
+            {
+                "cuenta": "string",
+                "moneda": "string",
+                "banco": "string",
+                "denominacion": "string",
+                "direccion": "string",
+                "holderType": "string",
+                "accountType": "string",
+                "nroBancoABA": "string",
+                "idSWIFT": "string",
+                "notas": "string"
+            }
+        ],
+        "perfilInversor": {
+            "experiencia": "string",
+            "operoBolsa": true,
+            "perfilPersonal": "string",
+            "clasificacionUIF": "string",
+            "cantidadCuentas": 0,
+            "propositoInversion": "string",
+            "inversorCalificado": true,
+            "incisoInvocado": "string",
+            "fechaDeclaracion": "string",
+            "fechaVtoPerfil": "string"
+        },
+        "datosPersonales": {
+            "fechaNacimiento": "string",
+            "sexo": "string",
+            "estadoCivil": "string",
+            "idioma": "string",
+            "nacionalidad": "string",
+            "paisResidencia": "string",
+            "paisOrigen": "string",
+            "lugarNacimiento": "string",
+            "cie": "string",
+            "actividad": "string"
+        },
+        "datosPrincipalesFisicas": {
+            "nombre": "string",
+            "apellido": "string",
+            "tipoID": "string",
+            "id": "string"
+        },
+        "declaracionesPF": {
+            "expuestaPoliticamente": true,
+            "detalleExpPoliticamente": "string",
+            "sujetoObligado": true,
+            "numeroInscripcion": 0,
+            "sujetoObligadoUIF": "string",
+            "personaEEUU": true,
+            "observacionesFATCA": "string"
+        },
+        "infoPatrimonial": [
+            {
+                "fecha": "string",
+                "patrimonio": 0,
+                "ingresos": 0,
+                "inversion": 0,
+                "procedenciaFondos": [
+                    "string"
+                ],
+                "observaciones": "string"
+            }
+        ],
+        "actividadPersona": [
+            {
+                "actividad": "string",
+                "rubro": "string",
+                "puesto": "string",
+                "departamento": "string",
+                "organizacion": "string",
+                "inicio": "string",
+                "fin": "string",
+                "observaciones": "string",
+                "codigoTipoActividad": "string"
+            }
+        ],
+        "datosConyuge": [
+            {
+                "nombre": "string",
+                "apellido": "string",
+                "tipoID": "string",
+                "id": "string",
+                "tipoFiscal": "string",
+                "claveFiscal": "string"
+            }
+        ],
+        "pasaporte": [
+            {
+                "pais": "string",
+                "pasaporte": "string",
+                "vencimiento": "string",
+                "notas": "string"
+            }
+        ],
+        "datosOrganizacion": {
+            "fechaConstitucion": "string",
+            "actaConstitucion": "string",
+            "paisOrigen": "string",
+            "paisResidencia": "string",
+            "cierreBalance": "string",
+            "idioma": "string",
+            "cie": "string",
+            "lei": "string",
+            "observaciones": "string",
+            "sectorDeLaEconomia": "string",
+            "ofertaPublica": true
+        },
+        "datosPrincipalesIdeal": {
+            "denominacion": "string",
+            "tipoDeOrganizacion": "string",
+            "tipoID": "string",
+            "id": "string"
+        },
+        "declaracionesPI": {
+            "inscripcionSujetoObligado": true,
+            "numeroInscripcionSujetoObligado": 0,
+            "observacionesInscripcionSujetoObligado": "string",
+            "esEstadounidense": true,
+            "observacionesFATCA": "string"
+        },
+        "accionista": [
+            {
+                "cantidad": 0,
+                "porcentaje": 0
+            }
+        ],
+        "actividadOrganizacion": [
+            {
+                "actividad": "string",
+                "rubro": "string",
+                "actividadSecundaria": "string",
+                "observaciones": "string",
+                "codigoTipoActividad": "string"
+            }
+        ],
+        "autoridad": [
+            {
+                "cargo": "string",
+                "orden": 0,
+                "realizarSeguimiento": true,
+                "descripcion": "string"
+            }
+        ],
+        "patrimonioYBalance": [
+            {
+                "fecha": "string",
+                "activos": 0,
+                "activosCorrientes": 0,
+                "pasivos": 0,
+                "patrimonio": 0,
+                "ingresos": 0,
+                "egresos": 0,
+                "inversion": 0,
+                "procedenciaFondos": [
+                    "string"
+                ],
+                "observaciones": "string"
+            }
+        ],
+        "registro": [
+            {
+                "tipo": "string",
+                "numero": "string",
+                "lugar": "string",
+                "fecha": "string",
+                "folio": "string",
+                "libro": "string",
+                "tomo": "string"
+            }
+        ]
+    },
+    "disposicionesGenerales": {
+        "tipoCliente": "string",
+        "horizonteInversion": "string",
+        "perfilDeInversion": "string"
+    },
+    "administrador": {
+        "codigoAdministrador": "string",
+        "nombreOperador": "string"
+    },
+    "cuentaBancaria": [
+        {
+            "cbu": "string",
+            "alias": "string",
+            "interbanking": true,
+            "titular": "string",
+            "tipo": "string",
+            "moneda": "string",
+            "numero": "string",
+            "denominacion": "string",
+            "uso": "string",
+            "notas": "string",
+            "tipoID": "string"
+        }
+    ],
+    "personaRelacionada": [
+        {
+            "persona": {
+                "personaFisica": true,
+                "datosFiscales": {
+                    "tipoCodigo": "string",
+                    "cuit": "string",
+                    "tipoResponsableIVA": "string",
+                    "tipoResponsableGanancias": "string",
+                    "codigosActividades": [
+                        "string"
+                    ]
+                },
+                "datosFiscalesProvinciales": {
+                    "validoDesde": "string",
+                    "validoHasta": "string",
+                    "tipoResponsableIIBB": "string",
+                    "regimenIIBB": "string",
+                    "numeroInscripcion": "string",
+                    "validoDesdeAle": "string"
+                },
+                "residenciaFiscalExterior": [
+                    {
+                        "residenciaFiscalExterior": "string",
+                        "tipoIdExterior": "string",
+                        "idFiscalExterior": "string"
+                    }
+                ],
+                "mediocomunicacion": [
+                    {
+                        "tipo": "string",
+                        "medio": "string",
+                        "uso": "string",
+                        "principal": true,
+                        "notas": "string"
+                    }
+                ],
+                "domicilioUrbano": [
+                    {
+                        "uso": "string",
+                        "barrio": "string",
+                        "calle": "string",
+                        "numero": 0,
+                        "torre": "string",
+                        "piso": 0,
+                        "departamento": "string",
+                        "lugar": "string",
+                        "codigoPostal": "string",
+                        "notas": "string"
+                    }
+                ],
+                "domicilioSimple": [
+                    {
+                        "uso": "string",
+                        "pais": "string",
+                        "direccion": "string",
+                        "ubicacion": "string",
+                        "ciudad": "string",
+                        "codigoPostal": "string",
+                        "provincia": "string",
+                        "notas": "string"
+                    }
+                ],
+                "domicilioRural": [
+                    {
+                        "uso": "string",
+                        "pais": "string",
+                        "direccion": "string",
+                        "ubicacion": "string",
+                        "codigoPostal": "string",
+                        "notas": "string"
+                    }
+                ],
+                "cuentaBancaria": [
+                    {
+                        "cbu": "string",
+                        "alias": "string",
+                        "interbanking": true,
+                        "titular": "string",
+                        "tipo": "string",
+                        "moneda": "string",
+                        "numero": "string",
+                        "denominacion": "string",
+                        "uso": "string",
+                        "notas": "string",
+                        "tipoID": "string"
+                    }
+                ],
+                "cuentaBancariaExterior": [
+                    {
+                        "cuenta": "string",
+                        "moneda": "string",
+                        "banco": "string",
+                        "denominacion": "string",
+                        "direccion": "string",
+                        "holderType": "string",
+                        "accountType": "string",
+                        "nroBancoABA": "string",
+                        "idSWIFT": "string",
+                        "notas": "string"
+                    }
+                ],
+                "perfilInversor": {
+                    "experiencia": "string",
+                    "operoBolsa": true,
+                    "perfilPersonal": "string",
+                    "clasificacionUIF": "string",
+                    "cantidadCuentas": 0,
+                    "propositoInversion": "string",
+                    "inversorCalificado": true,
+                    "incisoInvocado": "string",
+                    "fechaDeclaracion": "string",
+                    "fechaVtoPerfil": "string"
+                },
+                "datosPersonales": {
+                    "fechaNacimiento": "string",
+                    "sexo": "string",
+                    "estadoCivil": "string",
+                    "idioma": "string",
+                    "nacionalidad": "string",
+                    "paisResidencia": "string",
+                    "paisOrigen": "string",
+                    "lugarNacimiento": "string",
+                    "cie": "string",
+                    "actividad": "string"
+                },
+                "datosPrincipalesFisicas": {
+                    "nombre": "string",
+                    "apellido": "string",
+                    "tipoID": "string",
+                    "id": "string"
+                },
+                "declaracionesPF": {
+                    "expuestaPoliticamente": true,
+                    "detalleExpPoliticamente": "string",
+                    "sujetoObligado": true,
+                    "numeroInscripcion": 0,
+                    "sujetoObligadoUIF": "string",
+                    "personaEEUU": true,
+                    "observacionesFATCA": "string"
+                },
+                "infoPatrimonial": [
+                    {
+                        "fecha": "string",
+                        "patrimonio": 0,
+                        "ingresos": 0,
+                        "inversion": 0,
+                        "procedenciaFondos": [
+                            "string"
+                        ],
+                        "observaciones": "string"
+                    }
+                ],
+                "actividadPersona": [
+                    {
+                        "actividad": "string",
+                        "rubro": "string",
+                        "puesto": "string",
+                        "departamento": "string",
+                        "organizacion": "string",
+                        "inicio": "string",
+                        "fin": "string",
+                        "observaciones": "string",
+                        "codigoTipoActividad": "string"
+                    }
+                ],
+                "datosConyuge": [
+                    {
+                        "nombre": "string",
+                        "apellido": "string",
+                        "tipoID": "string",
+                        "id": "string",
+                        "tipoFiscal": "string",
+                        "claveFiscal": "string"
+                    }
+                ],
+                "pasaporte": [
+                    {
+                        "pais": "string",
+                        "pasaporte": "string",
+                        "vencimiento": "string",
+                        "notas": "string"
+                    }
+                ],
+                "datosOrganizacion": {
+                    "fechaConstitucion": "string",
+                    "actaConstitucion": "string",
+                    "paisOrigen": "string",
+                    "paisResidencia": "string",
+                    "cierreBalance": "string",
+                    "idioma": "string",
+                    "cie": "string",
+                    "lei": "string",
+                    "observaciones": "string",
+                    "sectorDeLaEconomia": "string",
+                    "ofertaPublica": true
+                },
+                "datosPrincipalesIdeal": {
+                    "denominacion": "string",
+                    "tipoDeOrganizacion": "string",
+                    "tipoID": "string",
+                    "id": "string"
+                },
+                "declaracionesPI": {
+                    "inscripcionSujetoObligado": true,
+                    "numeroInscripcionSujetoObligado": 0,
+                    "observacionesInscripcionSujetoObligado": "string",
+                    "esEstadounidense": true,
+                    "observacionesFATCA": "string"
+                },
+                "accionista": [
+                    {
+                        "cantidad": 0,
+                        "porcentaje": 0
+                    }
+                ],
+                "actividadOrganizacion": [
+                    {
+                        "actividad": "string",
+                        "rubro": "string",
+                        "actividadSecundaria": "string",
+                        "observaciones": "string",
+                        "codigoTipoActividad": "string"
+                    }
+                ],
+                "autoridad": [
+                    {
+                        "cargo": "string",
+                        "orden": 0,
+                        "realizarSeguimiento": true,
+                        "descripcion": "string"
+                    }
+                ],
+                "patrimonioYBalance": [
+                    {
+                        "fecha": "string",
+                        "activos": 0,
+                        "activosCorrientes": 0,
+                        "pasivos": 0,
+                        "patrimonio": 0,
+                        "ingresos": 0,
+                        "egresos": 0,
+                        "inversion": 0,
+                        "procedenciaFondos": [
+                            "string"
+                        ],
+                        "observaciones": "string"
+                    }
+                ],
+                "registro": [
+                    {
+                        "tipo": "string",
+                        "numero": "string",
+                        "lugar": "string",
+                        "fecha": "string",
+                        "folio": "string",
+                        "libro": "string",
+                        "tomo": "string"
+                    }
+                ]
+            },
+            "orden": 0,
+            "desde": "string",
+            "hasta": "string",
+            "porcentaje": 0,
+            "descripcion": "string",
+            "tipo": "string"
+        }
+    ],
+    "usoFirma": [
+        {
+            "tipo": "string",
+            "desde": "string",
+            "hasta": "string",
+            "firmantes": [
+                "string"
+            ],
+            "aclaracion": "string"
+        }
+    ],
+    "medioComunicacion": [
+        {
+            "tipo": "string",
+            "medio": "string",
+            "uso": "string",
+            "principal": true,
+            "notas": "string"
+        }
+    ],
+    "domicilioRural": [
+        {
+            "uso": "string",
+            "pais": "string",
+            "direccion": "string",
+            "ubicacion": "string",
+            "codigoPostal": "string",
+            "notas": "string"
+        }
+    ],
+    "domicilioSimple": [
+        {
+            "uso": "string",
+            "pais": "string",
+            "direccion": "string",
+            "ubicacion": "string",
+            "ciudad": "string",
+            "codigoPostal": "string",
+            "provincia": "string",
+            "notas": "string"
+        }
+    ],
+    "domicilioUrbano": [
+        {
+            "uso": "string",
+            "barrio": "string",
+            "calle": "string",
+            "numero": 0,
+            "torre": "string",
+            "piso": 0,
+            "departamento": "string",
+            "lugar": "string",
+            "codigoPostal": "string",
+            "notas": "string"
+        }
+    ],
+    "atributos": [
+        {
+            "atributo": "string",
+            "valor": "string"
+        }
+    ]
+}

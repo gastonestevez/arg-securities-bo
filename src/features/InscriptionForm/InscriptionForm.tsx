@@ -22,22 +22,61 @@ import { useFormik } from "formik"
 import * as yup from "yup"
 
 export const InscriptionForm = () => {
-    
     const validationSchema = yup.object({
         datosPrincipalesFisicas: yup.object().shape({
-            nombre: yup.string().required('Este campo es requerido.'),
-            apellido: yup.string().required('Este campo es requerido.'),
-            tipoID: yup.string().required('Este campo es requerido.'),
-            id: yup.string().required('Este campo es requerido.')
+            nombre: yup.string().required("Este campo es requerido."),
+            apellido: yup.string().required("Este campo es requerido."),
+            tipoID: yup.string().required("Este campo es requerido."),
+            id: yup.string().required("Este campo es requerido."),
+        }),
+        datosFiscales: yup.object().shape({
+            tipoCodigo: yup.string().required("Este campo es requerido."),
+            cuit: yup.string().required("Este campo es requerido."),
+            tipoResponsableIVA: yup
+                .string()
+                .required("Este campo es requerido."),
+            tipoResponsableGanancias: yup
+                .string()
+                .required("Este campo es requerido."),
+        }),
+        datosPersonales: yup.object().shape({
+            fechaNacimiento: yup.string().required("Este campo es requerido."),
+            sexo: yup.string().required("Este campo es requerido."),
+            estadoCivil: yup.string().required("Este campo es requerido."),
+            idioma: yup.string().required("Este campo es requerido."),
+            nacionalidad: yup.string().required("Este campo es requerido."),
+            paisResidencia: yup.string().required("Este campo es requerido."),
+            paisOrigen: yup.string().required("Este campo es requerido."),
+            lugarNacimiento: yup.string().required("Este campo es requerido."),
+            cie: yup.string().required("Este campo es requerido."),
+            actividad: yup.string().required("Este campo es requerido."),
         }),
     })
     const initialValues = {
         datosPrincipalesFisicas: {
-            nombre: '',
-            apellido: '',
-            tipoID: '',
-            id: ''
-        }
+            nombre: "",
+            apellido: "",
+            tipoID: "",
+            id: "",
+        },
+        datosFiscales: {
+            tipoCodigo: "",
+            cuit: "",
+            tipoResponsableIVA: "",
+            tipoResponsableGanancias: "",
+        },
+        datosPersonales: {
+            fechaNacimiento: "",
+            sexo: "",
+            estadoCivil: "",
+            idioma: "",
+            nacionalidad: "",
+            paisResidencia: "",
+            paisOrigen: "",
+            lugarNacimiento: "",
+            cie: "",
+            actividad: "",
+        },
     }
 
     const formik = useFormik({
@@ -70,16 +109,16 @@ export const InscriptionForm = () => {
                 >
                     <Grid container spacing={2}>
                         <DatosPrincipales fmk={formik} />
-                        <DatosFiscalesNacionales />
-                        <DatosPersonales />
-                        <MediosDeComunicacion />
+                        <DatosFiscalesNacionales fmk={formik} />
+                        <DatosPersonales fmk={formik} />
+                        {/* <MediosDeComunicacion />
                         <DomiciliosUrbanos />
                         <CuentasBancarias />
                         <CuentasBancariasExterior />
                         <DatosConyuge />
                         <InformacionPatrimonial />
                         <Actividades />
-                        <Declaraciones />
+                        <Declaraciones /> */}
                         <Grid item md={8} />
                         <Grid item xs={12} md={4}>
                             <Button fullWidth type="submit" variant="contained">
