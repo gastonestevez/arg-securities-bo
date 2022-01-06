@@ -22,24 +22,31 @@ import { useFormik } from "formik"
 import * as yup from "yup"
 
 export const InscriptionForm = () => {
+    
     const validationSchema = yup.object({
-        email: yup
-            .string()
-            .email("Enter a valid email")
-            .required("Email is required"),
+        datosPrincipalesFisicas: yup.object().shape({
+            nombre: yup.string().required('Este campo es requerido.'),
+            apellido: yup.string().required('Este campo es requerido.'),
+            tipoID: yup.string().required('Este campo es requerido.'),
+            id: yup.string().required('Este campo es requerido.')
+        }),
     })
+    const initialValues = {
+        datosPrincipalesFisicas: {
+            nombre: '',
+            apellido: '',
+            tipoID: '',
+            id: ''
+        }
+    }
 
     const formik = useFormik({
-        initialValues: {},
-        validationSchema: undefined,
+        initialValues: initialValues,
+        validationSchema: validationSchema,
         onSubmit: (values) => {
             console.log(values)
         },
     })
-
-    const handleOnSubmit = () => {
-        console.log("ok submit")
-    }
 
     return (
         <Container maxWidth="md">
@@ -63,7 +70,7 @@ export const InscriptionForm = () => {
                 >
                     <Grid container spacing={2}>
                         <DatosPrincipales fmk={formik} />
-                        {/* <DatosFiscalesNacionales />
+                        <DatosFiscalesNacionales />
                         <DatosPersonales />
                         <MediosDeComunicacion />
                         <DomiciliosUrbanos />
@@ -72,7 +79,7 @@ export const InscriptionForm = () => {
                         <DatosConyuge />
                         <InformacionPatrimonial />
                         <Actividades />
-                        <Declaraciones /> */}
+                        <Declaraciones />
                         <Grid item md={8} />
                         <Grid item xs={12} md={4}>
                             <Button fullWidth type="submit" variant="contained">

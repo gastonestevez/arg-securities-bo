@@ -14,10 +14,8 @@ const IndexPage: NextPage = () => {
       <header>
         <Navbar />
       </header>
-      <body>
         <InscriptionForm />
         
-      </body>
     </div>
   )
 }

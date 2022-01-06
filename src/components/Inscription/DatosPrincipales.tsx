@@ -5,7 +5,7 @@ import { Box, Grid, Typography } from "@mui/material"
 
 export const DatosPrincipales = ({ fmk }) => {
     const nationalIds = ["DNI", "LC", "LE", "EXT", "PAS"]
-
+    console.log(fmk.values)
     return (
         <>
             <Grid item xs={12} sm={12}>
@@ -21,10 +21,10 @@ export const DatosPrincipales = ({ fmk }) => {
                     fullWidth
                     label="Nombres"
                     variant="outlined"
-                    value={fmk.values.nombre}
+                    value={fmk.values.datosPrincipalesFisicas.nombre}
                     onChange={fmk.handleChange}
-                    error={fmk.touched.nombre && Boolean(fmk.errors.nombre)}
-                    helperText={fmk.touched.nombre && fmk.errors.nombre}
+                    error={fmk.touched.datosPrincipalesFisicas?.nombre && Boolean(fmk.errors.datosPrincipalesFisicas?.nombre)}
+                    helperText={fmk.touched.datosPrincipalesFisicas?.nombre && fmk.errors.datosPrincipalesFisicas?.nombre}
                 />
             </Grid>
             <Grid item xs={12} sm={6}>
@@ -35,10 +35,10 @@ export const DatosPrincipales = ({ fmk }) => {
                     fullWidth
                     label="Apellidos"
                     variant="outlined"
-                    value={fmk.values.apellido}
+                    value={fmk.values.datosPrincipalesFisicas.apellido}
                     onChange={fmk.handleChange}
-                    error={fmk.touched.apellido && Boolean(fmk.errors.apellido)}
-                    helperText={fmk.touched.apellido && fmk.errors.apellido}
+                    error={fmk.touched.datosPrincipalesFisicas?.apellido && Boolean(fmk.errors.datosPrincipalesFisicas?.apellido)}
+                    helperText={fmk.touched.datosPrincipalesFisicas?.apellido && fmk.errors.datosPrincipalesFisicas?.apellido}
                 />
             </Grid>
             <Grid item xs={12} sm={6}>
@@ -46,11 +46,12 @@ export const DatosPrincipales = ({ fmk }) => {
                     id="datosPrincipalesFisicas.tipoID"
                     name="datosPrincipalesFisicas.tipoID"
                     select
+                    defaultValue={''}
                     label="Tipo de ID"
-                    value={fmk.values.tipoID}
+                    value={fmk.values.datosPrincipalesFisicas.tipoID}
                     onChange={fmk.handleChange}
-                    error={fmk.touched.tipoID && Boolean(fmk.errors.tipoID)}
-                    helperText={fmk.touched.tipoID && fmk.errors.tipoID}
+                    error={fmk.touched.datosPrincipalesFisicas?.tipoID && Boolean(fmk.errors.datosPrincipalesFisicas?.tipoID)}
+                    helperText={fmk.touched.datosPrincipalesFisicas?.tipoID && fmk.errors.datosPrincipalesFisicas?.tipoID}
                     fullWidth
                     required
                     
@@ -70,10 +71,10 @@ export const DatosPrincipales = ({ fmk }) => {
                     fullWidth
                     label="ID"
                     variant="outlined"
-                    value={fmk.values.id}
+                    value={fmk.values.datosPrincipalesFisicas.id}
                     onChange={fmk.handleChange}
-                    error={fmk.touched.id && Boolean(fmk.errors.id)}
-                    helperText={fmk.touched.id && fmk.errors.id}
+                    error={fmk.touched.datosPrincipalesFisicas?.id && Boolean(fmk.errors.datosPrincipalesFisicas?.id)}
+                    helperText={fmk.touched.datosPrincipalesFisicas?.id && fmk.errors.datosPrincipalesFisicas?.id}
                 />
             </Grid>
         </>
