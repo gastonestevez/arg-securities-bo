@@ -122,7 +122,8 @@ export const CuentasBancarias = () => {
                         </MenuItem>
                     ))}
                 </TextField>
-                <Grid item xs={12} sm={6}>
+                </Grid>
+                <Grid item xs={12} sm={12}>
                     <TextField
                         fullWidth
                         label="Denominación"
@@ -170,7 +171,7 @@ export const CuentasBancarias = () => {
                         variant="outlined"
                     />
                 </Grid>
-            </Grid>
+
         </>
     )
 }

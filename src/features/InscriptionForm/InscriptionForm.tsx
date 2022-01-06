@@ -1,10 +1,22 @@
-import { Box, Container, CssBaseline, Grid, Typography } from "@mui/material"
+import {
+    Box,
+    Button,
+    Container,
+    CssBaseline,
+    Grid,
+    Typography,
+} from "@mui/material"
 import React from "react"
+import { Actividades } from "../../components/Inscription/Actividades"
+import { CuentasBancarias } from "../../components/Inscription/CuentasBancarias"
+import { CuentasBancariasExterior } from "../../components/Inscription/CuentasBancariasExterior"
 import { DatosConyuge } from "../../components/Inscription/DatosConyuge"
 import { DatosFiscalesNacionales } from "../../components/Inscription/DatosFiscalesNacionales"
 import { DatosPersonales } from "../../components/Inscription/DatosPersonales"
 import { DatosPrincipales } from "../../components/Inscription/DatosPrincipales"
+import { Declaraciones } from "../../components/Inscription/Declaraciones"
 import { DomiciliosUrbanos } from "../../components/Inscription/DomiciliosUrbanos"
+import { InformacionPatrimonial } from "../../components/Inscription/InformacionPatrimonial"
 import { MediosDeComunicacion } from "../../components/Inscription/MediosDeComunicacion"
 
 export const InscriptionForm = () => {
@@ -30,7 +42,7 @@ export const InscriptionForm = () => {
                     component="form"
                     noValidate
                     onSubmit={handleOnSubmit}
-                    sx={{ mt: 4}}
+                    sx={{ mt: 4 }}
                 >
                     <Grid container spacing={2}>
                         <DatosPrincipales />
@@ -38,7 +50,18 @@ export const InscriptionForm = () => {
                         <DatosPersonales />
                         <MediosDeComunicacion />
                         <DomiciliosUrbanos />
+                        <CuentasBancarias />
+                        <CuentasBancariasExterior />
                         <DatosConyuge />
+                        <InformacionPatrimonial />
+                        <Actividades />
+                        <Declaraciones />
+                        <Grid item md={8}/>
+                        <Grid item xs={12} md={4}>
+                            <Button fullWidth type="submit" variant="contained">
+                                Registrarse
+                            </Button>
+                        </Grid>
                     </Grid>
                 </Box>
             </Box>
