@@ -4,7 +4,7 @@ import MenuItem from "@mui/material/MenuItem"
 import { Box, Grid, Typography } from "@mui/material"
 
 export const DatosPrincipales = () => {
-    const nationalIds = ["DNI", "LE", "Pasaporte"]
+    const nationalIds = ['DNI','LC','LE','EXT','PAS']
 
     const [nationalId, setNationalId] = useState("")
     return (

@@ -1,8 +1,11 @@
 import { Box, Container, CssBaseline, Grid, Typography } from "@mui/material"
 import React from "react"
+import { DatosConyuge } from "../../components/Inscription/DatosConyuge"
 import { DatosFiscalesNacionales } from "../../components/Inscription/DatosFiscalesNacionales"
 import { DatosPersonales } from "../../components/Inscription/DatosPersonales"
 import { DatosPrincipales } from "../../components/Inscription/DatosPrincipales"
+import { DomiciliosUrbanos } from "../../components/Inscription/DomiciliosUrbanos"
+import { MediosDeComunicacion } from "../../components/Inscription/MediosDeComunicacion"
 
 export const InscriptionForm = () => {
     const handleOnSubmit = () => {
@@ -14,7 +17,7 @@ export const InscriptionForm = () => {
             <CssBaseline />
             <Box
                 sx={{
-                    marginTop: 3,
+                    marginTop: 4,
                     display: "flex",
                     flexDirection: "column",
                     alignItems: "center",
@@ -27,12 +30,15 @@ export const InscriptionForm = () => {
                     component="form"
                     noValidate
                     onSubmit={handleOnSubmit}
-                    sx={{ mt: 5 }}
+                    sx={{ mt: 4}}
                 >
                     <Grid container spacing={2}>
                         <DatosPrincipales />
                         <DatosFiscalesNacionales />
                         <DatosPersonales />
+                        <MediosDeComunicacion />
+                        <DomiciliosUrbanos />
+                        <DatosConyuge />
                     </Grid>
                 </Box>
             </Box>
