@@ -55,7 +55,30 @@ export const InscriptionForm = () => {
             tipo: yup.string().required("Este campo es requerido."),
             medio: yup.string().required("Este campo es requerido."),
             uso: yup.string().required("Este campo es requerido."),
-            notas: yup.string().notRequired()
+            notas: yup.string().notRequired(),
+        }),
+        domiciliosUrbanos: yup.object().shape({
+            uso: yup.string().required("Este campo es requerido."),
+            barrio: yup.string().notRequired(),
+            calle: yup.string().required("Este campo es requerido."),
+            numero: yup.number().required("Este campo es requerido."),
+            torre: yup.string().notRequired(),
+            piso: yup.number().notRequired(),
+            departamento: yup.string().notRequired(),
+            lugar: yup.string().required("Este campo es requerido."),
+            codigoPostal: yup.string().required("Este campo es requerido."),
+            notas: yup.string().notRequired(),
+        }),
+        cuentaBancaria: yup.object().shape({
+            cbu: yup.string().required("Este campo es requerido."),
+            alias: yup.string().notRequired(),
+            tipo: yup.string().required("Este campo es requerido."),
+            moneda: yup.string().required("Este campo es requerido."),
+            numero: yup.string().notRequired(),
+            denominacion: yup.string().notRequired(),
+            uso: yup.string().required("Este campo es requerido."),
+            notas: yup.string().notRequired(),
+            tipoID: yup.string().required("Este campo es requerido."),
         })
     })
     const initialValues = {
@@ -84,11 +107,35 @@ export const InscriptionForm = () => {
             actividad: "",
         },
         medioComunicacion: {
-            tipo: '',
-            medio: '',
-            uso: '',
-            notas: ''
-        }
+            tipo: "",
+            medio: "",
+            uso: "",
+            notas: "",
+        },
+        domiciliosUrbanos: {
+            uso: "",
+            barrio: "",
+            calle: "",
+            numero: 0,
+            torre: "",
+            piso: 0,
+            departamento: "",
+            lugar: "",
+            codigoPostal: "",
+            notas: "",
+        },
+        cuentaBancaria: {
+            cbu: "",
+            alias: "",
+            interbanking: true,
+            tipo: "",
+            moneda: "",
+            numero: "",
+            denominacion: "",
+            uso: "",
+            notas: "",
+            tipoID: "",
+        },
     }
 
     const formik = useFormik({
@@ -124,8 +171,8 @@ export const InscriptionForm = () => {
                         <DatosFiscalesNacionales fmk={formik} />
                         <DatosPersonales fmk={formik} />
                         <MediosDeComunicacion fmk={formik} />
-                        {/* <DomiciliosUrbanos /> */}
-                        {/* <CuentasBancarias /> */}
+                        <DomiciliosUrbanos fmk={formik} />
+                        <CuentasBancarias fmk={formik} />
                         {/* <CuentasBancariasExterior /> */}
                         {/* <DatosConyuge /> */}
                         {/* <InformacionPatrimonial /> */}

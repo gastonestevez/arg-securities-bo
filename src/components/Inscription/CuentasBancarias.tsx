@@ -4,7 +4,7 @@ import { Grid, MenuItem, TextField, Typography } from "@mui/material"
 import frLocale from "date-fns/locale/fr"
 import React, { useState } from "react"
 
-export const CuentasBancarias = () => {
+export const CuentasBancarias = ({ fmk }) => {
     const tipoIds = ["CBU", "CVU"]
     const tipoCuentas = [
         "Cuenta corriente",
@@ -30,13 +30,22 @@ export const CuentasBancarias = () => {
             </Grid>
             <Grid item xs={12} sm={6}>
                 <TextField
-                    id="outlined-select-currency"
                     select
                     label="Tipo ID"
-                    value={tipoId}
-                    onChange={(e) => setTipoId(e.target.value)}
                     fullWidth
                     required
+                    id={"cuentaBancaria.tipoID"}
+                    name={"cuentaBancaria.tipoID"}
+                    value={fmk.values.cuentaBancaria?.tipoID}
+                    onChange={fmk.handleChange}
+                    error={
+                        fmk.touched.cuentaBancaria?.tipoID &&
+                        Boolean(fmk.errors.cuentaBancaria?.tipoID)
+                    }
+                    helperText={
+                        fmk.touched.cuentaBancaria?.tipoID &&
+                        fmk.errors.cuentaBancaria?.tipoID
+                    }
                 >
                     {tipoIds.map((option) => (
                         <MenuItem key={option} value={option}>
@@ -51,33 +60,57 @@ export const CuentasBancarias = () => {
                     fullWidth
                     label="CBU/CVU"
                     variant="outlined"
+                    id={"cuentaBancaria.cbu"}
+                    name={"cuentaBancaria.cbu"}
+                    value={fmk.values.cuentaBancaria?.cbu}
+                    onChange={fmk.handleChange}
+                    error={
+                        fmk.touched.cuentaBancaria?.cbu &&
+                        Boolean(fmk.errors.cuentaBancaria?.cbu)
+                    }
+                    helperText={
+                        fmk.touched.cuentaBancaria?.cbu &&
+                        fmk.errors.cuentaBancaria?.cbu
+                    }
                 />
             </Grid>
             <Grid item xs={12} sm={6}>
                 <TextField
-                    required
                     fullWidth
                     label="Alias CBU/CVU"
                     variant="outlined"
+                    id={"cuentaBancaria.alias"}
+                    name={"cuentaBancaria.alias"}
+                    value={fmk.values.cuentaBancaria?.alias}
+                    onChange={fmk.handleChange}
+                    error={
+                        fmk.touched.cuentaBancaria?.alias &&
+                        Boolean(fmk.errors.cuentaBancaria?.alias)
+                    }
+                    helperText={
+                        fmk.touched.cuentaBancaria?.alias &&
+                        fmk.errors.cuentaBancaria?.alias
+                    }
                 />
             </Grid>
             <Grid item xs={12} sm={6}>
                 <TextField
-                    required
-                    fullWidth
-                    label="Banco y Sucursal"
-                    variant="outlined"
-                />
-            </Grid>
-            <Grid item xs={12} sm={6}>
-                <TextField
-                    id="outlined-select-currency"
                     select
                     label="Tipo de cuenta"
-                    value={tipoCuenta}
-                    onChange={(e) => setTipoCuenta(e.target.value)}
                     fullWidth
                     required
+                    id={"cuentaBancaria.tipo"}
+                    name={"cuentaBancaria.tipo"}
+                    value={fmk.values.cuentaBancaria?.tipo}
+                    onChange={fmk.handleChange}
+                    error={
+                        fmk.touched.cuentaBancaria?.tipo &&
+                        Boolean(fmk.errors.cuentaBancaria?.tipo)
+                    }
+                    helperText={
+                        fmk.touched.cuentaBancaria?.tipo &&
+                        fmk.errors.cuentaBancaria?.tipo
+                    }
                 >
                     {tipoCuentas.map((option) => (
                         <MenuItem key={option} value={option}>
@@ -88,13 +121,22 @@ export const CuentasBancarias = () => {
             </Grid>
             <Grid item xs={12} sm={6}>
                 <TextField
-                    id="outlined-select-currency"
                     select
                     label="Moneda"
-                    value={moneda}
-                    onChange={(e) => setMoneda(e.target.value)}
                     fullWidth
                     required
+                    id={"cuentaBancaria.moneda"}
+                    name={"cuentaBancaria.moneda"}
+                    value={fmk.values.cuentaBancaria?.moneda}
+                    onChange={fmk.handleChange}
+                    error={
+                        fmk.touched.cuentaBancaria?.moneda &&
+                        Boolean(fmk.errors.cuentaBancaria?.moneda)
+                    }
+                    helperText={
+                        fmk.touched.cuentaBancaria?.moneda &&
+                        fmk.errors.cuentaBancaria?.moneda
+                    }
                 >
                     {monedas.map((option) => (
                         <MenuItem key={option} value={option}>
@@ -104,17 +146,42 @@ export const CuentasBancarias = () => {
                 </TextField>
             </Grid>
             <Grid item xs={12} sm={6}>
-                <TextField fullWidth label="Número" variant="outlined" />
+                <TextField
+                    fullWidth
+                    label="Número"
+                    variant="outlined"
+                    id={"cuentaBancaria.numero"}
+                    name={"cuentaBancaria.numero"}
+                    value={fmk.values.cuentaBancaria?.numero}
+                    onChange={fmk.handleChange}
+                    error={
+                        fmk.touched.cuentaBancaria?.numero &&
+                        Boolean(fmk.errors.cuentaBancaria?.numero)
+                    }
+                    helperText={
+                        fmk.touched.cuentaBancaria?.numero &&
+                        fmk.errors.cuentaBancaria?.numero
+                    }
+                />
             </Grid>
             <Grid item xs={12} sm={6}>
                 <TextField
-                    id="outlined-select-currency"
                     select
                     label="Uso"
-                    value={uso}
-                    onChange={(e) => setUso(e.target.value)}
                     fullWidth
                     required
+                    id={"cuentaBancaria.uso"}
+                    name={"cuentaBancaria.uso"}
+                    value={fmk.values.cuentaBancaria?.uso}
+                    onChange={fmk.handleChange}
+                    error={
+                        fmk.touched.cuentaBancaria?.uso &&
+                        Boolean(fmk.errors.cuentaBancaria?.uso)
+                    }
+                    helperText={
+                        fmk.touched.cuentaBancaria?.uso &&
+                        fmk.errors.cuentaBancaria?.uso
+                    }
                 >
                     {usos.map((option) => (
                         <MenuItem key={option} value={option}>
@@ -122,56 +189,45 @@ export const CuentasBancarias = () => {
                         </MenuItem>
                     ))}
                 </TextField>
-                </Grid>
-                <Grid item xs={12} sm={12}>
-                    <TextField
-                        fullWidth
-                        label="Denominación"
-                        variant="outlined"
-                    />
-                </Grid>
-                <Grid item xs={12} sm={6}>
-                    <LocalizationProvider
-                        dateAdapter={AdapterDateFns}
-                        locale={frLocale}
-                    >
-                        <DatePicker
-                            label="Vigente desde"
-                            value={desde}
-                            onChange={(newValue) => {
-                                setDesde(newValue)
-                            }}
-                            renderInput={(params) => (
-                                <TextField {...params} fullWidth />
-                            )}
-                        />
-                    </LocalizationProvider>
-                </Grid>
-                <Grid item xs={12} sm={6}>
-                    <LocalizationProvider
-                        dateAdapter={AdapterDateFns}
-                        locale={frLocale}
-                    >
-                        <DatePicker
-                            label="Vigente hasta"
-                            value={hasta}
-                            onChange={(newValue) => {
-                                setHasta(newValue)
-                            }}
-                            renderInput={(params) => (
-                                <TextField {...params} fullWidth />
-                            )}
-                        />
-                    </LocalizationProvider>
-                </Grid>
-                <Grid item xs={12} sm={12}>
-                    <TextField
-                        fullWidth
-                        label="Notas"
-                        variant="outlined"
-                    />
-                </Grid>
-
+            </Grid>
+            <Grid item xs={12} sm={6}>
+                <TextField
+                    fullWidth
+                    label="Denominación"
+                    variant="outlined"
+                    id={"cuentaBancaria.denominacion"}
+                    name={"cuentaBancaria.denominacion"}
+                    value={fmk.values.cuentaBancaria?.denominacion}
+                    onChange={fmk.handleChange}
+                    error={
+                        fmk.touched.cuentaBancaria?.denominacion &&
+                        Boolean(fmk.errors.cuentaBancaria?.denominacion)
+                    }
+                    helperText={
+                        fmk.touched.cuentaBancaria?.denominacion &&
+                        fmk.errors.cuentaBancaria?.denominacion
+                    }
+                />
+            </Grid>
+            <Grid item xs={12} sm={12}>
+                <TextField
+                    fullWidth
+                    label="Notas"
+                    variant="outlined"
+                    id={"cuentaBancaria.notas"}
+                    name={"cuentaBancaria.notas"}
+                    value={fmk.values.cuentaBancaria?.notas}
+                    onChange={fmk.handleChange}
+                    error={
+                        fmk.touched.cuentaBancaria?.notas &&
+                        Boolean(fmk.errors.cuentaBancaria?.notas)
+                    }
+                    helperText={
+                        fmk.touched.cuentaBancaria?.notas &&
+                        fmk.errors.cuentaBancaria?.notas
+                    }
+                />
+            </Grid>
         </>
     )
 }
