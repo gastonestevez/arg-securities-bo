@@ -21,19 +21,17 @@ export const Declaraciones = ({ fmk }) => {
                 </Typography>
             </Grid>
             <Grid item xs={12} sm={12}>
-                <FormGroup>
-                    <FormControlLabel
-                        control={
-                            <Checkbox
-                                id={"declaracionesPF.expuestaPoliticamente"}
-                                name={"declaracionesPF.expuestaPoliticamente"}
-                                value={true}
-                                onChange={fmk.handleChange}
-                            />
-                        }
-                        label={"¿La persona está expuesta políticamente?"}
-                    />
-                </FormGroup>
+                <FormControlLabel
+                    control={
+                        <Checkbox
+                            id={"declaracionesPF.expuestaPoliticamente"}
+                            name={"declaracionesPF.expuestaPoliticamente"}
+                            value={true}
+                            onChange={fmk.handleChange}
+                        />
+                    }
+                    label={"¿La persona está expuesta políticamente?"}
+                />
             </Grid>
             <Grid item xs={12} sm={12}>
                 <TextField
@@ -57,21 +55,19 @@ export const Declaraciones = ({ fmk }) => {
                 />
             </Grid>
             <Grid item xs={12} sm={12}>
-                <FormGroup>
-                    <FormControlLabel
-                        control={
-                            <Checkbox
-                                id={"declaracionesPF.sujetoObligado"}
-                                name={"declaracionesPF.sujetoObligado"}
-                                value={true}
-                                onChange={fmk.handleChange}
-                            />
-                        }
-                        label={
-                            "¿La persona está inscripta como sujeto obligado UIF?"
-                        }
-                    />
-                </FormGroup>
+                <FormControlLabel
+                    control={
+                        <Checkbox
+                            id={"declaracionesPF.sujetoObligado"}
+                            name={"declaracionesPF.sujetoObligado"}
+                            value={true}
+                            onChange={fmk.handleChange}
+                        />
+                    }
+                    label={
+                        "¿La persona está inscripta como sujeto obligado UIF?"
+                    }
+                />
             </Grid>
             <Grid item xs={12} sm={12}>
                 <TextField
@@ -79,17 +75,17 @@ export const Declaraciones = ({ fmk }) => {
                     label="Nº de inscripción"
                     variant="outlined"
                     type={"number"}
-                    id={"actividadPersona.numeroInscripcion"}
-                    name={"actividadPersona.numeroInscripcion"}
-                    value={fmk.values.actividadPersona?.numeroInscripcion}
+                    id={"declaracionesPF.numeroInscripcion"}
+                    name={"declaracionesPF.numeroInscripcion"}
+                    value={fmk.values.declaracionesPF?.numeroInscripcion}
                     onChange={fmk.handleChange}
                     error={
-                        fmk.touched.actividadPersona?.numeroInscripcion &&
-                        Boolean(fmk.errors.actividadPersona?.numeroInscripcion)
+                        fmk.touched.declaracionesPF?.numeroInscripcion &&
+                        Boolean(fmk.errors.declaracionesPF?.numeroInscripcion)
                     }
                     helperText={
-                        fmk.touched.actividadPersona?.numeroInscripcion &&
-                        fmk.errors.actividadPersona?.numeroInscripcion
+                        fmk.touched.declaracionesPF?.numeroInscripcion &&
+                        fmk.errors.declaracionesPF?.numeroInscripcion
                     }
                 />
             </Grid>
