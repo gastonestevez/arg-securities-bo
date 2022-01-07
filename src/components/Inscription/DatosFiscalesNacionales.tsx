@@ -17,8 +17,7 @@ export const DatosFiscalesNacionales = ({ fmk }) => {
         "Inscripto",
         "No inscripto",
         "Exento",
-        "Responsable",
-        "monotributo",
+        "Responsable monotributo",
     ]
     const [tipoDeClave, setTipoDeClave] = useState("")
     const [tipoDeResponsableIva, setTipoDeResponsableIva] = useState("")
