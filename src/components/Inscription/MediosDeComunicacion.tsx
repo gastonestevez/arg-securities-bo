@@ -1,9 +1,5 @@
 import React, { useState } from "react"
-import AdapterDateFns from "@mui/lab/AdapterDateFns"
-import LocalizationProvider from "@mui/lab/LocalizationProvider"
-import { DatePicker } from "@mui/lab"
 import { Grid, MenuItem, TextField, Typography } from "@mui/material"
-import frLocale from "date-fns/locale/fr"
 
 export const MediosDeComunicacion = ({ fmk }) => {
     const tiposDeMedios = [
@@ -17,10 +13,6 @@ export const MediosDeComunicacion = ({ fmk }) => {
         "Google+",
     ]
     const tiposDeuso = ["Personal", "Laboral", "Comercial", "Otro"]
-    const [tipoDeMedio, setTipoDeMedio] = useState("")
-    const [uso, setUso] = useState("")
-    const [desde, setDesde] = useState("")
-    const [hasta, setHasta] = useState("")
 
     return (
         <>

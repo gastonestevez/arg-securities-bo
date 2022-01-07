@@ -1,7 +1,4 @@
-import { LocalizationProvider, DatePicker } from "@mui/lab"
-import AdapterDateFns from "@mui/lab/AdapterDateFns"
-import { Grid, MenuItem, TextField, Typography } from "@mui/material"
-import frLocale from "date-fns/locale/fr"
+import { Grid, TextField, Typography } from "@mui/material"
 import React, { useState } from "react"
 
 export const CuentasBancariasExterior = ({ fmk }) => {

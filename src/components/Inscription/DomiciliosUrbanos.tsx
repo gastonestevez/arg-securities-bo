@@ -1,14 +1,7 @@
 import React, { useState } from 'react'
-import AdapterDateFns from "@mui/lab/AdapterDateFns"
-import LocalizationProvider from "@mui/lab/LocalizationProvider"
-import { DatePicker } from "@mui/lab"
 import { Grid, MenuItem, TextField, Typography } from "@mui/material"
-import frLocale from "date-fns/locale/fr"
 
 export const DomiciliosUrbanos = ({ fmk }) => {
-    const [uso, setUso] = useState("")
-    const [desde, setDesde] = useState("")
-    const [hasta, setHasta] = useState("")
     const tiposDeuso = ['Legal', 'Fiscal', 'Real']
 
     return (

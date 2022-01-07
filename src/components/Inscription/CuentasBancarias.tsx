@@ -1,7 +1,4 @@
-import { LocalizationProvider, DatePicker } from "@mui/lab"
-import AdapterDateFns from "@mui/lab/AdapterDateFns"
 import { Grid, MenuItem, TextField, Typography } from "@mui/material"
-import frLocale from "date-fns/locale/fr"
 import React, { useState } from "react"
 
 export const CuentasBancarias = ({ fmk }) => {
@@ -14,12 +11,7 @@ export const CuentasBancarias = ({ fmk }) => {
     ]
     const monedas = ["ARS", "EUR", "EURC", "USD", "USDC", "USDL"]
     const usos = ["Personal", "Comercial", "Débitos", "Créditos", "Otro"]
-    const [tipoId, setTipoId] = useState("")
-    const [tipoCuenta, setTipoCuenta] = useState("")
-    const [moneda, setMoneda] = useState("")
-    const [uso, setUso] = useState("")
-    const [desde, setDesde] = useState("")
-    const [hasta, setHasta] = useState("")
+
 
     return (
         <>

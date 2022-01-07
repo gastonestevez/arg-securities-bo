@@ -1,14 +1,7 @@
-import { LocalizationProvider, DatePicker } from "@mui/lab"
-import AdapterDateFns from "@mui/lab/AdapterDateFns"
 import { Grid, MenuItem, TextField, Typography } from "@mui/material"
 import React, { useState } from "react"
-import frLocale from "date-fns/locale/fr"
 
 export const DatosConyuge = ({ fmk }) => {
-    const [desde, setDesde] = useState("")
-    const [hasta, setHasta] = useState("")
-    const [nationalId, setNationalId] = useState("")
-    const [tipoDeClave, setTipoDeClave] = useState("")
     const tiposDeClavesFiscales = ["CUIL", "CUIT"]
     const nationalIds = ["DNI", "LC", "LE", "EXT", "PAS"]
 

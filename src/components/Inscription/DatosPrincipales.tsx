@@ -1,7 +1,7 @@
 import React, { useState } from "react"
 import TextField from "@mui/material/TextField"
 import MenuItem from "@mui/material/MenuItem"
-import { Box, Grid, Typography } from "@mui/material"
+import { Grid, Typography } from "@mui/material"
 
 export const DatosPrincipales = ({ fmk }) => {
     const nationalIds = ["DNI", "LC", "LE", "EXT", "PAS"]

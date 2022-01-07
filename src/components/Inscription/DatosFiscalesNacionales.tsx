@@ -1,7 +1,7 @@
 import React, { useState } from "react"
 import TextField from "@mui/material/TextField"
 import MenuItem from "@mui/material/MenuItem"
-import { Box, Grid, Typography } from "@mui/material"
+import { Grid, Typography } from "@mui/material"
 
 export const DatosFiscalesNacionales = ({ fmk }) => {
     const tiposDeClavesFiscales = ["CUIL", "CUIT"]
@@ -19,10 +19,6 @@ export const DatosFiscalesNacionales = ({ fmk }) => {
         "Exento",
         "Responsable monotributo",
     ]
-    const [tipoDeClave, setTipoDeClave] = useState("")
-    const [tipoDeResponsableIva, setTipoDeResponsableIva] = useState("")
-    const [tipoDeResponsableGanancias, setTipoDeResponsableGanancias] =
-        useState("")
 
     return (
         <>

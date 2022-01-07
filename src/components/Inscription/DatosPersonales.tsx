@@ -1,10 +1,5 @@
-import React, { useState, useRef, useEffect } from "react"
-import AdapterDateFns from "@mui/lab/AdapterDateFns"
-import LocalizationProvider from "@mui/lab/LocalizationProvider"
-import { DatePicker } from "@mui/lab"
+import React, { useState } from "react"
 import { Grid, MenuItem, TextField, Typography } from "@mui/material"
-import frLocale from "date-fns/locale/fr"
-import { format, isDate } from "date-fns"
 
 export const DatosPersonales = ({ fmk }) => {
     const [nacimiento, setNacimiento] = useState<Date | null>(null)
@@ -19,10 +14,6 @@ export const DatosPersonales = ({ fmk }) => {
         "Viudo",
         "Unión Convivencial",
     ]
-
-    const formatDateToInputValue = (value: any) => {
-        return isDate(value) ? format(value as Date, "dd/MM/yyyy") : value
-    }
 
     return (
         <>

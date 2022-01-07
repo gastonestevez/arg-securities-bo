@@ -1,5 +1,3 @@
-import { LocalizationProvider, DatePicker } from "@mui/lab"
-import AdapterDateFns from "@mui/lab/AdapterDateFns"
 import {
     Checkbox,
     FormControlLabel,
@@ -9,14 +7,9 @@ import {
     TextField,
     Typography,
 } from "@mui/material"
-import frLocale from "date-fns/locale/fr"
 import React, { useState } from "react"
 
 export const InformacionPatrimonial = ({ fmk }) => {
-    const [fecha, setFecha] = useState("")
-    const [vencimiento, setVencimiento] = useState("")
-    const [fondeo, setFondeo] = useState("")
-    const [procedencia, setProcedencia] = useState("")
     const procedencias = ["Actividad principal", "Renta", "Otro"]
     const fondeos = [
         "Transferencia en pesos",
@@ -149,7 +142,6 @@ export const InformacionPatrimonial = ({ fmk }) => {
                     fullWidth
                     label="Observaciones"
                     variant="outlined"
-                    disabled={procedencia !== "Otro"}
                     id={"infoPatrimonial.observaciones"}
                     name={"infoPatrimonial.observaciones"}
                     value={fmk.values.infoPatrimonial?.observaciones}

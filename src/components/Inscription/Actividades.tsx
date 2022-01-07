@@ -1,16 +1,9 @@
-import { LocalizationProvider, DatePicker } from "@mui/lab"
-import AdapterDateFns from "@mui/lab/AdapterDateFns"
 import {
-    Checkbox,
-    FormControlLabel,
-    FormGroup,
     Grid,
-    MenuItem,
     TextField,
     Typography,
 } from "@mui/material"
-import frLocale from "date-fns/locale/fr"
-import React, { useState } from "react"
+import React from "react"
 
 export const Actividades = ({ fmk }) => {
     return (
