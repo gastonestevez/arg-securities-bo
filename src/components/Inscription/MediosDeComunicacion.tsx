@@ -5,7 +5,7 @@ import { DatePicker } from "@mui/lab"
 import { Grid, MenuItem, TextField, Typography } from "@mui/material"
 import frLocale from "date-fns/locale/fr"
 
-export const MediosDeComunicacion = () => {
+export const MediosDeComunicacion = ({ fmk }) => {
     const tiposDeMedios = [
         "Movil",
         "E-Mail",
@@ -31,13 +31,16 @@ export const MediosDeComunicacion = () => {
             </Grid>
             <Grid item xs={12} sm={6}>
                 <TextField
-                    id="outlined-select-currency"
                     select
                     label="Tipo de medio"
-                    value={tipoDeMedio}
-                    onChange={(e) => setTipoDeMedio(e.target.value)}
                     fullWidth
                     required
+                    id="medioComunicacion.tipo"
+                    name="medioComunicacion.tipo"
+                    value={fmk.values.medioComunicacion?.tipo}
+                    onChange={fmk.handleChange}
+                    error={fmk.touched.medioComunicacion?.tipo && Boolean(fmk.errors.medioComunicacion?.tipo)}
+                    helperText={fmk.touched.medioComunicacion?.tipo && fmk.errors.medioComunicacion?.tipo}
                 >
                     {tiposDeMedios.map((option) => (
                         <MenuItem key={option} value={option}>
@@ -52,51 +55,26 @@ export const MediosDeComunicacion = () => {
                     fullWidth
                     label="Medio"
                     variant="outlined"
+                    id="medioComunicacion.medio"
+                    name="medioComunicacion.medio"
+                    value={fmk.values.medioComunicacion?.medio}
+                    onChange={fmk.handleChange}
+                    error={fmk.touched.medioComunicacion?.medio && Boolean(fmk.errors.medioComunicacion?.medio)}
+                    helperText={fmk.touched.medioComunicacion?.medio && fmk.errors.medioComunicacion?.tipo}
                 />
             </Grid>
             <Grid item xs={12} sm={6}>
-                <LocalizationProvider
-                    dateAdapter={AdapterDateFns}
-                    locale={frLocale}
-                >
-                    <DatePicker
-                        label="Vigente desde"
-                        value={desde}
-                        onChange={(newValue) => {
-                            setDesde(newValue)
-                        }}
-                        renderInput={(params) => (
-                            <TextField {...params} fullWidth />
-                        )}
-                    />
-                </LocalizationProvider>
-            </Grid>
-            <Grid item xs={12} sm={6}>
-                <LocalizationProvider
-                    dateAdapter={AdapterDateFns}
-                    locale={frLocale}
-                >
-                    <DatePicker
-                        label="Vigente hasta"
-                        value={hasta}
-                        onChange={(newValue) => {
-                            setHasta(newValue)
-                        }}
-                        renderInput={(params) => (
-                            <TextField {...params} fullWidth />
-                        )}
-                    />
-                </LocalizationProvider>
-            </Grid>
-            <Grid item xs={12} sm={6}>
                 <TextField
-                    id="outlined-select-currency"
                     select
                     label="Uso"
-                    value={uso}
-                    onChange={(e) => setUso(e.target.value)}
                     fullWidth
                     required
+                    id="medioComunicacion.uso"
+                    name="medioComunicacion.uso"
+                    value={fmk.values.medioComunicacion?.uso}
+                    onChange={fmk.handleChange}
+                    error={fmk.touched.medioComunicacion?.uso && Boolean(fmk.errors.medioComunicacion?.uso)}
+                    helperText={fmk.touched.medioComunicacion?.uso && fmk.errors.medioComunicacion?.uso}
                 >
                     {tiposDeuso.map((option) => (
                         <MenuItem key={option} value={option}>
@@ -105,12 +83,17 @@ export const MediosDeComunicacion = () => {
                     ))}
                 </TextField>
             </Grid>
-            <Grid item xs={12} sm={12}>
+            <Grid item xs={12} sm={6}>
                 <TextField
-                    required
                     fullWidth
                     label="Notas"
                     variant="outlined"
+                    id="medioComunicacion.notas"
+                    name="medioComunicacion.notas"
+                    value={fmk.values.medioComunicacion?.notas}
+                    onChange={fmk.handleChange}
+                    error={fmk.touched.medioComunicacion?.notas && Boolean(fmk.errors.medioComunicacion?.notas)}
+                    helperText={fmk.touched.medioComunicacion?.notas && fmk.errors.medioComunicacion?.notas}
                 />
             </Grid>
         </>

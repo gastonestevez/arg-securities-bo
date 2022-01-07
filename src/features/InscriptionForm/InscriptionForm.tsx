@@ -40,17 +40,23 @@ export const InscriptionForm = () => {
                 .required("Este campo es requerido."),
         }),
         datosPersonales: yup.object().shape({
-            fechaNacimiento: yup.string().required("Este campo es requerido."),
+            fechaNacimiento: yup.date().required("Este campo es requerido."),
             sexo: yup.string().required("Este campo es requerido."),
             estadoCivil: yup.string().required("Este campo es requerido."),
             idioma: yup.string().required("Este campo es requerido."),
             nacionalidad: yup.string().required("Este campo es requerido."),
             paisResidencia: yup.string().required("Este campo es requerido."),
-            paisOrigen: yup.string().required("Este campo es requerido."),
+            paisOrigen: yup.string().notRequired(),
             lugarNacimiento: yup.string().required("Este campo es requerido."),
-            cie: yup.string().required("Este campo es requerido."),
+            cie: yup.string().notRequired(),
             actividad: yup.string().required("Este campo es requerido."),
         }),
+        medioComunicacion: yup.object().shape({
+            tipo: yup.string().required("Este campo es requerido."),
+            medio: yup.string().required("Este campo es requerido."),
+            uso: yup.string().required("Este campo es requerido."),
+            notas: yup.string().notRequired()
+        })
     })
     const initialValues = {
         datosPrincipalesFisicas: {
@@ -77,6 +83,12 @@ export const InscriptionForm = () => {
             cie: "",
             actividad: "",
         },
+        medioComunicacion: {
+            tipo: '',
+            medio: '',
+            uso: '',
+            notas: ''
+        }
     }
 
     const formik = useFormik({
@@ -111,14 +123,14 @@ export const InscriptionForm = () => {
                         <DatosPrincipales fmk={formik} />
                         <DatosFiscalesNacionales fmk={formik} />
                         <DatosPersonales fmk={formik} />
-                        {/* <MediosDeComunicacion />
-                        <DomiciliosUrbanos />
-                        <CuentasBancarias />
-                        <CuentasBancariasExterior />
-                        <DatosConyuge />
-                        <InformacionPatrimonial />
-                        <Actividades />
-                        <Declaraciones /> */}
+                        <MediosDeComunicacion fmk={formik} />
+                        {/* <DomiciliosUrbanos /> */}
+                        {/* <CuentasBancarias /> */}
+                        {/* <CuentasBancariasExterior /> */}
+                        {/* <DatosConyuge /> */}
+                        {/* <InformacionPatrimonial /> */}
+                        {/* <Actividades /> */}
+                        {/* <Declaraciones /> */}
                         <Grid item md={8} />
                         <Grid item xs={12} md={4}>
                             <Button fullWidth type="submit" variant="contained">
