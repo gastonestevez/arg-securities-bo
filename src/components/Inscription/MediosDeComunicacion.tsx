@@ -1,6 +1,14 @@
 import React, { useState } from "react"
-import { Grid, MenuItem, TextField, Typography } from "@mui/material"
-
+import {
+    Box,
+    Grid,
+    IconButton,
+    MenuItem,
+    TextField,
+    Typography,
+} from "@mui/material"
+import RemoveCircleIcon from "@mui/icons-material/RemoveCircle"
+import AddCircleIcon from '@mui/icons-material/AddCircle';
 export const MediosDeComunicacion = ({ fmk }) => {
     const tiposDeMedios = [
         "Movil",
@@ -17,9 +25,24 @@ export const MediosDeComunicacion = ({ fmk }) => {
     return (
         <>
             <Grid item xs={12} sm={12}>
-                <Typography component="h5" variant="h5">
-                    Medios de comunicación
-                </Typography>
+                <Box
+                    sx={{
+                        display: "flex",
+                        flexDirection: "row",
+                        justifyContent: "space-between",
+                    }}
+                >
+                    <Box>
+                        <Typography component="h5" variant="h5">
+                            Medios de comunicación
+                        </Typography>
+                    </Box>
+                    <Box>
+                        <IconButton color="primary" aria-label="delete">
+                            <AddCircleIcon />
+                        </IconButton>
+                    </Box>
+                </Box>
             </Grid>
             <Grid item xs={12} sm={6}>
                 <TextField
@@ -31,8 +54,14 @@ export const MediosDeComunicacion = ({ fmk }) => {
                     name="medioComunicacion.tipo"
                     value={fmk.values.medioComunicacion?.tipo}
                     onChange={fmk.handleChange}
-                    error={fmk.touched.medioComunicacion?.tipo && Boolean(fmk.errors.medioComunicacion?.tipo)}
-                    helperText={fmk.touched.medioComunicacion?.tipo && fmk.errors.medioComunicacion?.tipo}
+                    error={
+                        fmk.touched.medioComunicacion?.tipo &&
+                        Boolean(fmk.errors.medioComunicacion?.tipo)
+                    }
+                    helperText={
+                        fmk.touched.medioComunicacion?.tipo &&
+                        fmk.errors.medioComunicacion?.tipo
+                    }
                 >
                     {tiposDeMedios.map((option) => (
                         <MenuItem key={option} value={option}>
@@ -51,8 +80,14 @@ export const MediosDeComunicacion = ({ fmk }) => {
                     name="medioComunicacion.medio"
                     value={fmk.values.medioComunicacion?.medio}
                     onChange={fmk.handleChange}
-                    error={fmk.touched.medioComunicacion?.medio && Boolean(fmk.errors.medioComunicacion?.medio)}
-                    helperText={fmk.touched.medioComunicacion?.medio && fmk.errors.medioComunicacion?.tipo}
+                    error={
+                        fmk.touched.medioComunicacion?.medio &&
+                        Boolean(fmk.errors.medioComunicacion?.medio)
+                    }
+                    helperText={
+                        fmk.touched.medioComunicacion?.medio &&
+                        fmk.errors.medioComunicacion?.tipo
+                    }
                 />
             </Grid>
             <Grid item xs={12} sm={6}>
@@ -65,8 +100,14 @@ export const MediosDeComunicacion = ({ fmk }) => {
                     name="medioComunicacion.uso"
                     value={fmk.values.medioComunicacion?.uso}
                     onChange={fmk.handleChange}
-                    error={fmk.touched.medioComunicacion?.uso && Boolean(fmk.errors.medioComunicacion?.uso)}
-                    helperText={fmk.touched.medioComunicacion?.uso && fmk.errors.medioComunicacion?.uso}
+                    error={
+                        fmk.touched.medioComunicacion?.uso &&
+                        Boolean(fmk.errors.medioComunicacion?.uso)
+                    }
+                    helperText={
+                        fmk.touched.medioComunicacion?.uso &&
+                        fmk.errors.medioComunicacion?.uso
+                    }
                 >
                     {tiposDeuso.map((option) => (
                         <MenuItem key={option} value={option}>
@@ -84,8 +125,14 @@ export const MediosDeComunicacion = ({ fmk }) => {
                     name="medioComunicacion.notas"
                     value={fmk.values.medioComunicacion?.notas}
                     onChange={fmk.handleChange}
-                    error={fmk.touched.medioComunicacion?.notas && Boolean(fmk.errors.medioComunicacion?.notas)}
-                    helperText={fmk.touched.medioComunicacion?.notas && fmk.errors.medioComunicacion?.notas}
+                    error={
+                        fmk.touched.medioComunicacion?.notas &&
+                        Boolean(fmk.errors.medioComunicacion?.notas)
+                    }
+                    helperText={
+                        fmk.touched.medioComunicacion?.notas &&
+                        fmk.errors.medioComunicacion?.notas
+                    }
                 />
             </Grid>
         </>

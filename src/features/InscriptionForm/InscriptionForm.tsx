@@ -3,6 +3,7 @@ import {
     Button,
     Container,
     CssBaseline,
+    Divider,
     Grid,
     Typography,
 } from "@mui/material"
@@ -18,12 +19,11 @@ import { Declaraciones } from "../../components/Inscription/Declaraciones"
 import { DomiciliosUrbanos } from "../../components/Inscription/DomiciliosUrbanos"
 import { InformacionPatrimonial } from "../../components/Inscription/InformacionPatrimonial"
 import { MediosDeComunicacion } from "../../components/Inscription/MediosDeComunicacion"
-import { useFormik } from "formik"
+import { FormikProvider, useFormik } from "formik"
 import { personaFisicaValidationSchema } from "../../validations/validations"
 import { personaFisicaInitialValues } from "../../form/initialValues"
 
 export const InscriptionForm = () => {
-
     const formik = useFormik({
         initialValues: personaFisicaInitialValues,
         validationSchema: personaFisicaValidationSchema,
@@ -46,32 +46,86 @@ export const InscriptionForm = () => {
                 <Typography component="h1" variant="h4">
                     Documentación a presentar
                 </Typography>
-                <Box
-                    component="form"
-                    noValidate
-                    onSubmit={formik.handleSubmit}
-                    sx={{ mt: 4 }}
-                >
-                    <Grid container spacing={2}>
-                        <DatosPrincipales fmk={formik} />
-                        <DatosFiscalesNacionales fmk={formik} />
-                        <DatosPersonales fmk={formik} />
-                        <MediosDeComunicacion fmk={formik} />
-                        <DomiciliosUrbanos fmk={formik} />
-                        <CuentasBancarias fmk={formik} />
-                        <CuentasBancariasExterior fmk={formik} />
-                        <DatosConyuge fmk={formik} />
-                        <InformacionPatrimonial fmk={formik} />
-                        <Actividades fmk={formik} />
-                        <Declaraciones fmk={formik} />
-                        <Grid item md={8} />
-                        <Grid item xs={12} md={4}>
-                            <Button fullWidth type="submit" variant="contained">
-                                Registrarse
-                            </Button>
+                <FormikProvider value={formik}>
+                    <Box
+                        component="form"
+                        noValidate
+                        onSubmit={formik.handleSubmit}
+                        sx={{ mt: 4 }}
+                    >
+                        <Grid container spacing={2}>
+                            <DatosPrincipales fmk={formik} />
+                            
+                            <Grid item xs={12}>
+                                <Divider sx={{ marginTop: 2 }} />
+                            </Grid>
+
+                            <DatosFiscalesNacionales fmk={formik} />
+
+                            <Grid item xs={12}>
+                                <Divider sx={{ marginTop: 2 }} />
+                            </Grid>
+
+                            <DatosPersonales fmk={formik} />
+
+                            <Grid item xs={12}>
+                                <Divider sx={{ marginTop: 2 }} />
+                            </Grid>
+
+                            <MediosDeComunicacion fmk={formik} />
+
+                            <Grid item xs={12}>
+                                <Divider sx={{ marginTop: 2 }} />
+                            </Grid>
+
+                            <DomiciliosUrbanos fmk={formik} />
+
+                            <Grid item xs={12}>
+                                <Divider sx={{ marginTop: 2 }} />
+                            </Grid>
+
+                            <CuentasBancarias fmk={formik} />
+
+                            <Grid item xs={12}>
+                                <Divider sx={{ marginTop: 2 }} />
+                            </Grid>
+
+                            <CuentasBancariasExterior fmk={formik} />
+
+                            <Grid item xs={12}>
+                                <Divider sx={{ marginTop: 2 }} />
+                            </Grid>
+
+                            <DatosConyuge fmk={formik} />
+                            <Grid item xs={12}>
+                                <Divider sx={{ marginTop: 2 }} />
+                            </Grid>
+
+                            <InformacionPatrimonial fmk={formik} />
+                            <Grid item xs={12}>
+                                <Divider sx={{ marginTop: 2 }} />
+                            </Grid>
+
+                            <Actividades fmk={formik} />
+                            <Grid item xs={12}>
+                                <Divider sx={{ marginTop: 2 }} />
+                            </Grid>
+
+                            <Declaraciones fmk={formik} />
+
+                            <Grid item md={8} />
+                            <Grid item xs={12} md={4}>
+                                <Button
+                                    fullWidth
+                                    type="submit"
+                                    variant="contained"
+                                >
+                                    Registrarse
+                                </Button>
+                            </Grid>
                         </Grid>
-                    </Grid>
-                </Box>
+                    </Box>
+                </FormikProvider>
             </Box>
         </Container>
     )
