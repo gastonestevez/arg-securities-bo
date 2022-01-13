@@ -41,7 +41,7 @@ export const DomicilioUrbano = ({ index, fmk, arrayHelper }) => {
                     required
                     id={`domiciliosUrbanos.[${index}].uso`}
                     name={`domiciliosUrbanos[${index}].uso`}
-                    value={fmk.values.domiciliosUrbanos[index].uso}
+                    value={fmk.values.domiciliosUrbanos[index]?.uso}
                     onChange={fmk.handleChange}
                     error={
                         fmk.touched.domiciliosUrbanos &&
@@ -50,8 +50,8 @@ export const DomicilioUrbano = ({ index, fmk, arrayHelper }) => {
                     }
                     helperText={
                         fmk.touched.domiciliosUrbanos &&
-                        fmk.touched.domiciliosUrbanos?.[index].uso &&
-                        fmk.errors.domiciliosUrbanos?.[index].uso
+                        fmk.touched.domiciliosUrbanos[index]?.uso &&
+                        fmk.errors.domiciliosUrbanos[index]?.uso
                     }
                 >
                     {tiposDeuso.map((option) => (
@@ -77,8 +77,8 @@ export const DomicilioUrbano = ({ index, fmk, arrayHelper }) => {
                     }
                     helperText={
                         fmk.touched.domiciliosUrbanos &&
-                        fmk.touched.domiciliosUrbanos?.[index].barrio &&
-                        fmk.errors.domiciliosUrbanos?.[index].barrio
+                        fmk.touched.domiciliosUrbanos[index]?.barrio &&
+                        fmk.errors.domiciliosUrbanos[index]?.barrio
                     }
                 />
             </Grid>
@@ -99,8 +99,8 @@ export const DomicilioUrbano = ({ index, fmk, arrayHelper }) => {
                     }
                     helperText={
                         fmk.touched.domiciliosUrbanos &&
-                        fmk.touched.domiciliosUrbanos?.[index].calle &&
-                        fmk.errors.domiciliosUrbanos?.[index].calle
+                        fmk.touched.domiciliosUrbanos[index]?.calle &&
+                        fmk.errors.domiciliosUrbanos[index]?.calle
                     }
                 />
             </Grid>
@@ -122,8 +122,8 @@ export const DomicilioUrbano = ({ index, fmk, arrayHelper }) => {
                     }
                     helperText={
                         fmk.touched.domiciliosUrbanos &&
-                        fmk.touched.domiciliosUrbanos?.[index].numero &&
-                        fmk.errors.domiciliosUrbanos?.[index].numero
+                        fmk.touched.domiciliosUrbanos[index]?.numero &&
+                        fmk.errors.domiciliosUrbanos[index]?.numero
                     }
                 />
             </Grid>
@@ -143,8 +143,8 @@ export const DomicilioUrbano = ({ index, fmk, arrayHelper }) => {
                     }
                     helperText={
                         fmk.touched.domiciliosUrbanos &&
-                        fmk.touched.domiciliosUrbanos?.[index].torre &&
-                        fmk.errors.domiciliosUrbanos?.[index].torre
+                        fmk.touched.domiciliosUrbanos[index]?.torre &&
+                        fmk.errors.domiciliosUrbanos[index]?.torre
                     }
                 />
             </Grid>
@@ -165,8 +165,8 @@ export const DomicilioUrbano = ({ index, fmk, arrayHelper }) => {
                     }
                     helperText={
                         fmk.touched.domiciliosUrbanos &&
-                        fmk.touched.domiciliosUrbanos?.[index].piso &&
-                        fmk.errors.domiciliosUrbanos?.[index].piso
+                        fmk.touched.domiciliosUrbanos[index]?.piso &&
+                        fmk.errors.domiciliosUrbanos[index]?.piso
                     }
                 />
             </Grid>
@@ -186,8 +186,8 @@ export const DomicilioUrbano = ({ index, fmk, arrayHelper }) => {
                     }
                     helperText={
                         fmk.touched.domiciliosUrbanos &&
-                        fmk.touched.domiciliosUrbanos?.[index].departamento &&
-                        fmk.errors.domiciliosUrbanos?.[index].departamento
+                        fmk.touched.domiciliosUrbanos[index]?.departamento &&
+                        fmk.errors.domiciliosUrbanos[index]?.departamento
                     }
                 />
             </Grid>
@@ -208,8 +208,8 @@ export const DomicilioUrbano = ({ index, fmk, arrayHelper }) => {
                     }
                     helperText={
                         fmk.touched.domiciliosUrbanos &&
-                        fmk.touched.domiciliosUrbanos?.[index].lugar &&
-                        fmk.errors.domiciliosUrbanos?.[index].lugar
+                        fmk.touched.domiciliosUrbanos[index]?.lugar &&
+                        fmk.errors.domiciliosUrbanos[index]?.lugar
                     }
                 />
             </Grid>
@@ -230,8 +230,8 @@ export const DomicilioUrbano = ({ index, fmk, arrayHelper }) => {
                     }
                     helperText={
                         fmk.touched.domiciliosUrbanos &&
-                        fmk.touched.domiciliosUrbanos?.[index].codigoPostal &&
-                        fmk.errors.domiciliosUrbanos?.[index].codigoPostal
+                        fmk.touched.domiciliosUrbanos[index]?.codigoPostal &&
+                        fmk.errors.domiciliosUrbanos[index]?.codigoPostal
                     }
                 />
             </Grid>
@@ -251,8 +251,8 @@ export const DomicilioUrbano = ({ index, fmk, arrayHelper }) => {
                     }
                     helperText={
                         fmk.touched.domiciliosUrbanos &&
-                        fmk.touched.domiciliosUrbanos?.[index].notas &&
-                        fmk.errors.domiciliosUrbanos?.[index].notas
+                        fmk.touched.domiciliosUrbanos[index]?.notas &&
+                        fmk.errors.domiciliosUrbanos[index]?.notas
                     }
                 />
             </Grid>

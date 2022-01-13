@@ -7,7 +7,7 @@ import {
     Grid,
     Typography,
 } from "@mui/material"
-import React from "react"
+import React, { useState } from "react"
 import { Actividades } from "../../components/Inscription/Actividades"
 import { CuentasBancarias } from "../../components/Inscription/CuentasBancarias"
 import { CuentasBancariasExterior } from "../../components/Inscription/CuentasBancariasExterior"
@@ -22,13 +22,17 @@ import { MediosDeComunicacion } from "../../components/Inscription/MediosDeComun
 import { FormikProvider, useFormik } from "formik"
 import { personaFisicaValidationSchema } from "../../validations/validations"
 import { personaFisicaInitialValues } from "../../form/initialValues"
+import ReCAPTCHA from "react-google-recaptcha"
 
 export const InscriptionForm = () => {
+    const recaptchaRef = React.useRef(null);
     const formik = useFormik({
         initialValues: personaFisicaInitialValues,
         validationSchema: personaFisicaValidationSchema,
-        onSubmit: (values) => {
+        onSubmit: async (values) => {
             console.log(values)
+            const token = await recaptchaRef.current.executeAsync();
+            if(!token) return
         },
     })
 
@@ -44,7 +48,7 @@ export const InscriptionForm = () => {
                 }}
             >
                 <Typography component="h1" variant="h4">
-                    Documentación a presentar
+                    Persona física
                 </Typography>
                 <FormikProvider value={formik}>
                     <Box
@@ -55,7 +59,7 @@ export const InscriptionForm = () => {
                     >
                         <Grid container spacing={2}>
                             <DatosPrincipales fmk={formik} />
-                            
+
                             <Grid item xs={12}>
                                 <Divider sx={{ marginTop: 2 }} />
                             </Grid>
@@ -114,6 +118,15 @@ export const InscriptionForm = () => {
                             <Declaraciones fmk={formik} />
 
                             <Grid item md={8} />
+                            <Grid item xs={12} sx={{display: 'flex', justifyContent: 'flex-end'}}>
+                                <ReCAPTCHA
+                                    sitekey="6LcPTAweAAAAAJslpywllHcuD4SJy0rZhnXk0zOx"
+                                    ref={recaptchaRef}
+                                    badge={'bottomright'}
+                                />
+                            </Grid>
+                            <Grid item md={8} />
+
                             <Grid item xs={12} md={4}>
                                 <Button
                                     fullWidth
