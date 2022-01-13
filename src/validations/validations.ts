@@ -27,12 +27,12 @@ export const personaFisicaValidationSchema = yup.object({
         cie: yup.string().notRequired(),
         actividad: yup.string().required("Este campo es requerido."),
     }),
-    medioComunicacion: yup.object().shape({
+    medioComunicacion: yup.array().of(yup.object().shape({
         tipo: yup.string().required("Este campo es requerido."),
         medio: yup.string().required("Este campo es requerido."),
         uso: yup.string().required("Este campo es requerido."),
         notas: yup.string().notRequired(),
-    }),
+    })),
     domiciliosUrbanos: yup
         .array()
         .of(

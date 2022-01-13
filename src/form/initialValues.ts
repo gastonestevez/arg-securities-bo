@@ -23,12 +23,19 @@ export const personaFisicaInitialValues = {
         cie: "",
         actividad: "",
     },
-    medioComunicacion: {
-        tipo: "",
+    medioComunicacion: [{
+        tipo: "Email",
         medio: "",
         uso: "",
         notas: "",
     },
+    {
+        tipo: "Telefono",
+        medio: "",
+        uso: "",
+        notas: "",
+    }
+],
     domiciliosUrbanos: [],
     // domiciliosUrbanos: {
     //     uso: "",
