@@ -5,7 +5,6 @@ import { Grid, Typography } from "@mui/material"
 
 export const DatosPrincipales = ({ fmk }) => {
     const nationalIds = ["DNI", "LC", "LE", "EXT", "PAS"]
-    console.log(fmk.values)
     return (
         <>
             <Grid item xs={12} sm={12}>

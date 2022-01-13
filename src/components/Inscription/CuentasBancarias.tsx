@@ -1,4 +1,5 @@
 import {
+    Alert,
     Box,
     Grid,
     IconButton,
@@ -55,6 +56,13 @@ export const CuentasBancarias = ({ fmk }) => {
                                 </Box>
                             </Box>
                         </Grid>
+                        {typeof fmk.errors.infoPatrimonial === "string" && (
+                            <Grid item xs={12}>
+                                <Alert severity="error" variant="outlined">
+                                    {fmk.errors.cuentaBancaria}
+                                </Alert>
+                            </Grid>
+                        )}
                         {fmk.values.cuentaBancaria.map((dom, index) => {
                             return (
                                 <CuentaBancaria

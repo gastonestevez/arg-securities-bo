@@ -1,4 +1,5 @@
 import {
+    Alert,
     Box,
     Grid,
     IconButton,
@@ -53,6 +54,13 @@ export const Actividades = ({ fmk }) => {
                                 </Box>
                             </Box>
                         </Grid>
+                        {typeof fmk.errors.infoPatrimonial === "string" && (
+                            <Grid item xs={12}>
+                                <Alert severity="error" variant="outlined">
+                                    {fmk.errors.actividadPersona}
+                                </Alert>
+                            </Grid>
+                        )}
                         {fmk.values.actividadPersona.map((dom, index) => {
                             return (<Actividad index={index} fmk={fmk} arrayHelper={arrayHelpers} />)
                         })}

@@ -49,7 +49,6 @@ export const CuentasBancariasExterior = ({ fmk }) => {
                             </Box>
                         </Grid>
                         {fmk.values.cuentaBancariaExterior.map((dom, index) => {
-                            console.log(index)
                             return (
                                 <CuentaBancariaExterior
                                     index={index}

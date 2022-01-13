@@ -1,4 +1,5 @@
 import {
+    Alert,
     Box,
     Checkbox,
     FormControlLabel,
@@ -15,6 +16,8 @@ import AddCircleIcon from "@mui/icons-material/AddCircle"
 import { InfoPatrimonial } from "./InfoPatrimonial/InfoPatrimonial"
 
 export const InformacionPatrimonial = ({ fmk }) => {
+    console.log(fmk.errors)
+
     return (
         <>
             <FieldArray
@@ -34,6 +37,7 @@ export const InformacionPatrimonial = ({ fmk }) => {
                                         Información patrimonial
                                     </Typography>
                                 </Box>
+
                                 <Box>
                                     <IconButton
                                         onClick={() =>
@@ -55,6 +59,13 @@ export const InformacionPatrimonial = ({ fmk }) => {
                                 </Box>
                             </Box>
                         </Grid>
+                        {typeof fmk.errors.infoPatrimonial === "string" && (
+                            <Grid item xs={12}>
+                                <Alert severity="error" variant="outlined">
+                                    {fmk.errors.infoPatrimonial}
+                                </Alert>
+                            </Grid>
+                        )}
                         {fmk.values.infoPatrimonial.map((dom, index) => {
                             return (
                                 <InfoPatrimonial

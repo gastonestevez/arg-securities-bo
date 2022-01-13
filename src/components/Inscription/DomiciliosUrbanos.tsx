@@ -1,5 +1,6 @@
 import React from "react"
 import {
+    Alert,
     Box,
     Grid,
     IconButton,
@@ -52,6 +53,13 @@ export const DomiciliosUrbanos = ({ fmk }) => {
                                 </Box>
                             </Box>
                         </Grid>
+                        {typeof fmk.errors.infoPatrimonial === "string" && (
+                            <Grid item xs={12}>
+                                <Alert severity="error" variant="outlined">
+                                    {fmk.errors.domiciliosUrbanos}
+                                </Alert>
+                            </Grid>
+                        )}
                         {fmk.values.domiciliosUrbanos.map((dom, index) => {
                             return (<DomicilioUrbano index={index} fmk={fmk} arrayHelper={arrayHelpers} />)
                         })}

@@ -22,7 +22,6 @@ export const MediosDeComunicacion = ({ fmk }) => {
         "Google+",
     ]
     const tiposDeuso = ["Personal", "Laboral", "Comercial", "Otro"]
-console.log(fmk.errors.medioComunicacion)
     return (
         <>
             <Grid item xs={12} sm={12}>

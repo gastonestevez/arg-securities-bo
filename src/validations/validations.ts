@@ -27,12 +27,14 @@ export const personaFisicaValidationSchema = yup.object({
         cie: yup.string().notRequired(),
         actividad: yup.string().required("Este campo es requerido."),
     }),
-    medioComunicacion: yup.array().of(yup.object().shape({
-        tipo: yup.string().required("Este campo es requerido."),
-        medio: yup.string().required("Este campo es requerido."),
-        uso: yup.string().required("Este campo es requerido."),
-        notas: yup.string().notRequired(),
-    })),
+    medioComunicacion: yup.array().of(
+        yup.object().shape({
+            tipo: yup.string().required("Este campo es requerido."),
+            medio: yup.string().required("Este campo es requerido."),
+            uso: yup.string().required("Este campo es requerido."),
+            notas: yup.string().notRequired(),
+        })
+    ),
     domiciliosUrbanos: yup
         .array()
         .of(
@@ -49,6 +51,7 @@ export const personaFisicaValidationSchema = yup.object({
                 notas: yup.string().notRequired(),
             })
         )
+        .min(1, "Debe establecer al menos un domicilio.")
         .required(),
     cuentaBancaria: yup
         .array()
@@ -65,6 +68,7 @@ export const personaFisicaValidationSchema = yup.object({
                 tipoID: yup.string().required("Este campo es requerido."),
             })
         )
+        .min(1, "Debe establecer al menos un banco.")
         .required(),
     cuentaBancariaExterior: yup.array().of(
         yup.object().shape({
@@ -88,29 +92,41 @@ export const personaFisicaValidationSchema = yup.object({
         tipoFiscal: yup.string().notRequired(),
         claveFiscal: yup.string().notRequired(),
     }),
-    actividadPersona: yup.array().of(
-        yup.object().shape({
-            actividad: yup.string().required("Este campo es requerido."),
-            rubro: yup.string().notRequired(),
-            puesto: yup.string().notRequired(),
-            departamento: yup.string().notRequired(),
-            organizacion: yup.string().notRequired(),
-            inicio: yup.string().notRequired(),
-            fin: yup.string().notRequired(),
-            observaciones: yup.string().notRequired(),
-            codigoTipoActividad: yup.string().notRequired(),
-        })
-    ),
-    infoPatrimonial: yup.array().of(
-        yup.object().shape({
-            fecha: yup.string().required("Este campo es requerido."),
-            patrimonio: yup.number().notRequired(),
-            ingresos: yup.number().required("Este campo es requerido."),
-            inversion: yup.number().required("Este campo es requerido."),
-            procedenciaFondos: yup.string().required("Este campo es requerido"),
-            observaciones: yup.string().required("Este campo es requerido."),
-        })
-    ),
+    actividadPersona: yup
+        .array()
+        .of(
+            yup.object().shape({
+                actividad: yup.string().required("Este campo es requerido."),
+                rubro: yup.string().notRequired(),
+                puesto: yup.string().notRequired(),
+                departamento: yup.string().notRequired(),
+                organizacion: yup.string().notRequired(),
+                inicio: yup.string().notRequired(),
+                fin: yup.string().notRequired(),
+                observaciones: yup.string().notRequired(),
+                codigoTipoActividad: yup.string().notRequired(),
+            })
+        )
+        .min(1, "Debe establecer al menos una actividad.")
+        .required("Este campo es requerido"),
+    infoPatrimonial: yup
+        .array()
+        .of(
+            yup.object().shape({
+                fecha: yup.string().required("Este campo es requerido."),
+                patrimonio: yup.number().notRequired(),
+                ingresos: yup.number().required("Este campo es requerido."),
+                inversion: yup.number().required("Este campo es requerido."),
+                procedenciaFondos: yup
+                    .string()
+                    .required("Este campo es requerido"),
+                observaciones: yup
+                    .string()
+                    .required("Este campo es requerido."),
+            })
+        )
+        .min(1, "Debe establecer al menos un patrimonio.")
+        .required("Este campo es requerido."),
     declaracionesPF: yup.object().shape({
         expuestaPoliticamente: yup.bool().required(),
         detalleExpPoliticamente: yup.string().notRequired(),
