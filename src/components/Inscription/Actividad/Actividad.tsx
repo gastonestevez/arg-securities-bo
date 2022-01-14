@@ -38,11 +38,13 @@ export const Actividad = ({ index, fmk, arrayHelper }) => {
                     error={
                         fmk.touched.actividadPersona &&
                         fmk.touched.actividadPersona[index]?.actividad &&
+                        fmk.errors.actividadPersona &&
                         Boolean(fmk.errors.actividadPersona[index]?.actividad)
                     }
                     helperText={
                         fmk.touched.actividadPersona &&
                         fmk.touched.actividadPersona[index]?.actividad &&
+                        fmk.errors.actividadPersona &&
                         fmk.errors.actividadPersona[index]?.actividad
                     }
                 />
@@ -59,11 +61,13 @@ export const Actividad = ({ index, fmk, arrayHelper }) => {
                     error={
                         fmk.touched.actividadPersona &&
                         fmk.touched.actividadPersona[index]?.rubro &&
+                        fmk.errors.actividadPersona &&
                         Boolean(fmk.errors.actividadPersona[index]?.rubro)
                     }
                     helperText={
                         fmk.touched.actividadPersona &&
                         fmk.touched.actividadPersona[index]?.rubro &&
+                        fmk.errors.actividadPersona &&
                         fmk.errors.actividadPersona[index]?.rubro
                     }
                 />
@@ -80,11 +84,13 @@ export const Actividad = ({ index, fmk, arrayHelper }) => {
                     error={
                         fmk.touched.actividadPersona &&
                         fmk.touched.actividadPersona[index]?.puesto &&
+                        fmk.errors.actividadPersona &&
                         Boolean(fmk.errors.actividadPersona[index]?.puesto)
                     }
                     helperText={
                         fmk.touched.actividadPersona &&
                         fmk.touched.actividadPersona[index]?.puesto &&
+                        fmk.errors.actividadPersona &&
                         fmk.errors.actividadPersona[index]?.puesto
                     }
                 />
@@ -101,11 +107,13 @@ export const Actividad = ({ index, fmk, arrayHelper }) => {
                     error={
                         fmk.touched.actividadPersona &&
                         fmk.touched.actividadPersona[index]?.departamento &&
+                        fmk.errors.actividadPersona &&
                         Boolean(fmk.errors.actividadPersona[index]?.departamento)
                     }
                     helperText={
                         fmk.touched.actividadPersona &&
                         fmk.touched.actividadPersona[index]?.departamento &&
+                        fmk.errors.actividadPersona &&
                         fmk.errors.actividadPersona[index]?.departamento
                     }
                 />
@@ -122,11 +130,13 @@ export const Actividad = ({ index, fmk, arrayHelper }) => {
                     error={
                         fmk.touched.actividadPersona &&
                         fmk.touched.actividadPersona[index]?.organizacion &&
+                        fmk.errors.actividadPersona &&
                         Boolean(fmk.errors.actividadPersona[index]?.organizacion)
                     }
                     helperText={
                         fmk.touched.actividadPersona &&
                         fmk.touched.actividadPersona[index]?.organizacion &&
+                        fmk.errors.actividadPersona &&
                         fmk.errors.actividadPersona[index]?.organizacion
                     }
                 />
@@ -143,11 +153,13 @@ export const Actividad = ({ index, fmk, arrayHelper }) => {
                     error={
                         fmk.touched.actividadPersona &&
                         fmk.touched.actividadPersona[index]?.observaciones &&
+                        fmk.errors.actividadPersona &&
                         Boolean(fmk.errors.actividadPersona[index]?.observaciones)
                     }
                     helperText={
                         fmk.touched.actividadPersona &&
                         fmk.touched.actividadPersona[index]?.observaciones &&
+                        fmk.errors.actividadPersona &&
                         fmk.errors.actividadPersona[index]?.observaciones
                     }
                 />

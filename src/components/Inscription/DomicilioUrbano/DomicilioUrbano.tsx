@@ -39,19 +39,21 @@ export const DomicilioUrbano = ({ index, fmk, arrayHelper }) => {
                     label="Uso"
                     fullWidth
                     required
-                    id={`domiciliosUrbanos.[${index}].uso`}
-                    name={`domiciliosUrbanos[${index}].uso`}
-                    value={fmk.values.domiciliosUrbanos[index]?.uso}
+                    id={`domicilioUrbano.[${index}].uso`}
+                    name={`domicilioUrbano[${index}].uso`}
+                    value={fmk.values.domicilioUrbano[index]?.uso}
                     onChange={fmk.handleChange}
                     error={
-                        fmk.touched.domiciliosUrbanos &&
-                        fmk.touched.domiciliosUrbanos[index]?.uso &&
-                        Boolean(fmk.errors.domiciliosUrbanos[index]?.uso)
+                        fmk.touched.domicilioUrbano &&
+                        fmk.touched.domicilioUrbano[index]?.uso &&
+                        fmk.errors.domicilioUrbano &&
+                        Boolean(fmk.errors.domicilioUrbano[index]?.uso)
                     }
                     helperText={
-                        fmk.touched.domiciliosUrbanos &&
-                        fmk.touched.domiciliosUrbanos[index]?.uso &&
-                        fmk.errors.domiciliosUrbanos[index]?.uso
+                        fmk.touched.domicilioUrbano &&
+                        fmk.touched.domicilioUrbano[index]?.uso &&
+                        fmk.errors.domicilioUrbano &&
+                        fmk.errors.domicilioUrbano[index]?.uso
                     }
                 >
                     {tiposDeuso.map((option) => (
@@ -66,19 +68,21 @@ export const DomicilioUrbano = ({ index, fmk, arrayHelper }) => {
                     fullWidth
                     label="Barrio"
                     variant="outlined"
-                    id={`domiciliosUrbanos.[${index}].barrio`}
-                    name={`domiciliosUrbanos[${index}].barrio`}
-                    value={fmk.values.domiciliosUrbanos[index]?.barrio}
+                    id={`domicilioUrbano.[${index}].barrio`}
+                    name={`domicilioUrbano[${index}].barrio`}
+                    value={fmk.values.domicilioUrbano[index]?.barrio}
                     onChange={fmk.handleChange}
                     error={
-                        fmk.touched.domiciliosUrbanos &&
-                        fmk.touched.domiciliosUrbanos[index]?.barrio &&
-                        Boolean(fmk.errors.domiciliosUrbanos[index]?.barrio)
+                        fmk.touched.domicilioUrbano &&
+                        fmk.touched.domicilioUrbano[index]?.barrio &&
+                        fmk.errors.domicilioUrbano &&
+                        Boolean(fmk.errors.domicilioUrbano[index]?.barrio)
                     }
                     helperText={
-                        fmk.touched.domiciliosUrbanos &&
-                        fmk.touched.domiciliosUrbanos[index]?.barrio &&
-                        fmk.errors.domiciliosUrbanos[index]?.barrio
+                        fmk.touched.domicilioUrbano &&
+                        fmk.touched.domicilioUrbano[index]?.barrio &&
+                        fmk.errors.domicilioUrbano &&
+                        fmk.errors.domicilioUrbano[index]?.barrio
                     }
                 />
             </Grid>
@@ -88,19 +92,21 @@ export const DomicilioUrbano = ({ index, fmk, arrayHelper }) => {
                     fullWidth
                     label="Calle"
                     variant="outlined"
-                    id={`domiciliosUrbanos.[${index}].calle`}
-                    name={`domiciliosUrbanos[${index}].calle`}
-                    value={fmk.values.domiciliosUrbanos[index]?.calle}
+                    id={`domicilioUrbano.[${index}].calle`}
+                    name={`domicilioUrbano[${index}].calle`}
+                    value={fmk.values.domicilioUrbano[index]?.calle}
                     onChange={fmk.handleChange}
                     error={
-                        fmk.touched.domiciliosUrbanos &&
-                        fmk.touched.domiciliosUrbanos[index]?.calle &&
-                        Boolean(fmk.errors.domiciliosUrbanos[index]?.calle)
+                        fmk.touched.domicilioUrbano &&
+                        fmk.touched.domicilioUrbano[index]?.calle &&
+                        fmk.errors.domicilioUrbano &&
+                        Boolean(fmk.errors.domicilioUrbano[index]?.calle)
                     }
                     helperText={
-                        fmk.touched.domiciliosUrbanos &&
-                        fmk.touched.domiciliosUrbanos[index]?.calle &&
-                        fmk.errors.domiciliosUrbanos[index]?.calle
+                        fmk.touched.domicilioUrbano &&
+                        fmk.touched.domicilioUrbano[index]?.calle &&
+                        fmk.errors.domicilioUrbano &&
+                        fmk.errors.domicilioUrbano[index]?.calle
                     }
                 />
             </Grid>
@@ -111,19 +117,21 @@ export const DomicilioUrbano = ({ index, fmk, arrayHelper }) => {
                     label="Número"
                     variant="outlined"
                     type={"number"}
-                    id={`domiciliosUrbanos.[${index}].numero`}
-                    name={`domiciliosUrbanos[${index}].numero`}
-                    value={fmk.values.domiciliosUrbanos[index]?.numero}
+                    id={`domicilioUrbano.[${index}].numero`}
+                    name={`domicilioUrbano[${index}].numero`}
+                    value={fmk.values.domicilioUrbano[index]?.numero}
                     onChange={fmk.handleChange}
                     error={
-                        fmk.touched.domiciliosUrbanos &&
-                        fmk.touched.domiciliosUrbanos[index]?.numero &&
-                        Boolean(fmk.errors.domiciliosUrbanos[index]?.numero)
+                        fmk.touched.domicilioUrbano &&
+                        fmk.touched.domicilioUrbano[index]?.numero &&
+                        fmk.errors.domicilioUrbano &&
+                        Boolean(fmk.errors.domicilioUrbano[index]?.numero)
                     }
                     helperText={
-                        fmk.touched.domiciliosUrbanos &&
-                        fmk.touched.domiciliosUrbanos[index]?.numero &&
-                        fmk.errors.domiciliosUrbanos[index]?.numero
+                        fmk.touched.domicilioUrbano &&
+                        fmk.touched.domicilioUrbano[index]?.numero &&
+                        fmk.errors.domicilioUrbano &&
+                        fmk.errors.domicilioUrbano[index]?.numero
                     }
                 />
             </Grid>
@@ -132,19 +140,21 @@ export const DomicilioUrbano = ({ index, fmk, arrayHelper }) => {
                     fullWidth
                     label="Torre"
                     variant="outlined"
-                    id={`domiciliosUrbanos.[${index}].torre`}
-                    name={`domiciliosUrbanos[${index}].torre`}
-                    value={fmk.values.domiciliosUrbanos[index]?.torre}
+                    id={`domicilioUrbano.[${index}].torre`}
+                    name={`domicilioUrbano[${index}].torre`}
+                    value={fmk.values.domicilioUrbano[index]?.torre}
                     onChange={fmk.handleChange}
                     error={
-                        fmk.touched.domiciliosUrbanos &&
-                        fmk.touched.domiciliosUrbanos[index]?.torre &&
-                        Boolean(fmk.errors.domiciliosUrbanos[index]?.torre)
+                        fmk.touched.domicilioUrbano &&
+                        fmk.touched.domicilioUrbano[index]?.torre &&
+                        fmk.errors.domicilioUrbano &&
+                        Boolean(fmk.errors.domicilioUrbano[index]?.torre)
                     }
                     helperText={
-                        fmk.touched.domiciliosUrbanos &&
-                        fmk.touched.domiciliosUrbanos[index]?.torre &&
-                        fmk.errors.domiciliosUrbanos[index]?.torre
+                        fmk.touched.domicilioUrbano &&
+                        fmk.touched.domicilioUrbano[index]?.torre &&
+                        fmk.errors.domicilioUrbano &&
+                        fmk.errors.domicilioUrbano[index]?.torre
                     }
                 />
             </Grid>
@@ -154,19 +164,21 @@ export const DomicilioUrbano = ({ index, fmk, arrayHelper }) => {
                     label="Piso"
                     variant="outlined"
                     type={"number"}
-                    id={`domiciliosUrbanos.[${index}].piso`}
-                    name={`domiciliosUrbanos[${index}].piso`}
-                    value={fmk.values.domiciliosUrbanos[index]?.piso}
+                    id={`domicilioUrbano.[${index}].piso`}
+                    name={`domicilioUrbano[${index}].piso`}
+                    value={fmk.values.domicilioUrbano[index]?.piso}
                     onChange={fmk.handleChange}
                     error={
-                        fmk.touched.domiciliosUrbanos &&
-                        fmk.touched.domiciliosUrbanos[index]?.piso &&
-                        Boolean(fmk.errors.domiciliosUrbanos[index]?.piso)
+                        fmk.touched.domicilioUrbano &&
+                        fmk.touched.domicilioUrbano[index]?.piso &&
+                        fmk.errors.domicilioUrbano &&
+                        Boolean(fmk.errors.domicilioUrbano[index]?.piso)
                     }
                     helperText={
-                        fmk.touched.domiciliosUrbanos &&
-                        fmk.touched.domiciliosUrbanos[index]?.piso &&
-                        fmk.errors.domiciliosUrbanos[index]?.piso
+                        fmk.touched.domicilioUrbano &&
+                        fmk.touched.domicilioUrbano[index]?.piso &&
+                        fmk.errors.domicilioUrbano &&
+                        fmk.errors.domicilioUrbano[index]?.piso
                     }
                 />
             </Grid>
@@ -175,19 +187,21 @@ export const DomicilioUrbano = ({ index, fmk, arrayHelper }) => {
                     fullWidth
                     label="Departamento"
                     variant="outlined"
-                    id={`domiciliosUrbanos.[${index}].departamento`}
-                    name={`domiciliosUrbanos[${index}].departamento`}
-                    value={fmk.values.domiciliosUrbanos[index]?.departamento}
+                    id={`domicilioUrbano.[${index}].departamento`}
+                    name={`domicilioUrbano[${index}].departamento`}
+                    value={fmk.values.domicilioUrbano[index]?.departamento}
                     onChange={fmk.handleChange}
                     error={
-                        fmk.touched.domiciliosUrbanos &&
-                        fmk.touched.domiciliosUrbanos[index]?.departamento &&
-                        Boolean(fmk.errors.domiciliosUrbanos[index]?.departamento)
+                        fmk.touched.domicilioUrbano &&
+                        fmk.touched.domicilioUrbano[index]?.departamento &&
+                        fmk.errors.domicilioUrbano &&
+                        Boolean(fmk.errors.domicilioUrbano[index]?.departamento)
                     }
                     helperText={
-                        fmk.touched.domiciliosUrbanos &&
-                        fmk.touched.domiciliosUrbanos[index]?.departamento &&
-                        fmk.errors.domiciliosUrbanos[index]?.departamento
+                        fmk.touched.domicilioUrbano &&
+                        fmk.touched.domicilioUrbano[index]?.departamento &&
+                        fmk.errors.domicilioUrbano &&
+                        fmk.errors.domicilioUrbano[index]?.departamento
                     }
                 />
             </Grid>
@@ -197,19 +211,21 @@ export const DomicilioUrbano = ({ index, fmk, arrayHelper }) => {
                     fullWidth
                     label="Lugar"
                     variant="outlined"
-                    id={`domiciliosUrbanos.[${index}].lugar`}
-                    name={`domiciliosUrbanos[${index}].lugar`}
-                    value={fmk.values.domiciliosUrbanos[index]?.lugar}
+                    id={`domicilioUrbano.[${index}].lugar`}
+                    name={`domicilioUrbano[${index}].lugar`}
+                    value={fmk.values.domicilioUrbano[index]?.lugar}
                     onChange={fmk.handleChange}
                     error={
-                        fmk.touched.domiciliosUrbanos &&
-                        fmk.touched.domiciliosUrbanos[index]?.lugar &&
-                        Boolean(fmk.errors.domiciliosUrbanos[index]?.lugar)
+                        fmk.touched.domicilioUrbano &&
+                        fmk.touched.domicilioUrbano[index]?.lugar &&
+                        fmk.errors.domicilioUrbano &&
+                        Boolean(fmk.errors.domicilioUrbano[index]?.lugar)
                     }
                     helperText={
-                        fmk.touched.domiciliosUrbanos &&
-                        fmk.touched.domiciliosUrbanos[index]?.lugar &&
-                        fmk.errors.domiciliosUrbanos[index]?.lugar
+                        fmk.touched.domicilioUrbano &&
+                        fmk.touched.domicilioUrbano[index]?.lugar &&
+                        fmk.errors.domicilioUrbano &&
+                        fmk.errors.domicilioUrbano[index]?.lugar
                     }
                 />
             </Grid>
@@ -219,19 +235,21 @@ export const DomicilioUrbano = ({ index, fmk, arrayHelper }) => {
                     fullWidth
                     label="Código postal"
                     variant="outlined"
-                    id={`domiciliosUrbanos.[${index}].codigoPostal`}
-                    name={`domiciliosUrbanos[${index}].codigoPostal`}
-                    value={fmk.values.domiciliosUrbanos[index]?.codigoPostal}
+                    id={`domicilioUrbano.[${index}].codigoPostal`}
+                    name={`domicilioUrbano[${index}].codigoPostal`}
+                    value={fmk.values.domicilioUrbano[index]?.codigoPostal}
                     onChange={fmk.handleChange}
                     error={
-                        fmk.touched.domiciliosUrbanos &&
-                        fmk.touched.domiciliosUrbanos[index]?.codigoPostal &&
-                        Boolean(fmk.errors.domiciliosUrbanos[index]?.codigoPostal)
+                        fmk.touched.domicilioUrbano &&
+                        fmk.touched.domicilioUrbano[index]?.codigoPostal &&
+                        fmk.errors.domicilioUrbano &&
+                        Boolean(fmk.errors.domicilioUrbano[index]?.codigoPostal)
                     }
                     helperText={
-                        fmk.touched.domiciliosUrbanos &&
-                        fmk.touched.domiciliosUrbanos[index]?.codigoPostal &&
-                        fmk.errors.domiciliosUrbanos[index]?.codigoPostal
+                        fmk.touched.domicilioUrbano &&
+                        fmk.touched.domicilioUrbano[index]?.codigoPostal &&
+                        fmk.errors.domicilioUrbano&&
+                        fmk.errors.domicilioUrbano[index]?.codigoPostal
                     }
                 />
             </Grid>
@@ -240,19 +258,21 @@ export const DomicilioUrbano = ({ index, fmk, arrayHelper }) => {
                     fullWidth
                     label="Notas"
                     variant="outlined"
-                    id={`domiciliosUrbanos.[${index}].notas`}
-                    name={`domiciliosUrbanos[${index}].notas`}
-                    value={fmk.values.domiciliosUrbanos[index]?.notas}
+                    id={`domicilioUrbano.[${index}].notas`}
+                    name={`domicilioUrbano[${index}].notas`}
+                    value={fmk.values.domicilioUrbano[index]?.notas}
                     onChange={fmk.handleChange}
                     error={
-                        fmk.touched.domiciliosUrbanos &&
-                        fmk.touched.domiciliosUrbanos[index]?.notas &&
-                        Boolean(fmk.errors.domiciliosUrbanos[index]?.notas)
+                        fmk.touched.domicilioUrbano &&
+                        fmk.touched.domicilioUrbano[index]?.notas &&
+                        fmk.errors.domicilioUrbano &&
+                        Boolean(fmk.errors.domicilioUrbano[index]?.notas)
                     }
                     helperText={
-                        fmk.touched.domiciliosUrbanos &&
-                        fmk.touched.domiciliosUrbanos[index]?.notas &&
-                        fmk.errors.domiciliosUrbanos[index]?.notas
+                        fmk.touched.domicilioUrbano &&
+                        fmk.touched.domicilioUrbano[index]?.notas &&
+                        fmk.errors.domicilioUrbano &&
+                        fmk.errors.domicilioUrbano[index]?.notas
                     }
                 />
             </Grid>

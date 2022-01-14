@@ -14,7 +14,7 @@ export const DomiciliosUrbanos = ({ fmk }) => {
     return (
         <>
             <FieldArray
-                name={"domiciliosUrbanos"}
+                name={"domicilioUrbano"}
                 render={(arrayHelpers) => (
                     <>
                         <Grid item xs={12} sm={12}>
@@ -53,14 +53,14 @@ export const DomiciliosUrbanos = ({ fmk }) => {
                                 </Box>
                             </Box>
                         </Grid>
-                        {typeof fmk.errors.infoPatrimonial === "string" && (
+                        {typeof fmk.errors.domicilioUrbano === "string" && (
                             <Grid item xs={12}>
                                 <Alert severity="error" variant="outlined">
-                                    {fmk.errors.domiciliosUrbanos}
+                                    {fmk.errors.domicilioUrbano}
                                 </Alert>
                             </Grid>
                         )}
-                        {fmk.values.domiciliosUrbanos.map((dom, index) => {
+                        {fmk.values.domicilioUrbano.map((dom, index) => {
                             return (<DomicilioUrbano index={index} fmk={fmk} arrayHelper={arrayHelpers} />)
                         })}
                     </>

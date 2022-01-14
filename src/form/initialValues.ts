@@ -25,7 +25,7 @@ export const personaFisicaInitialValues = {
         cie: "",
         actividad: "",
     },
-    medioComunicacion: [{
+    mediocomunicacion: [{
         tipo: "Email",
         medio: "",
         uso: "",
@@ -40,7 +40,7 @@ export const personaFisicaInitialValues = {
         principal: true,
     }
 ],
-    domiciliosUrbanos: [],
+    domicilioUrbano: [],
     // domiciliosUrbanos: {
     //     uso: "",
     //     barrio: "",

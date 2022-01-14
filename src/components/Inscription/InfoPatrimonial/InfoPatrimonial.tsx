@@ -50,11 +50,13 @@ export const InfoPatrimonial = ({ index, fmk, arrayHelper }) => {
                     error={
                         fmk.touched.infoPatrimonial &&
                         fmk.touched.infoPatrimonial[index]?.fecha &&
+                        fmk.errors.infoPatrimonial &&
                         Boolean(fmk.errors.infoPatrimonial[index]?.fecha)
                     }
                     helperText={
                         fmk.touched.infoPatrimonial &&
                         fmk.touched.infoPatrimonial[index]?.fecha &&
+                        fmk.errors.infoPatrimonial &&
                         fmk.errors.infoPatrimonial[index]?.fecha
                     }
                 />
@@ -72,11 +74,13 @@ export const InfoPatrimonial = ({ index, fmk, arrayHelper }) => {
                     error={
                         fmk.touched.infoPatrimonial &&
                         fmk.touched.infoPatrimonial[index]?.patrimonio &&
+                        fmk.errors.infoPatrimonial &&
                         Boolean(fmk.errors.infoPatrimonial[index]?.patrimonio)
                     }
                     helperText={
                         fmk.touched.infoPatrimonial &&
                         fmk.touched.infoPatrimonial[index]?.patrimonio &&
+                        fmk.errors.infoPatrimonial &&
                         fmk.errors.infoPatrimonial[index]?.patrimonio
                     }
                 />
@@ -95,11 +99,13 @@ export const InfoPatrimonial = ({ index, fmk, arrayHelper }) => {
                     error={
                         fmk.touched.infoPatrimonial &&
                         fmk.touched.infoPatrimonial[index]?.ingresos &&
+                        fmk.errors.infoPatrimonial &&
                         Boolean(fmk.errors.infoPatrimonial[index]?.ingresos)
                     }
                     helperText={
                         fmk.touched.infoPatrimonial &&
                         fmk.touched.infoPatrimonial[index]?.ingresos &&
+                        fmk.errors.infoPatrimonial &&
                         fmk.errors.infoPatrimonial[index]?.ingresos
                     }
                 />
@@ -118,11 +124,13 @@ export const InfoPatrimonial = ({ index, fmk, arrayHelper }) => {
                     error={
                         fmk.touched.infoPatrimonial &&
                         fmk.touched.infoPatrimonial[index]?.inversion &&
+                        fmk.errors.infoPatrimonial &&
                         Boolean(fmk.errors.infoPatrimonial[index]?.inversion)
                     }
                     helperText={
                         fmk.touched.infoPatrimonial &&
                         fmk.touched.infoPatrimonial[index]?.inversion &&
+                        fmk.errors.infoPatrimonial &&
                         fmk.errors.infoPatrimonial[index]?.inversion
                     }
                 />
@@ -140,11 +148,13 @@ export const InfoPatrimonial = ({ index, fmk, arrayHelper }) => {
                     error={
                         fmk.touched.infoPatrimonial &&
                         fmk.touched.infoPatrimonial[index]?.procedenciaFondos &&
+                        fmk.errors.infoPatrimonial &&
                         Boolean(fmk.errors.infoPatrimonial[index]?.procedenciaFondos)
                     }
                     helperText={
                         fmk.touched.infoPatrimonial &&
                         fmk.touched.infoPatrimonial[index]?.procedenciaFondos &&
+                        fmk.errors.infoPatrimonial &&
                         fmk.errors.infoPatrimonial[index]?.procedenciaFondos
                     }
                 >
@@ -167,11 +177,13 @@ export const InfoPatrimonial = ({ index, fmk, arrayHelper }) => {
                     error={
                         fmk.touched.infoPatrimonial &&
                         fmk.touched.infoPatrimonial[index]?.observaciones &&
+                        fmk.errors.infoPatrimonial &&
                         Boolean(fmk.errors.infoPatrimonial[index]?.observaciones)
                     }
                     helperText={
                         fmk.touched.infoPatrimonial &&
                         fmk.touched.infoPatrimonial[index]?.observaciones &&
+                        fmk.errors.infoPatrimonial &&
                         fmk.errors.infoPatrimonial[index]?.observaciones
                     }
                 />

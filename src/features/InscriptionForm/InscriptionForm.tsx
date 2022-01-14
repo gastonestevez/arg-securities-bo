@@ -24,19 +24,31 @@ import { FormikProvider, useFormik } from "formik"
 import { personaFisicaValidationSchema } from "../../validations/validations"
 import { personaFisicaInitialValues } from "../../form/initialValues"
 import ReCAPTCHA from "react-google-recaptcha"
+import { useAppDispatch } from "../../app/hooks"
+import { registerPersonaFisica } from "./InscriptionThunk"
 
 export const InscriptionForm = () => {
     const recaptchaRef = React.useRef(null)
+    const dispatch = useAppDispatch()
     const formik = useFormik({
         initialValues: personaFisicaInitialValues,
         validationSchema: personaFisicaValidationSchema,
         onSubmit: async (values) => {
-            console.log(values)
-            const token = await recaptchaRef.current.executeAsync()
-            if (!token) return
+            const personaFisicaDTO = {
+                titular: {
+                    personaFisica: true,
+                    ...values,
+                    datosConyuge: [
+                        values.datosConyuge,
+                    ]
+                }
+            }
+            dispatch(registerPersonaFisica(personaFisicaDTO))
+            console.log({personaFisicaDTO})
+
         },
     })
-
+    console.log(formik.errors)
     return (
         <Container maxWidth="md">
             <CssBaseline />

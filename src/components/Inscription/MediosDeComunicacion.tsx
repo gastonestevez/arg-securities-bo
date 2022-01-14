@@ -44,26 +44,26 @@ export const MediosDeComunicacion = ({ fmk }) => {
                     label="Tipo de medio"
                     fullWidth
                     required
-                    id="medioComunicacion.[0].tipo"
-                    name="medioComunicacion[0].tipo"
+                    id="mediocomunicacion.[0].tipo"
+                    name="mediocomunicacion[0].tipo"
                     inputProps={
                         { readOnly: true, }
                     }
                     disabled
                     variant={'outlined'}
-                    value={fmk.values.medioComunicacion[0]?.tipo}
+                    value={fmk.values.mediocomunicacion[0]?.tipo}
                     onChange={fmk.handleChange}
                     error={
-                        fmk.touched.medioComunicacion &&
-                        fmk.touched.medioComunicacion[0]?.tipo &&
-                        fmk.errors.medioComunicacion &&
-                        Boolean(fmk.errors.medioComunicacion[0]?.tipo)
+                        fmk.touched.mediocomunicacion &&
+                        fmk.touched.mediocomunicacion[0]?.tipo &&
+                        fmk.errors.mediocomunicacion &&
+                        Boolean(fmk.errors.mediocomunicacion[0]?.tipo)
                     }
                     helperText={
-                        fmk.touched.medioComunicacion &&
-                        fmk.touched.medioComunicacion[0]?.tipo &&
-                        fmk.errors.medioComunicacion &&
-                        fmk.errors.medioComunicacion[0]?.tipo
+                        fmk.touched.mediocomunicacion &&
+                        fmk.touched.mediocomunicacion[0]?.tipo &&
+                        fmk.errors.mediocomunicacion &&
+                        fmk.errors.mediocomunicacion[0]?.tipo
                     }
                 >
                     {tiposDeMedios.map((option) => (
@@ -79,21 +79,21 @@ export const MediosDeComunicacion = ({ fmk }) => {
                     fullWidth
                     label="Medio"
                     variant="outlined"
-                    id="medioComunicacion.[0].medio"
-                    name="medioComunicacion[0].medio"
-                    value={fmk.values.medioComunicacion[0]?.medio}
+                    id="mediocomunicacion.[0].medio"
+                    name="mediocomunicacion[0].medio"
+                    value={fmk.values.mediocomunicacion[0]?.medio}
                     onChange={fmk.handleChange}
                     error={
-                        fmk.touched.medioComunicacion &&
-                        fmk.touched.medioComunicacion[0]?.medio &&
-                        fmk.errors.medioComunicacion &&
-                        Boolean(fmk.errors.medioComunicacion[0]?.medio)
+                        fmk.touched.mediocomunicacion &&
+                        fmk.touched.mediocomunicacion[0]?.medio &&
+                        fmk.errors.mediocomunicacion &&
+                        Boolean(fmk.errors.mediocomunicacion[0]?.medio)
                     }
                     helperText={
-                        fmk.touched.medioComunicacion &&
-                        fmk.touched.medioComunicacion[0]?.medio &&
-                        fmk.errors.medioComunicacion &&
-                        fmk.errors.medioComunicacion[0]?.tipo
+                        fmk.touched.mediocomunicacion &&
+                        fmk.touched.mediocomunicacion[0]?.medio &&
+                        fmk.errors.mediocomunicacion &&
+                        fmk.errors.mediocomunicacion[0]?.tipo
                     }
                 />
             </Grid>
@@ -103,21 +103,21 @@ export const MediosDeComunicacion = ({ fmk }) => {
                     label="Uso"
                     fullWidth
                     required
-                    id="medioComunicacion.[0].uso"
-                    name="medioComunicacion[0].uso"
-                    value={fmk.values.medioComunicacion[0]?.uso}
+                    id="mediocomunicacion.[0].uso"
+                    name="mediocomunicacion[0].uso"
+                    value={fmk.values.mediocomunicacion[0]?.uso}
                     onChange={fmk.handleChange}
                     error={
-                        fmk.touched.medioComunicacion &&
-                        fmk.touched.medioComunicacion[0]?.uso &&
-                        fmk.errors.medioComunicacion &&
-                        Boolean(fmk.errors.medioComunicacion[0]?.uso)
+                        fmk.touched.mediocomunicacion &&
+                        fmk.touched.mediocomunicacion[0]?.uso &&
+                        fmk.errors.mediocomunicacion &&
+                        Boolean(fmk.errors.mediocomunicacion[0]?.uso)
                     }
                     helperText={
-                        fmk.touched.medioComunicacion &&
-                        fmk.touched.medioComunicacion[0]?.uso &&
-                        fmk.errors.medioComunicacion &&
-                        fmk.errors.medioComunicacion[0]?.uso
+                        fmk.touched.mediocomunicacion &&
+                        fmk.touched.mediocomunicacion[0]?.uso &&
+                        fmk.errors.mediocomunicacion &&
+                        fmk.errors.mediocomunicacion[0]?.uso
                     }
                 >
                     {tiposDeuso.map((option) => (
@@ -132,21 +132,21 @@ export const MediosDeComunicacion = ({ fmk }) => {
                     fullWidth
                     label="Notas"
                     variant="outlined"
-                    id="medioComunicacion.[0].notas"
-                    name="medioComunicacion[0].notas"
-                    value={fmk.values.medioComunicacion[0]?.notas}
+                    id="mediocomunicacion.[0].notas"
+                    name="mediocomunicacion[0].notas"
+                    value={fmk.values.mediocomunicacion[0]?.notas}
                     onChange={fmk.handleChange}
                     error={
-                        fmk.touched.medioComunicacion &&
-                        fmk.touched.medioComunicacion[0]?.notas &&
-                        fmk.errors.medioComunicacion &&
-                        Boolean(fmk.errors.medioComunicacion[0]?.notas)
+                        fmk.touched.mediocomunicacion &&
+                        fmk.touched.mediocomunicacion[0]?.notas &&
+                        fmk.errors.mediocomunicacion &&
+                        Boolean(fmk.errors.mediocomunicacion[0]?.notas)
                     }
                     helperText={
-                        fmk.touched.medioComunicacion &&
-                        fmk.touched.medioComunicacion[0]?.notas &&
-                        fmk.errors.medioComunicacion &&
-                        fmk.errors.medioComunicacion[0]?.notas
+                        fmk.touched.mediocomunicacion &&
+                        fmk.touched.mediocomunicacion[0]?.notas &&
+                        fmk.errors.mediocomunicacion &&
+                        fmk.errors.mediocomunicacion[0]?.notas
                     }
                 />
             </Grid>
@@ -156,24 +156,24 @@ export const MediosDeComunicacion = ({ fmk }) => {
                     disabled
                     fullWidth
                     required
-                    id="medioComunicacion.[1].tipo"
-                    name="medioComunicacion[1].tipo"
-                    value={fmk.values.medioComunicacion[1]?.tipo}
+                    id="mediocomunicacion.[1].tipo"
+                    name="mediocomunicacion[1].tipo"
+                    value={fmk.values.mediocomunicacion[1]?.tipo}
                     inputProps={
                         { readOnly: true, }
                     }
                     onChange={fmk.handleChange}
                     error={
-                        fmk.touched.medioComunicacion &&
-                        fmk.touched.medioComunicacion[1]?.tipo &&
-                        fmk.errors.medioComunicacion &&
-                        Boolean(fmk.errors.medioComunicacion[1]?.tipo)
+                        fmk.touched.mediocomunicacion &&
+                        fmk.touched.mediocomunicacion[1]?.tipo &&
+                        fmk.errors.mediocomunicacion &&
+                        Boolean(fmk.errors.mediocomunicacion[1]?.tipo)
                     }
                     helperText={
-                        fmk.touched.medioComunicacion &&
-                        fmk.touched.medioComunicacion[1]?.tipo &&
-                        fmk.errors.medioComunicacion &&
-                        fmk.errors.medioComunicacion[1]?.tipo
+                        fmk.touched.mediocomunicacion &&
+                        fmk.touched.mediocomunicacion[1]?.tipo &&
+                        fmk.errors.mediocomunicacion &&
+                        fmk.errors.mediocomunicacion[1]?.tipo
                     }
                 >
                     {tiposDeMedios.map((option) => (
@@ -189,21 +189,21 @@ export const MediosDeComunicacion = ({ fmk }) => {
                     fullWidth
                     label="Medio"
                     variant="outlined"
-                    id="medioComunicacion.[1].medio"
-                    name="medioComunicacion[1].medio"
-                    value={fmk.values.medioComunicacion[1]?.medio}
+                    id="mediocomunicacion.[1].medio"
+                    name="mediocomunicacion[1].medio"
+                    value={fmk.values.mediocomunicacion[1]?.medio}
                     onChange={fmk.handleChange}
                     error={
-                        fmk.touched.medioComunicacion &&
-                        fmk.touched.medioComunicacion[1]?.medio &&
-                        fmk.errors.medioComunicacion &&
-                        Boolean(fmk.errors.medioComunicacion[1]?.medio)
+                        fmk.touched.mediocomunicacion &&
+                        fmk.touched.mediocomunicacion[1]?.medio &&
+                        fmk.errors.mediocomunicacion &&
+                        Boolean(fmk.errors.mediocomunicacion[1]?.medio)
                     }
                     helperText={
-                        fmk.touched.medioComunicacion &&
-                        fmk.touched.medioComunicacion[1]?.medio &&
-                        fmk.errors.medioComunicacion &&
-                        fmk.errors.medioComunicacion[1]?.tipo
+                        fmk.touched.mediocomunicacion &&
+                        fmk.touched.mediocomunicacion[1]?.medio &&
+                        fmk.errors.mediocomunicacion &&
+                        fmk.errors.mediocomunicacion[1]?.tipo
                     }
                 />
             </Grid>
@@ -213,21 +213,21 @@ export const MediosDeComunicacion = ({ fmk }) => {
                     label="Uso"
                     fullWidth
                     required
-                    id="medioComunicacion.[1].uso"
-                    name="medioComunicacion[1].uso"
-                    value={fmk.values.medioComunicacion[1]?.uso}
+                    id="mediocomunicacion.[1].uso"
+                    name="mediocomunicacion[1].uso"
+                    value={fmk.values.mediocomunicacion[1]?.uso}
                     onChange={fmk.handleChange}
                     error={
-                        fmk.touched.medioComunicacion &&
-                        fmk.touched.medioComunicacion[1]?.uso &&
-                        fmk.errors.medioComunicacion &&
-                        Boolean(fmk.errors.medioComunicacion[1]?.uso)
+                        fmk.touched.mediocomunicacion &&
+                        fmk.touched.mediocomunicacion[1]?.uso &&
+                        fmk.errors.mediocomunicacion &&
+                        Boolean(fmk.errors.mediocomunicacion[1]?.uso)
                     }
                     helperText={
-                        fmk.touched.medioComunicacion &&
-                        fmk.touched.medioComunicacion[1]?.uso &&
-                        fmk.errors.medioComunicacion &&
-                        fmk.errors.medioComunicacion[1]?.uso
+                        fmk.touched.mediocomunicacion &&
+                        fmk.touched.mediocomunicacion[1]?.uso &&
+                        fmk.errors.mediocomunicacion &&
+                        fmk.errors.mediocomunicacion[1]?.uso
                     }
                 >
                     {tiposDeuso.map((option) => (
@@ -242,21 +242,21 @@ export const MediosDeComunicacion = ({ fmk }) => {
                     fullWidth
                     label="Notas"
                     variant="outlined"
-                    id="medioComunicacion.[1].notas"
-                    name="medioComunicacion[1].notas"
-                    value={fmk.values.medioComunicacion[1]?.notas}
+                    id="mediocomunicacion.[1].notas"
+                    name="mediocomunicacion[1].notas"
+                    value={fmk.values.mediocomunicacion[1]?.notas}
                     onChange={fmk.handleChange}
                     error={
-                        fmk.touched.medioComunicacion &&
-                        fmk.touched.medioComunicacion[1]?.notas &&
-                        fmk.errors.medioComunicacion &&
-                        Boolean(fmk.errors.medioComunicacion[1]?.notas)
+                        fmk.touched.mediocomunicacion &&
+                        fmk.touched.mediocomunicacion[1]?.notas &&
+                        fmk.errors.mediocomunicacion &&
+                        Boolean(fmk.errors.mediocomunicacion[1]?.notas)
                     }
                     helperText={
-                        fmk.touched.medioComunicacion &&
-                        fmk.touched.medioComunicacion[1]?.notas &&
-                        fmk.errors.medioComunicacion &&
-                        fmk.errors.medioComunicacion[1]?.notas
+                        fmk.touched.mediocomunicacion &&
+                        fmk.touched.mediocomunicacion[1]?.notas &&
+                        fmk.errors.mediocomunicacion &&
+                        fmk.errors.mediocomunicacion[1]?.notas
                     }
                 />
             </Grid>

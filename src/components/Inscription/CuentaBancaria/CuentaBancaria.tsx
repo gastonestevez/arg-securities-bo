@@ -49,11 +49,13 @@ export const CuentaBancaria = ({index, fmk, arrayHelper}) => {
                     error={
                         fmk.touched.cuentaBancaria &&
                         fmk.touched.cuentaBancaria[index]?.tipoID &&
+                        fmk.errors.cuentaBancaria &&
                         Boolean(fmk.errors.cuentaBancaria[index]?.tipoID)
                     }
                     helperText={
                         fmk.touched.cuentaBancaria &&
                         fmk.touched.cuentaBancaria[index]?.tipoID &&
+                        fmk.errors.cuentaBancaria &&
                         fmk.errors.cuentaBancaria[index]?.tipoID
                     }
                 >
@@ -77,11 +79,13 @@ export const CuentaBancaria = ({index, fmk, arrayHelper}) => {
                     error={
                         fmk.touched.cuentaBancaria &&
                         fmk.touched.cuentaBancaria[index]?.cbu &&
+                        fmk.errors.cuentaBancaria &&
                         Boolean(fmk.errors.cuentaBancaria[index]?.cbu)
                     }
                     helperText={
                         fmk.touched.cuentaBancaria &&
                         fmk.touched.cuentaBancaria[index]?.cbu &&
+                        fmk.errors.cuentaBancaria &&
                         fmk.errors.cuentaBancaria[index]?.cbu
                     }
                 />
@@ -98,11 +102,13 @@ export const CuentaBancaria = ({index, fmk, arrayHelper}) => {
                     error={
                         fmk.touched.cuentaBancaria &&
                         fmk.touched.cuentaBancaria[index]?.alias &&
+                        fmk.errors.cuentaBancaria &&
                         Boolean(fmk.errors.cuentaBancaria[index]?.alias)
                     }
                     helperText={
                         fmk.touched.cuentaBancaria &&
                         fmk.touched.cuentaBancaria[index]?.alias &&
+                        fmk.errors.cuentaBancaria &&
                         fmk.errors.cuentaBancaria[index]?.alias
                     }
                 />
@@ -120,11 +126,13 @@ export const CuentaBancaria = ({index, fmk, arrayHelper}) => {
                     error={
                         fmk.touched.cuentaBancaria &&
                         fmk.touched.cuentaBancaria[index]?.tipo &&
+                        fmk.errors.cuentaBancaria &&
                         Boolean(fmk.errors.cuentaBancaria[index]?.tipo)
                     }
                     helperText={
                         fmk.touched.cuentaBancaria &&
                         fmk.touched.cuentaBancaria[index]?.tipo &&
+                        fmk.errors.cuentaBancaria &&
                         fmk.errors.cuentaBancaria[index]?.tipo
                     }
                 >
@@ -148,11 +156,13 @@ export const CuentaBancaria = ({index, fmk, arrayHelper}) => {
                     error={
                         fmk.touched.cuentaBancaria &&
                         fmk.touched.cuentaBancaria[index]?.moneda &&
+                        fmk.errors.cuentaBancaria &&
                         Boolean(fmk.errors.cuentaBancaria[index]?.moneda)
                     }
                     helperText={
                         fmk.touched.cuentaBancaria &&
                         fmk.touched.cuentaBancaria[index]?.moneda &&
+                        fmk.errors.cuentaBancaria &&
                         fmk.errors.cuentaBancaria[index]?.moneda
                     }
                 >
@@ -175,11 +185,13 @@ export const CuentaBancaria = ({index, fmk, arrayHelper}) => {
                     error={
                         fmk.touched.cuentaBancaria &&
                         fmk.touched.cuentaBancaria[index]?.numero &&
+                        fmk.errors.cuentaBancaria &&
                         Boolean(fmk.errors.cuentaBancaria[index]?.numero)
                     }
                     helperText={
                         fmk.touched.cuentaBancaria &&
                         fmk.touched.cuentaBancaria[index]?.numero &&
+                        fmk.errors.cuentaBancaria &&
                         fmk.errors.cuentaBancaria[index]?.numero
                     }
                 />
@@ -197,11 +209,13 @@ export const CuentaBancaria = ({index, fmk, arrayHelper}) => {
                     error={
                         fmk.touched.cuentaBancaria &&
                         fmk.touched.cuentaBancaria[index]?.uso &&
+                        fmk.errors.cuentaBancaria &&
                         Boolean(fmk.errors.cuentaBancaria[index]?.uso)
                     }
                     helperText={
                         fmk.touched.cuentaBancaria &&
                         fmk.touched.cuentaBancaria[index]?.uso &&
+                        fmk.errors.cuentaBancaria &&
                         fmk.errors.cuentaBancaria[index]?.uso
                     }
                 >
@@ -224,11 +238,13 @@ export const CuentaBancaria = ({index, fmk, arrayHelper}) => {
                     error={
                         fmk.touched.cuentaBancaria &&
                         fmk.touched.cuentaBancaria[index]?.denominacion &&
+                        fmk.errors.cuentaBancaria &&
                         Boolean(fmk.errors.cuentaBancaria[index]?.denominacion)
                     }
                     helperText={
                         fmk.touched.cuentaBancaria &&
                         fmk.touched.cuentaBancaria[index]?.denominacion &&
+                        fmk.errors.cuentaBancaria &&
                         fmk.errors.cuentaBancaria[index]?.denominacion
                     }
                 />
@@ -245,11 +261,13 @@ export const CuentaBancaria = ({index, fmk, arrayHelper}) => {
                     error={
                         fmk.touched.cuentaBancaria &&
                         fmk.touched.cuentaBancaria[index]?.notas &&
+                        fmk.errors.cuentaBancaria &&
                         Boolean(fmk.errors.cuentaBancaria[index]?.notas)
                     }
                     helperText={
                         fmk.touched.cuentaBancaria &&
                         fmk.touched.cuentaBancaria[index]?.notas &&
+                        fmk.errors.cuentaBancaria &&
                         fmk.errors.cuentaBancaria[index]?.notas
                     }
                 />

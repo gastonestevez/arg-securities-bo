@@ -56,7 +56,7 @@ export const CuentasBancarias = ({ fmk }) => {
                                 </Box>
                             </Box>
                         </Grid>
-                        {typeof fmk.errors.infoPatrimonial === "string" && (
+                        {typeof fmk.errors.cuentaBancaria === "string" && (
                             <Grid item xs={12}>
                                 <Alert severity="error" variant="outlined">
                                     {fmk.errors.cuentaBancaria}

@@ -28,7 +28,7 @@ export const personaFisicaValidationSchema = yup.object({
         cie: yup.string().notRequired(),
         actividad: yup.string().required("Este campo es requerido."),
     }),
-    medioComunicacion: yup.array().of(
+    mediocomunicacion: yup.array().of(
         yup.object().shape({
             tipo: yup.string().required("Este campo es requerido."),
             medio: yup.string().required("Este campo es requerido."),
@@ -36,7 +36,7 @@ export const personaFisicaValidationSchema = yup.object({
             notas: yup.string().notRequired(),
         })
     ),
-    domiciliosUrbanos: yup
+    domicilioUrbano: yup
         .array()
         .of(
             yup.object().shape({
