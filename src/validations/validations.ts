@@ -1,6 +1,7 @@
 import * as yup from "yup"
 
 export const personaFisicaValidationSchema = yup.object({
+    recaptcha: yup.string().required('Debe completar el captcha.'),
     datosPrincipalesFisicas: yup.object().shape({
         nombre: yup.string().required("Este campo es requerido."),
         apellido: yup.string().required("Este campo es requerido."),
@@ -85,10 +86,10 @@ export const personaFisicaValidationSchema = yup.object({
         })
     ),
     datosConyuge: yup.object().shape({
-        nombre: yup.string().required("Este campo es requerido."),
-        apellido: yup.string().required("Este campo es requerido."),
-        tipoID: yup.string().required("Este campo es requerido."),
-        id: yup.string().required("Este campo es requerido."),
+        nombre: yup.string(),
+        apellido: yup.string(),
+        tipoID: yup.string(),
+        id: yup.string(),
         tipoFiscal: yup.string().notRequired(),
         claveFiscal: yup.string().notRequired(),
     }),

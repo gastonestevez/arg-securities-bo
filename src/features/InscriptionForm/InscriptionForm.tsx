@@ -1,4 +1,5 @@
 import {
+    Alert,
     Box,
     Button,
     Container,
@@ -25,14 +26,14 @@ import { personaFisicaInitialValues } from "../../form/initialValues"
 import ReCAPTCHA from "react-google-recaptcha"
 
 export const InscriptionForm = () => {
-    const recaptchaRef = React.useRef(null);
+    const recaptchaRef = React.useRef(null)
     const formik = useFormik({
         initialValues: personaFisicaInitialValues,
         validationSchema: personaFisicaValidationSchema,
         onSubmit: async (values) => {
             console.log(values)
-            const token = await recaptchaRef.current.executeAsync();
-            if(!token) return
+            const token = await recaptchaRef.current.executeAsync()
+            if (!token) return
         },
     })
 
@@ -75,6 +76,15 @@ export const InscriptionForm = () => {
                             <Grid item xs={12}>
                                 <Divider sx={{ marginTop: 2 }} />
                             </Grid>
+                            {formik.values.datosPersonales.estadoCivil ===
+                                "Casado" && (
+                                <>
+                                    <DatosConyuge fmk={formik} />
+                                    <Grid item xs={12}>
+                                        <Divider sx={{ marginTop: 2 }} />
+                                    </Grid>
+                                </>
+                            )}
 
                             <MediosDeComunicacion fmk={formik} />
 
@@ -100,11 +110,6 @@ export const InscriptionForm = () => {
                                 <Divider sx={{ marginTop: 2 }} />
                             </Grid>
 
-                            <DatosConyuge fmk={formik} />
-                            <Grid item xs={12}>
-                                <Divider sx={{ marginTop: 2 }} />
-                            </Grid>
-
                             <InformacionPatrimonial fmk={formik} />
                             <Grid item xs={12}>
                                 <Divider sx={{ marginTop: 2 }} />
@@ -118,13 +123,33 @@ export const InscriptionForm = () => {
                             <Declaraciones fmk={formik} />
 
                             <Grid item md={8} />
-                            <Grid item xs={12} sx={{display: 'flex', justifyContent: 'flex-end'}}>
+                            <Grid
+                                item
+                                xs={12}
+                                sx={{
+                                    display: "flex",
+                                    justifyContent: "flex-end",
+                                }}
+                            >
                                 <ReCAPTCHA
                                     sitekey="6LcPTAweAAAAAJslpywllHcuD4SJy0rZhnXk0zOx"
                                     ref={recaptchaRef}
-                                    badge={'bottomright'}
+                                    badge={"bottomright"}
+                                    onChange={(response) => {
+                                        formik.setFieldValue(
+                                            "recaptcha",
+                                            response
+                                        )
+                                    }}
                                 />
                             </Grid>
+                            {formik.errors.recaptcha && (
+                                <Grid item xs={12}>
+                                    <Alert severity="error" variant="outlined">
+                                        {formik.errors.recaptcha}
+                                    </Alert>
+                                </Grid>
+                            )}
                             <Grid item md={8} />
 
                             <Grid item xs={12} md={4}>

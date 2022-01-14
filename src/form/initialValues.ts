@@ -1,4 +1,5 @@
 export const personaFisicaInitialValues = {
+    recaptcha: '',
     datosPrincipalesFisicas: {
         nombre: "",
         apellido: "",
@@ -10,6 +11,7 @@ export const personaFisicaInitialValues = {
         cuit: "",
         tipoResponsableIVA: "",
         tipoResponsableGanancias: "",
+        codigosActividades: []
     },
     datosPersonales: {
         fechaNacimiento: "",
@@ -28,12 +30,14 @@ export const personaFisicaInitialValues = {
         medio: "",
         uso: "",
         notas: "",
+        principal: false,
     },
     {
         tipo: "Telefono",
         medio: "",
         uso: "",
         notas: "",
+        principal: true,
     }
 ],
     domiciliosUrbanos: [],
