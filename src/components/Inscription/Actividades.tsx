@@ -54,7 +54,7 @@ export const Actividades = ({ fmk }) => {
                                 </Box>
                             </Box>
                         </Grid>
-                        {typeof fmk.errors.infoPatrimonial === "string" && (
+                        {typeof fmk.errors.actividadPersona === "string" && (
                             <Grid item xs={12}>
                                 <Alert severity="error" variant="outlined">
                                     {fmk.errors.actividadPersona}

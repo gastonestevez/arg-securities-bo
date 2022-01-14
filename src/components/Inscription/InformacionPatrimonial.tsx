@@ -16,8 +16,6 @@ import AddCircleIcon from "@mui/icons-material/AddCircle"
 import { InfoPatrimonial } from "./InfoPatrimonial/InfoPatrimonial"
 
 export const InformacionPatrimonial = ({ fmk }) => {
-    console.log(fmk.errors)
-
     return (
         <>
             <FieldArray
