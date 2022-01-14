@@ -1,11 +1,16 @@
 import React, { useState } from "react"
-import AdapterDateFns from "@mui/lab/AdapterDateFns"
-import LocalizationProvider from "@mui/lab/LocalizationProvider"
-import { DatePicker } from "@mui/lab"
-import { Grid, MenuItem, TextField, Typography } from "@mui/material"
-import frLocale from "date-fns/locale/fr"
-
-export const MediosDeComunicacion = () => {
+import {
+    Box,
+    Grid,
+    IconButton,
+    MenuItem,
+    TextField,
+    Typography,
+} from "@mui/material"
+import RemoveCircleIcon from "@mui/icons-material/RemoveCircle"
+import AddCircleIcon from '@mui/icons-material/AddCircle';
+import { Formik } from "formik";
+export const MediosDeComunicacion = ({ fmk }) => {
     const tiposDeMedios = [
         "Movil",
         "E-Mail",
@@ -17,27 +22,49 @@ export const MediosDeComunicacion = () => {
         "Google+",
     ]
     const tiposDeuso = ["Personal", "Laboral", "Comercial", "Otro"]
-    const [tipoDeMedio, setTipoDeMedio] = useState("")
-    const [uso, setUso] = useState("")
-    const [desde, setDesde] = useState("")
-    const [hasta, setHasta] = useState("")
-
     return (
         <>
             <Grid item xs={12} sm={12}>
-                <Typography component="h5" variant="h5">
-                    Medios de comunicación
-                </Typography>
+                <Box
+                    sx={{
+                        display: "flex",
+                        flexDirection: "row",
+                        justifyContent: "space-between",
+                    }}
+                >
+                    <Box>
+                        <Typography component="h5" variant="h5">
+                            Medios de comunicación
+                        </Typography>
+                    </Box>
+                </Box>
             </Grid>
             <Grid item xs={12} sm={6}>
                 <TextField
-                    id="outlined-select-currency"
-                    select
                     label="Tipo de medio"
-                    value={tipoDeMedio}
-                    onChange={(e) => setTipoDeMedio(e.target.value)}
                     fullWidth
                     required
+                    id="medioComunicacion.[0].tipo"
+                    name="medioComunicacion[0].tipo"
+                    inputProps={
+                        { readOnly: true, }
+                    }
+                    disabled
+                    variant={'outlined'}
+                    value={fmk.values.medioComunicacion[0]?.tipo}
+                    onChange={fmk.handleChange}
+                    error={
+                        fmk.touched.medioComunicacion &&
+                        fmk.touched.medioComunicacion[0]?.tipo &&
+                        fmk.errors.medioComunicacion &&
+                        Boolean(fmk.errors.medioComunicacion[0]?.tipo)
+                    }
+                    helperText={
+                        fmk.touched.medioComunicacion &&
+                        fmk.touched.medioComunicacion[0]?.tipo &&
+                        fmk.errors.medioComunicacion &&
+                        fmk.errors.medioComunicacion[0]?.tipo
+                    }
                 >
                     {tiposDeMedios.map((option) => (
                         <MenuItem key={option} value={option}>
@@ -52,51 +79,46 @@ export const MediosDeComunicacion = () => {
                     fullWidth
                     label="Medio"
                     variant="outlined"
+                    id="medioComunicacion.[0].medio"
+                    name="medioComunicacion[0].medio"
+                    value={fmk.values.medioComunicacion[0]?.medio}
+                    onChange={fmk.handleChange}
+                    error={
+                        fmk.touched.medioComunicacion &&
+                        fmk.touched.medioComunicacion[0]?.medio &&
+                        fmk.errors.medioComunicacion &&
+                        Boolean(fmk.errors.medioComunicacion[0]?.medio)
+                    }
+                    helperText={
+                        fmk.touched.medioComunicacion &&
+                        fmk.touched.medioComunicacion[0]?.medio &&
+                        fmk.errors.medioComunicacion &&
+                        fmk.errors.medioComunicacion[0]?.tipo
+                    }
                 />
             </Grid>
             <Grid item xs={12} sm={6}>
-                <LocalizationProvider
-                    dateAdapter={AdapterDateFns}
-                    locale={frLocale}
-                >
-                    <DatePicker
-                        label="Vigente desde"
-                        value={desde}
-                        onChange={(newValue) => {
-                            setDesde(newValue)
-                        }}
-                        renderInput={(params) => (
-                            <TextField {...params} fullWidth />
-                        )}
-                    />
-                </LocalizationProvider>
-            </Grid>
-            <Grid item xs={12} sm={6}>
-                <LocalizationProvider
-                    dateAdapter={AdapterDateFns}
-                    locale={frLocale}
-                >
-                    <DatePicker
-                        label="Vigente hasta"
-                        value={hasta}
-                        onChange={(newValue) => {
-                            setHasta(newValue)
-                        }}
-                        renderInput={(params) => (
-                            <TextField {...params} fullWidth />
-                        )}
-                    />
-                </LocalizationProvider>
-            </Grid>
-            <Grid item xs={12} sm={6}>
                 <TextField
-                    id="outlined-select-currency"
                     select
                     label="Uso"
-                    value={uso}
-                    onChange={(e) => setUso(e.target.value)}
                     fullWidth
                     required
+                    id="medioComunicacion.[0].uso"
+                    name="medioComunicacion[0].uso"
+                    value={fmk.values.medioComunicacion[0]?.uso}
+                    onChange={fmk.handleChange}
+                    error={
+                        fmk.touched.medioComunicacion &&
+                        fmk.touched.medioComunicacion[0]?.uso &&
+                        fmk.errors.medioComunicacion &&
+                        Boolean(fmk.errors.medioComunicacion[0]?.uso)
+                    }
+                    helperText={
+                        fmk.touched.medioComunicacion &&
+                        fmk.touched.medioComunicacion[0]?.uso &&
+                        fmk.errors.medioComunicacion &&
+                        fmk.errors.medioComunicacion[0]?.uso
+                    }
                 >
                     {tiposDeuso.map((option) => (
                         <MenuItem key={option} value={option}>
@@ -105,14 +127,140 @@ export const MediosDeComunicacion = () => {
                     ))}
                 </TextField>
             </Grid>
-            <Grid item xs={12} sm={12}>
+            <Grid item xs={12} sm={6}>
                 <TextField
-                    required
                     fullWidth
                     label="Notas"
                     variant="outlined"
+                    id="medioComunicacion.[0].notas"
+                    name="medioComunicacion[0].notas"
+                    value={fmk.values.medioComunicacion[0]?.notas}
+                    onChange={fmk.handleChange}
+                    error={
+                        fmk.touched.medioComunicacion &&
+                        fmk.touched.medioComunicacion[0]?.notas &&
+                        fmk.errors.medioComunicacion &&
+                        Boolean(fmk.errors.medioComunicacion[0]?.notas)
+                    }
+                    helperText={
+                        fmk.touched.medioComunicacion &&
+                        fmk.touched.medioComunicacion[0]?.notas &&
+                        fmk.errors.medioComunicacion &&
+                        fmk.errors.medioComunicacion[0]?.notas
+                    }
                 />
             </Grid>
+            <Grid item xs={12} sm={6}>
+                <TextField
+                    label="Tipo de medio"
+                    disabled
+                    fullWidth
+                    required
+                    id="medioComunicacion.[1].tipo"
+                    name="medioComunicacion[1].tipo"
+                    value={fmk.values.medioComunicacion[1]?.tipo}
+                    inputProps={
+                        { readOnly: true, }
+                    }
+                    onChange={fmk.handleChange}
+                    error={
+                        fmk.touched.medioComunicacion &&
+                        fmk.touched.medioComunicacion[1]?.tipo &&
+                        fmk.errors.medioComunicacion &&
+                        Boolean(fmk.errors.medioComunicacion[1]?.tipo)
+                    }
+                    helperText={
+                        fmk.touched.medioComunicacion &&
+                        fmk.touched.medioComunicacion[1]?.tipo &&
+                        fmk.errors.medioComunicacion &&
+                        fmk.errors.medioComunicacion[1]?.tipo
+                    }
+                >
+                    {tiposDeMedios.map((option) => (
+                        <MenuItem key={option} value={option}>
+                            {option}
+                        </MenuItem>
+                    ))}
+                </TextField>
+            </Grid>
+            <Grid item xs={12} sm={6}>
+                <TextField
+                    required
+                    fullWidth
+                    label="Medio"
+                    variant="outlined"
+                    id="medioComunicacion.[1].medio"
+                    name="medioComunicacion[1].medio"
+                    value={fmk.values.medioComunicacion[1]?.medio}
+                    onChange={fmk.handleChange}
+                    error={
+                        fmk.touched.medioComunicacion &&
+                        fmk.touched.medioComunicacion[1]?.medio &&
+                        fmk.errors.medioComunicacion &&
+                        Boolean(fmk.errors.medioComunicacion[1]?.medio)
+                    }
+                    helperText={
+                        fmk.touched.medioComunicacion &&
+                        fmk.touched.medioComunicacion[1]?.medio &&
+                        fmk.errors.medioComunicacion &&
+                        fmk.errors.medioComunicacion[1]?.tipo
+                    }
+                />
+            </Grid>
+            <Grid item xs={12} sm={6}>
+                <TextField
+                    select
+                    label="Uso"
+                    fullWidth
+                    required
+                    id="medioComunicacion.[1].uso"
+                    name="medioComunicacion[1].uso"
+                    value={fmk.values.medioComunicacion[1]?.uso}
+                    onChange={fmk.handleChange}
+                    error={
+                        fmk.touched.medioComunicacion &&
+                        fmk.touched.medioComunicacion[1]?.uso &&
+                        fmk.errors.medioComunicacion &&
+                        Boolean(fmk.errors.medioComunicacion[1]?.uso)
+                    }
+                    helperText={
+                        fmk.touched.medioComunicacion &&
+                        fmk.touched.medioComunicacion[1]?.uso &&
+                        fmk.errors.medioComunicacion &&
+                        fmk.errors.medioComunicacion[1]?.uso
+                    }
+                >
+                    {tiposDeuso.map((option) => (
+                        <MenuItem key={option} value={option}>
+                            {option}
+                        </MenuItem>
+                    ))}
+                </TextField>
+            </Grid>
+            <Grid item xs={12} sm={6}>
+                <TextField
+                    fullWidth
+                    label="Notas"
+                    variant="outlined"
+                    id="medioComunicacion.[1].notas"
+                    name="medioComunicacion[1].notas"
+                    value={fmk.values.medioComunicacion[1]?.notas}
+                    onChange={fmk.handleChange}
+                    error={
+                        fmk.touched.medioComunicacion &&
+                        fmk.touched.medioComunicacion[1]?.notas &&
+                        fmk.errors.medioComunicacion &&
+                        Boolean(fmk.errors.medioComunicacion[1]?.notas)
+                    }
+                    helperText={
+                        fmk.touched.medioComunicacion &&
+                        fmk.touched.medioComunicacion[1]?.notas &&
+                        fmk.errors.medioComunicacion &&
+                        fmk.errors.medioComunicacion[1]?.notas
+                    }
+                />
+            </Grid>
+            
         </>
     )
 }

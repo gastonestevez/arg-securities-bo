@@ -1,12 +1,14 @@
 import {
+    Alert,
     Box,
     Button,
     Container,
     CssBaseline,
+    Divider,
     Grid,
     Typography,
 } from "@mui/material"
-import React from "react"
+import React, { useState } from "react"
 import { Actividades } from "../../components/Inscription/Actividades"
 import { CuentasBancarias } from "../../components/Inscription/CuentasBancarias"
 import { CuentasBancariasExterior } from "../../components/Inscription/CuentasBancariasExterior"
@@ -18,33 +20,20 @@ import { Declaraciones } from "../../components/Inscription/Declaraciones"
 import { DomiciliosUrbanos } from "../../components/Inscription/DomiciliosUrbanos"
 import { InformacionPatrimonial } from "../../components/Inscription/InformacionPatrimonial"
 import { MediosDeComunicacion } from "../../components/Inscription/MediosDeComunicacion"
-import { useFormik } from "formik"
-import * as yup from "yup"
+import { FormikProvider, useFormik } from "formik"
+import { personaFisicaValidationSchema } from "../../validations/validations"
+import { personaFisicaInitialValues } from "../../form/initialValues"
+import ReCAPTCHA from "react-google-recaptcha"
 
 export const InscriptionForm = () => {
-    
-    const validationSchema = yup.object({
-        datosPrincipalesFisicas: yup.object().shape({
-            nombre: yup.string().required('Este campo es requerido.'),
-            apellido: yup.string().required('Este campo es requerido.'),
-            tipoID: yup.string().required('Este campo es requerido.'),
-            id: yup.string().required('Este campo es requerido.')
-        }),
-    })
-    const initialValues = {
-        datosPrincipalesFisicas: {
-            nombre: '',
-            apellido: '',
-            tipoID: '',
-            id: ''
-        }
-    }
-
+    const recaptchaRef = React.useRef(null)
     const formik = useFormik({
-        initialValues: initialValues,
-        validationSchema: validationSchema,
-        onSubmit: (values) => {
+        initialValues: personaFisicaInitialValues,
+        validationSchema: personaFisicaValidationSchema,
+        onSubmit: async (values) => {
             console.log(values)
+            const token = await recaptchaRef.current.executeAsync()
+            if (!token) return
         },
     })
 
@@ -60,34 +49,121 @@ export const InscriptionForm = () => {
                 }}
             >
                 <Typography component="h1" variant="h4">
-                    Documentación a presentar
+                    Persona física
                 </Typography>
-                <Box
-                    component="form"
-                    noValidate
-                    onSubmit={formik.handleSubmit}
-                    sx={{ mt: 4 }}
-                >
-                    <Grid container spacing={2}>
-                        <DatosPrincipales fmk={formik} />
-                        <DatosFiscalesNacionales />
-                        <DatosPersonales />
-                        <MediosDeComunicacion />
-                        <DomiciliosUrbanos />
-                        <CuentasBancarias />
-                        <CuentasBancariasExterior />
-                        <DatosConyuge />
-                        <InformacionPatrimonial />
-                        <Actividades />
-                        <Declaraciones />
-                        <Grid item md={8} />
-                        <Grid item xs={12} md={4}>
-                            <Button fullWidth type="submit" variant="contained">
-                                Registrarse
-                            </Button>
+                <FormikProvider value={formik}>
+                    <Box
+                        component="form"
+                        noValidate
+                        onSubmit={formik.handleSubmit}
+                        sx={{ mt: 4 }}
+                    >
+                        <Grid container spacing={2}>
+                            <DatosPrincipales fmk={formik} />
+
+                            <Grid item xs={12}>
+                                <Divider sx={{ marginTop: 2 }} />
+                            </Grid>
+
+                            <DatosFiscalesNacionales fmk={formik} />
+
+                            <Grid item xs={12}>
+                                <Divider sx={{ marginTop: 2 }} />
+                            </Grid>
+
+                            <DatosPersonales fmk={formik} />
+
+                            <Grid item xs={12}>
+                                <Divider sx={{ marginTop: 2 }} />
+                            </Grid>
+                            {formik.values.datosPersonales.estadoCivil ===
+                                "Casado" && (
+                                <>
+                                    <DatosConyuge fmk={formik} />
+                                    <Grid item xs={12}>
+                                        <Divider sx={{ marginTop: 2 }} />
+                                    </Grid>
+                                </>
+                            )}
+
+                            <MediosDeComunicacion fmk={formik} />
+
+                            <Grid item xs={12}>
+                                <Divider sx={{ marginTop: 2 }} />
+                            </Grid>
+
+                            <DomiciliosUrbanos fmk={formik} />
+
+                            <Grid item xs={12}>
+                                <Divider sx={{ marginTop: 2 }} />
+                            </Grid>
+
+                            <CuentasBancarias fmk={formik} />
+
+                            <Grid item xs={12}>
+                                <Divider sx={{ marginTop: 2 }} />
+                            </Grid>
+
+                            <CuentasBancariasExterior fmk={formik} />
+
+                            <Grid item xs={12}>
+                                <Divider sx={{ marginTop: 2 }} />
+                            </Grid>
+
+                            <InformacionPatrimonial fmk={formik} />
+                            <Grid item xs={12}>
+                                <Divider sx={{ marginTop: 2 }} />
+                            </Grid>
+
+                            <Actividades fmk={formik} />
+                            <Grid item xs={12}>
+                                <Divider sx={{ marginTop: 2 }} />
+                            </Grid>
+
+                            <Declaraciones fmk={formik} />
+
+                            <Grid item md={8} />
+                            <Grid
+                                item
+                                xs={12}
+                                sx={{
+                                    display: "flex",
+                                    justifyContent: "flex-end",
+                                }}
+                            >
+                                <ReCAPTCHA
+                                    sitekey="6LcPTAweAAAAAJslpywllHcuD4SJy0rZhnXk0zOx"
+                                    ref={recaptchaRef}
+                                    badge={"bottomright"}
+                                    onChange={(response) => {
+                                        formik.setFieldValue(
+                                            "recaptcha",
+                                            response
+                                        )
+                                    }}
+                                />
+                            </Grid>
+                            {formik.errors.recaptcha && (
+                                <Grid item xs={12}>
+                                    <Alert severity="error" variant="outlined">
+                                        {formik.errors.recaptcha}
+                                    </Alert>
+                                </Grid>
+                            )}
+                            <Grid item md={8} />
+
+                            <Grid item xs={12} md={4}>
+                                <Button
+                                    fullWidth
+                                    type="submit"
+                                    variant="contained"
+                                >
+                                    Registrarse
+                                </Button>
+                            </Grid>
                         </Grid>
-                    </Grid>
-                </Box>
+                    </Box>
+                </FormikProvider>
             </Box>
         </Container>
     )

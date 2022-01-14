@@ -1,145 +1,83 @@
-import { LocalizationProvider, DatePicker } from "@mui/lab"
-import AdapterDateFns from "@mui/lab/AdapterDateFns"
 import {
+    Alert,
+    Box,
     Checkbox,
     FormControlLabel,
     FormGroup,
     Grid,
+    IconButton,
     MenuItem,
     TextField,
     Typography,
 } from "@mui/material"
-import frLocale from "date-fns/locale/fr"
+import { FieldArray } from "formik"
 import React, { useState } from "react"
+import AddCircleIcon from "@mui/icons-material/AddCircle"
+import { InfoPatrimonial } from "./InfoPatrimonial/InfoPatrimonial"
 
-export const InformacionPatrimonial = () => {
-    const [fecha, setFecha] = useState("")
-    const [vencimiento, setVencimiento] = useState("")
-    const [fondeo, setFondeo] = useState("")
-    const [procedencia, setProcedencia] = useState("")
-    const procedencias = ["Actividad principal", "Renta", "Otro"]
-    const fondeos = [
-        "Transferencia en pesos",
-        "Transferencia en dólares",
-        "Cheques propios",
-        "Cheques de terceros",
-        "Títulos",
-    ]
+export const InformacionPatrimonial = ({ fmk }) => {
+    console.log(fmk.errors)
 
     return (
         <>
-            <Grid item xs={12} sm={12}>
-                <Typography component="h5" variant="h5">
-                    Información patrimonial
-                </Typography>
-            </Grid>
-            <Grid item xs={12} sm={6}>
-                <LocalizationProvider
-                    dateAdapter={AdapterDateFns}
-                    locale={frLocale}
-                >
-                    <DatePicker
-                        label="Fecha"
-                        value={fecha}
-                        onChange={(newValue) => {
-                            setFecha(newValue)
-                        }}
-                        renderInput={(params) => (
-                            <TextField {...params} fullWidth />
-                        )}
-                    />
-                </LocalizationProvider>
-            </Grid>
-            <Grid item xs={12} sm={6}>
-                <LocalizationProvider
-                    dateAdapter={AdapterDateFns}
-                    locale={frLocale}
-                >
-                    <DatePicker
-                        label="Vencimiento"
-                        value={vencimiento}
-                        onChange={(newValue) => {
-                            setVencimiento(newValue)
-                        }}
-                        renderInput={(params) => (
-                            <TextField {...params} fullWidth />
-                        )}
-                    />
-                </LocalizationProvider>
-            </Grid>
-            <Grid item xs={12} sm={6}>
-                <TextField
-                    fullWidth
-                    label="Patrimonio (ARS)"
-                    variant="outlined"
-                />
-            </Grid>
-            <Grid item xs={12} sm={6}>
-                <TextField
-                    required
-                    fullWidth
-                    label="Ingresos anuales (ARS)"
-                    variant="outlined"
-                />
-            </Grid>
-            <Grid item xs={12} sm={12}>
-                <TextField
-                    required
-                    fullWidth
-                    label="Destinado a inversiones (%)"
-                    variant="outlined"
-                    type={"number"}
-                />
-            </Grid>
-            <Grid item xs={12} sm={6}>
-                <TextField
-                    id="outlined-select-currency"
-                    select
-                    label="Procedencia de fondos"
-                    value={procedencia}
-                    onChange={(e) => setProcedencia(e.target.value)}
-                    fullWidth
-                    required
-                >
-                    {procedencias.map((option) => (
-                        <MenuItem key={option} value={option}>
-                            {option}
-                        </MenuItem>
-                    ))}
-                </TextField>
-            </Grid>
-            <Grid item xs={12} sm={6}>
-                <TextField
-                    required
-                    fullWidth
-                    label="Observaciones"
-                    variant="outlined"
-                    disabled={procedencia !== 'Otro'}
-                />
-            </Grid>
-            <Grid item xs={12} sm={12}>
-                <Typography component="h6" variant="h6">
-                    Medio de fondeo
-                </Typography>
-            </Grid>
-            <Grid item xs={12} sm={12}>
-                <FormGroup>
-                    <Grid container spacing={2}>
-                    {fondeos.map((f) => {
-                        return (
-                            <Grid item sm={4}>
-                                <FormControlLabel
-                                    control={<Checkbox />}
-                                    label={f}
-                                />
+            <FieldArray
+                name={"infoPatrimonial"}
+                render={(arrayHelpers) => (
+                    <>
+                        <Grid item xs={12} sm={12}>
+                            <Box
+                                sx={{
+                                    display: "flex",
+                                    flexDirection: "row",
+                                    justifyContent: "space-between",
+                                }}
+                            >
+                                <Box>
+                                    <Typography component="h5" variant="h5">
+                                        Información patrimonial
+                                    </Typography>
+                                </Box>
 
+                                <Box>
+                                    <IconButton
+                                        onClick={() =>
+                                            arrayHelpers.push({
+                                                fecha: "",
+                                                patrimonio: 0,
+                                                ingresos: 0,
+                                                inversion: 0,
+                                                procedenciaFondos: "",
+                                                observaciones: "",
+                                                fondeo: [],
+                                            })
+                                        }
+                                        color="primary"
+                                        aria-label="delete"
+                                    >
+                                        <AddCircleIcon />
+                                    </IconButton>
+                                </Box>
+                            </Box>
+                        </Grid>
+                        {typeof fmk.errors.infoPatrimonial === "string" && (
+                            <Grid item xs={12}>
+                                <Alert severity="error" variant="outlined">
+                                    {fmk.errors.infoPatrimonial}
+                                </Alert>
                             </Grid>
-                        )
-                    })}
-                    </Grid>
-
-                </FormGroup>
-            </Grid>
+                        )}
+                        {fmk.values.infoPatrimonial.map((dom, index) => {
+                            return (
+                                <InfoPatrimonial
+                                    index={index}
+                                    fmk={fmk}
+                                    arrayHelper={arrayHelpers}
+                                />
+                            )
+                        })}
+                    </>
+                )}
+            />
         </>
     )
 }

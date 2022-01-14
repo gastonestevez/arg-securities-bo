@@ -1,33 +1,72 @@
-import { LocalizationProvider, DatePicker } from "@mui/lab"
-import AdapterDateFns from "@mui/lab/AdapterDateFns"
 import {
-    Checkbox,
-    FormControlLabel,
-    FormGroup,
+    Alert,
+    Box,
     Grid,
-    MenuItem,
+    IconButton,
     TextField,
     Typography,
 } from "@mui/material"
-import frLocale from "date-fns/locale/fr"
-import React, { useState } from "react"
+import { FieldArray } from "formik"
+import React from "react"
+import { DomicilioUrbano } from "./DomicilioUrbano/DomicilioUrbano"
+import AddCircleIcon from "@mui/icons-material/AddCircle"
+import { Actividad } from "./Actividad/Actividad"
 
-export const Actividades = () => {
+export const Actividades = ({ fmk }) => {
     return (
         <>
-            <Grid item xs={12} sm={12}>
-                <Typography component="h5" variant="h5">
-                    Actividades
-                </Typography>
-            </Grid>
-            <Grid item xs={12} sm={12}>
-                <TextField
-                    required
-                    fullWidth
-                    label="Actividad principal"
-                    variant="outlined"
-                />
-            </Grid>
+            <FieldArray
+                name={"actividadPersona"}
+                render={(arrayHelpers) => (
+                    <>
+                        <Grid item xs={12} sm={12}>
+                            <Box
+                                sx={{
+                                    display: "flex",
+                                    flexDirection: "row",
+                                    justifyContent: "space-between",
+                                }}
+                            >
+                                <Box>
+                                    <Typography component="h5" variant="h5">
+                                        Actividades
+                                    </Typography>
+                                </Box>
+                                <Box>
+                                    <IconButton
+                                        onClick={() => arrayHelpers.push({
+                                            actividad: "",
+                                            rubro: "",
+                                            puesto: "",
+                                            departamento: "",
+                                            organizacion: "",
+                                            inicio: "",
+                                            fin: "",
+                                            observaciones: "",
+                                            codigoTipoActividad: "",
+                                        })}
+                                        color="primary"
+                                        aria-label="delete"
+                                    >
+                                        <AddCircleIcon />
+                                    </IconButton>
+                                    
+                                </Box>
+                            </Box>
+                        </Grid>
+                        {typeof fmk.errors.infoPatrimonial === "string" && (
+                            <Grid item xs={12}>
+                                <Alert severity="error" variant="outlined">
+                                    {fmk.errors.actividadPersona}
+                                </Alert>
+                            </Grid>
+                        )}
+                        {fmk.values.actividadPersona.map((dom, index) => {
+                            return (<Actividad index={index} fmk={fmk} arrayHelper={arrayHelpers} />)
+                        })}
+                    </>
+                )}
+            />
         </>
     )
 }

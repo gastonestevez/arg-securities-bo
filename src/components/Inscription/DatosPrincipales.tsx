@@ -1,11 +1,10 @@
 import React, { useState } from "react"
 import TextField from "@mui/material/TextField"
 import MenuItem from "@mui/material/MenuItem"
-import { Box, Grid, Typography } from "@mui/material"
+import { Grid, Typography } from "@mui/material"
 
 export const DatosPrincipales = ({ fmk }) => {
     const nationalIds = ["DNI", "LC", "LE", "EXT", "PAS"]
-    console.log(fmk.values)
     return (
         <>
             <Grid item xs={12} sm={12}>
@@ -15,13 +14,13 @@ export const DatosPrincipales = ({ fmk }) => {
             </Grid>
             <Grid item xs={12} sm={6}>
                 <TextField
-                    id="datosPrincipalesFisicas.nombre"
-                    name="datosPrincipalesFisicas.nombre"
                     required
                     fullWidth
                     label="Nombres"
                     variant="outlined"
-                    value={fmk.values.datosPrincipalesFisicas.nombre}
+                    id="datosPrincipalesFisicas.nombre"
+                    name="datosPrincipalesFisicas.nombre"
+                    value={fmk.values.datosPrincipalesFisicas?.nombre}
                     onChange={fmk.handleChange}
                     error={fmk.touched.datosPrincipalesFisicas?.nombre && Boolean(fmk.errors.datosPrincipalesFisicas?.nombre)}
                     helperText={fmk.touched.datosPrincipalesFisicas?.nombre && fmk.errors.datosPrincipalesFisicas?.nombre}
@@ -35,7 +34,7 @@ export const DatosPrincipales = ({ fmk }) => {
                     fullWidth
                     label="Apellidos"
                     variant="outlined"
-                    value={fmk.values.datosPrincipalesFisicas.apellido}
+                    value={fmk.values.datosPrincipalesFisicas?.apellido}
                     onChange={fmk.handleChange}
                     error={fmk.touched.datosPrincipalesFisicas?.apellido && Boolean(fmk.errors.datosPrincipalesFisicas?.apellido)}
                     helperText={fmk.touched.datosPrincipalesFisicas?.apellido && fmk.errors.datosPrincipalesFisicas?.apellido}
@@ -48,7 +47,7 @@ export const DatosPrincipales = ({ fmk }) => {
                     select
                     defaultValue={''}
                     label="Tipo de ID"
-                    value={fmk.values.datosPrincipalesFisicas.tipoID}
+                    value={fmk.values.datosPrincipalesFisicas?.tipoID}
                     onChange={fmk.handleChange}
                     error={fmk.touched.datosPrincipalesFisicas?.tipoID && Boolean(fmk.errors.datosPrincipalesFisicas?.tipoID)}
                     helperText={fmk.touched.datosPrincipalesFisicas?.tipoID && fmk.errors.datosPrincipalesFisicas?.tipoID}
@@ -71,7 +70,7 @@ export const DatosPrincipales = ({ fmk }) => {
                     fullWidth
                     label="ID"
                     variant="outlined"
-                    value={fmk.values.datosPrincipalesFisicas.id}
+                    value={fmk.values.datosPrincipalesFisicas?.id}
                     onChange={fmk.handleChange}
                     error={fmk.touched.datosPrincipalesFisicas?.id && Boolean(fmk.errors.datosPrincipalesFisicas?.id)}
                     helperText={fmk.touched.datosPrincipalesFisicas?.id && fmk.errors.datosPrincipalesFisicas?.id}
