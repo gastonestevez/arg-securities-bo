@@ -33,7 +33,7 @@ export const DomiciliosUrbanos = ({ fmk }) => {
                                 <Box>
                                     <IconButton
                                         onClick={() => arrayHelpers.push({
-                                            uso: "",
+                                            uso: "Legal",
                                             barrio: "",
                                             calle: "",
                                             numero: 0,

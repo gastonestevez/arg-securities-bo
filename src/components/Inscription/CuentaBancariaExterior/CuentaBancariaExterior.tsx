@@ -1,8 +1,12 @@
-import { Box, Grid, IconButton, TextField, Typography } from "@mui/material"
+import { Box, Grid, IconButton, MenuItem, TextField, Typography } from "@mui/material"
 import React from "react"
 import RemoveCircleIcon from "@mui/icons-material/RemoveCircle"
 
 export const CuentaBancariaExterior = ({ index, fmk, arrayHelper }) => {
+    const monedas = ["ARS", "EUR", "EURC", "USD", "USDC", "USDL"]
+    const holderTypes = ["Personal", "Business"]
+    const accountTypes = ["Checking", "Savings"]
+
     return (
         <>
             <Grid item xs={12}>
@@ -49,6 +53,7 @@ export const CuentaBancariaExterior = ({ index, fmk, arrayHelper }) => {
             </Grid>
             <Grid item xs={12} sm={6}>
                 <TextField
+                    select
                     required
                     fullWidth
                     label="Moneda"
@@ -69,7 +74,13 @@ export const CuentaBancariaExterior = ({ index, fmk, arrayHelper }) => {
                         fmk.touched.cuentaBancariaExterior[index]?.moneda &&
                         fmk.errors.cuentaBancariaExterior[index]?.moneda
                     }
-                />
+                >
+                    {monedas.map((option) => (
+                        <MenuItem key={option} value={option}>
+                            {option}
+                        </MenuItem>
+                    ))}
+                </TextField>
             </Grid>
             <Grid item xs={12} sm={6}>
                 <TextField

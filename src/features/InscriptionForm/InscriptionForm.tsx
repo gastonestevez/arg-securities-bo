@@ -26,7 +26,7 @@ import { personaFisicaInitialValues } from "../../form/initialValues"
 import ReCAPTCHA from "react-google-recaptcha"
 import { useAppDispatch } from "../../app/hooks"
 import { registerPersonaFisica } from "./InscriptionThunk"
-
+import { formatDates } from "../../form/formatDates"
 export const InscriptionForm = () => {
     const recaptchaRef = React.useRef(null)
     const dispatch = useAppDispatch()
@@ -38,17 +38,37 @@ export const InscriptionForm = () => {
                 titular: {
                     personaFisica: true,
                     ...values,
-                    datosConyuge: [
-                        values.datosConyuge,
-                    ]
-                }
+                    datosConyuge: values.datosConyuge?.nombre ? [values.datosConyuge] : [],
+                    perfilInversor: {
+                        experiencia: "Ninguna",
+                        perfilPersonal: "Conservador"
+                    },
+                    mediocomunicacion: [
+                        {
+                            "tipo": "E-Mail",
+                            "medio": "gaston@asd.com",
+                            "uso": "Personal",
+                            "principal": true,
+                            "notas": "una nota"
+                        },
+                        {
+                            "tipo": "Teléfono",
+                            "medio": "1158499585",
+                            "uso": "Personal",
+                            "principal": false,
+                            "notas": "una nota"
+                        }
+                    ],
+                },
+                disposicionesGenerales: {
+                    horizonteInversion: null,
+                    perfilDeInversion: null,
+                },
             }
-            dispatch(registerPersonaFisica(personaFisicaDTO))
-            console.log({personaFisicaDTO})
-
+            console.log(formatDates(personaFisicaDTO));
+            dispatch(registerPersonaFisica(formatDates(personaFisicaDTO)))
         },
     })
-    console.log(formik.errors)
     return (
         <Container maxWidth="md">
             <CssBaseline />

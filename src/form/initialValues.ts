@@ -26,14 +26,14 @@ export const personaFisicaInitialValues = {
         actividad: "",
     },
     mediocomunicacion: [{
-        tipo: "Email",
+        tipo: "E-mail",
         medio: "",
         uso: "",
         notas: "",
         principal: false,
     },
     {
-        tipo: "Telefono",
+        tipo: "Teléfono",
         medio: "",
         uso: "",
         notas: "",

@@ -40,10 +40,10 @@ export const Actividades = ({ fmk }) => {
                                             puesto: "",
                                             departamento: "",
                                             organizacion: "",
-                                            inicio: "",
-                                            fin: "",
+                                            // inicio: "",
+                                            // fin: "",
                                             observaciones: "",
-                                            codigoTipoActividad: "",
+                                            // codigoTipoActividad: "",
                                         })}
                                         color="primary"
                                         aria-label="delete"
