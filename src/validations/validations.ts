@@ -131,10 +131,15 @@ export const personaFisicaValidationSchema = yup.object({
     declaracionesPF: yup.object().shape({
         expuestaPoliticamente: yup.bool().required(),
         detalleExpPoliticamente: yup.string().notRequired(),
-        sujetoObligado: yup.bool().notRequired(),
+        sujetoObligado: yup.boolean().notRequired(),
         numeroInscripcion: yup.number().notRequired(),
         sujetoObligadoUIF: yup.string().notRequired(),
-        personaEEUU: yup.bool().notRequired(),
+        personaEEUU: yup.boolean().notRequired(),
         observacionesFATCA: yup.string().notRequired(),
     }),
+    terminosCondiciones: yup.boolean().oneOf([true],'Debe aceptar los términos y condiciones.'),
+    // firmaElectronica: yup.bool().required('Debe aceptar los términos y condiciones.'),
+    // internetSign: yup.bool().required('Debe aceptar los términos y condiciones.'),
+    // articuloClientesNoPresenciales: yup.bool().required('Debe aceptar los términos y condiciones.'),
+
 })

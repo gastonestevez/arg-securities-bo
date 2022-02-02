@@ -27,6 +27,7 @@ import ReCAPTCHA from "react-google-recaptcha"
 import { useAppDispatch } from "../../app/hooks"
 import { registerPersonaFisica } from "./InscriptionThunk"
 import { formatDates } from "../../form/formatDates"
+import TermsAndConditionsContainer from "../../components/TermsAndConditions"
 export const InscriptionForm = () => {
     const recaptchaRef = React.useRef(null)
     const dispatch = useAppDispatch()
@@ -38,26 +39,28 @@ export const InscriptionForm = () => {
                 titular: {
                     personaFisica: true,
                     ...values,
-                    datosConyuge: values.datosConyuge?.nombre ? [values.datosConyuge] : [],
+                    datosConyuge: values.datosConyuge?.nombre
+                        ? [values.datosConyuge]
+                        : [],
                     perfilInversor: {
                         experiencia: "Ninguna",
-                        perfilPersonal: "Conservador"
+                        perfilPersonal: "Conservador",
                     },
                     mediocomunicacion: [
                         {
-                            "tipo": "E-Mail",
-                            "medio": "gaston@asd.com",
-                            "uso": "Personal",
-                            "principal": true,
-                            "notas": "una nota"
+                            tipo: "E-Mail",
+                            medio: "gaston@asd.com",
+                            uso: "Personal",
+                            principal: true,
+                            notas: "una nota",
                         },
                         {
-                            "tipo": "Teléfono",
-                            "medio": "1158499585",
-                            "uso": "Personal",
-                            "principal": false,
-                            "notas": "una nota"
-                        }
+                            tipo: "Teléfono",
+                            medio: "1158499585",
+                            uso: "Personal",
+                            principal: false,
+                            notas: "una nota",
+                        },
                     ],
                 },
                 disposicionesGenerales: {
@@ -65,7 +68,7 @@ export const InscriptionForm = () => {
                     perfilDeInversion: null,
                 },
             }
-            console.log(formatDates(personaFisicaDTO));
+            console.log(formatDates(personaFisicaDTO))
             dispatch(registerPersonaFisica(formatDates(personaFisicaDTO)))
         },
     })
@@ -153,6 +156,14 @@ export const InscriptionForm = () => {
                             </Grid>
 
                             <Declaraciones fmk={formik} />
+                            <Grid item xs={12}>
+                                <Divider sx={{ marginTop: 2 }} />
+                            </Grid>
+
+                            <TermsAndConditionsContainer fmk={formik} />
+                            <Grid item xs={12}>
+                                <Divider sx={{ marginTop: 2 }} />
+                            </Grid>
 
                             <Grid item md={8} />
                             <Grid
@@ -193,6 +204,7 @@ export const InscriptionForm = () => {
                                     Registrarse
                                 </Button>
                             </Grid>
+                            <Grid item xs={12}></Grid>
                         </Grid>
                     </Box>
                 </FormikProvider>

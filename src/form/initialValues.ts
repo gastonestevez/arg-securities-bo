@@ -118,4 +118,8 @@ export const personaFisicaInitialValues = {
         personaEEUU: false,
         observacionesFATCA: "",
     },
+    terminosCondiciones: false,
+    // firmaElectronica: false,
+    // internetSign: false,
+    // articuloClientesNoPresenciales: false,
 }
