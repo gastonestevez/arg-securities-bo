@@ -10,7 +10,7 @@ import React from "react"
 import RemoveCircleIcon from "@mui/icons-material/RemoveCircle"
 
 export const DomicilioUrbano = ({ index, fmk, arrayHelper }) => {
-    const tiposDeuso = ["Legal", "Fiscal", "Real"]
+    const tiposDeuso = ["Legal", "Real", "Comercial", "Correspondencia"]
     return (
         <>
             <Grid item xs={12}>
@@ -248,7 +248,7 @@ export const DomicilioUrbano = ({ index, fmk, arrayHelper }) => {
                     helperText={
                         fmk.touched.domicilioUrbano &&
                         fmk.touched.domicilioUrbano[index]?.codigoPostal &&
-                        fmk.errors.domicilioUrbano&&
+                        fmk.errors.domicilioUrbano &&
                         fmk.errors.domicilioUrbano[index]?.codigoPostal
                     }
                 />

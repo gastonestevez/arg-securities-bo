@@ -1,6 +1,7 @@
-import { Box, Grid, IconButton, TextField, Typography } from "@mui/material"
+import { Box, Grid, IconButton, MenuItem, TextField, Typography } from "@mui/material"
 import React from "react"
 import RemoveCircleIcon from "@mui/icons-material/RemoveCircle"
+import { activities } from "../../../form/activities"
 
 export const Actividad = ({ index, fmk, arrayHelper }) => {
     return (
@@ -27,6 +28,7 @@ export const Actividad = ({ index, fmk, arrayHelper }) => {
             </Grid>
             <Grid item xs={12} sm={6}>
                 <TextField
+                    // select
                     required
                     fullWidth
                     label="Actividad principal"
@@ -48,6 +50,12 @@ export const Actividad = ({ index, fmk, arrayHelper }) => {
                         fmk.errors.actividadPersona[index]?.actividad
                     }
                 />
+                    {/* {activities.map((option) => (
+                        <MenuItem key={option} value={option}>
+                            {option}
+                        </MenuItem>
+                    ))}
+                    </TextField> */}
             </Grid>
             <Grid item xs={12} sm={6}>
                 <TextField
