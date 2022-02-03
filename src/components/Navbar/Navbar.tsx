@@ -5,17 +5,33 @@ import Typography from "@mui/material/Typography"
 import Button from "@mui/material/Button"
 import IconButton from "@mui/material/IconButton"
 import MenuIcon from "@mui/icons-material/Menu"
-import { Container, Grid } from "@mui/material"
+import { Container, Grid, useMediaQuery, useTheme } from "@mui/material"
 import { Email, Instagram, Phone, Twitter } from "@mui/icons-material"
 
 export function Navbar() {
+    const theme = useTheme()
+    const mobileBreak = useMediaQuery(theme.breakpoints.down('sm'))
+    const styleLogo = {
+        marginTop: 2,
+        display: "flex",
+        flexGrow: 1,
+        maxWidth: "230px",
+        height: "auto",
+        justifyContent: mobileBreak ? 'center' : 'left'
+    }
+
+    const centerMobile = {
+        display: "flex",
+        justifyContent: 'center'
+    }
+
     return (
         <>
             <Box>
                 <div className="wraper_header_top">
                     <Container className="container">
                         <Grid container className="row header_top" spacing={2}>
-                            <Grid item md={6} sm={6} xs={12}>
+                            <Grid sx={mobileBreak ? centerMobile : {}} item md={6} sm={8} xs={12}>
                                 <div className="header_top_item text-left">
                                     <ul className="contact">
                                         <li className="phone">
@@ -33,7 +49,7 @@ export function Navbar() {
                                     </ul>
                                 </div>
                             </Grid>
-                            <Grid item md={6} sm={6} xs={12}>
+                            <Grid sx={mobileBreak ? centerMobile : {}} item md={6} sm={4} xs={12}>
                                 <div className="header_top_item text-right">
                                     <ul className="social">
                                         <li className="twitter">
@@ -57,15 +73,10 @@ export function Navbar() {
                     </Container>
                 </div>
             </Box>
-            <Container>
+            <Container sx={mobileBreak ? styleLogo : {}}>
                 <Box
-                    sx={{
-                        marginTop: 2,
-                        display: "flex",
-                        flexGrow: 1,
-                        maxWidth: "230px",
-                        height: "auto",
-                    }}
+                    sx={styleLogo}
+                    className="banner-logo"
                 >
                     <img
                         style={{
