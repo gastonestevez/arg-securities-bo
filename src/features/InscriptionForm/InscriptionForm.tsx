@@ -84,7 +84,7 @@ export const InscriptionForm = () => {
                 }}
             >
                 <Typography component="h1" variant="h4">
-                    Persona física
+                    Registro de persona física
                 </Typography>
                 <FormikProvider value={formik}>
                     <Box
