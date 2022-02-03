@@ -14,7 +14,7 @@ export function Navbar() {
             <Box>
                 <div className="wraper_header_top">
                     <Container className="container">
-                        <Grid container className="row header_top">
+                        <Grid container className="row header_top" spacing={2}>
                             <Grid item md={6} sm={6} xs={12}>
                                 <div className="header_top_item text-left">
                                     <ul className="contact">
