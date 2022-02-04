@@ -1,10 +1,11 @@
 import { configureStore, ThunkAction, Action } from '@reduxjs/toolkit'
 
 import counterReducer from '../features/counter/counterSlice'
-
+import messageReducer from '../features/InscriptionForm/messageSlice'
+import completedFormReducer from '../features/InscriptionForm/completedFormSlice'
 export function makeStore() {
   return configureStore({
-    reducer: { counter: counterReducer },
+    reducer: { counter: counterReducer, message: messageReducer, completedForm: completedFormReducer },
   })
 }
 

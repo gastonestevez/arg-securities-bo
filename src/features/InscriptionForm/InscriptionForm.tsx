@@ -8,7 +8,7 @@ import {
     Grid,
     Typography,
 } from "@mui/material"
-import React, { useState } from "react"
+import React, { useEffect, useState } from "react"
 import { Actividades } from "../../components/Inscription/Actividades"
 import { CuentasBancarias } from "../../components/Inscription/CuentasBancarias"
 import { CuentasBancariasExterior } from "../../components/Inscription/CuentasBancariasExterior"
@@ -28,9 +28,19 @@ import { useAppDispatch } from "../../app/hooks"
 import { registerPersonaFisica } from "./InscriptionThunk"
 import { formatDates } from "../../form/formatDates"
 import TermsAndConditionsContainer from "../../components/TermsAndConditions"
+import { createMessage } from "./messageSlice"
+import { useSelector } from "react-redux"
+import { AppState } from "../../app/store"
+import Message from "../../components/Message"
+import { toggleCompletedForm } from "./completedFormSlice"
+import { useRouter } from "next/router"
+
 export const InscriptionForm = () => {
     const recaptchaRef = React.useRef(null)
     const dispatch = useAppDispatch()
+    const message = useSelector((state: AppState) => state.message)
+    const router = useRouter()
+
     const formik = useFormik({
         initialValues: personaFisicaInitialValues,
         validationSchema: personaFisicaValidationSchema,
@@ -68,10 +78,17 @@ export const InscriptionForm = () => {
                     perfilDeInversion: null,
                 },
             }
-            console.log(formatDates(personaFisicaDTO))
-            dispatch(registerPersonaFisica(formatDates(personaFisicaDTO)))
+            try {
+                dispatch(registerPersonaFisica(formatDates(personaFisicaDTO)))
+                dispatch(toggleCompletedForm())
+                router.push('/registerSuccess')
+            } catch(e){
+                console.error(e);
+            }
+
         },
     })
+
     return (
         <Container maxWidth="md">
             <CssBaseline />
@@ -193,6 +210,18 @@ export const InscriptionForm = () => {
                                     </Alert>
                                 </Grid>
                             )}
+                            <Grid item md={8} />
+
+                            {message.active && (
+                                <Grid item xs={12}>
+                                    <Message
+                                        title={message.title}
+                                        type={message.type}
+                                        message={message.message}
+                                    />
+                                </Grid>
+                            )}
+
                             <Grid item md={8} />
 
                             <Grid item xs={12} md={4}>
