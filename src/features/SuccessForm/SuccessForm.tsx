@@ -1,10 +1,10 @@
-import { Button, Container, Grid, Typography } from "@mui/material"
+import { Button, Container, CssBaseline, Grid, Typography } from "@mui/material"
 import React, { useEffect } from "react"
 import CheckCircleIcon from '@mui/icons-material/CheckCircle';
 import { useRouter } from "next/router";
 import {  useDispatch, useSelector } from "react-redux";
 import { AppState } from "../../app/store";
-import { toggleCompletedForm } from "../InscriptionForm/completedFormSlice";
+import { resetForm, toggleCompletedForm } from "../InscriptionForm/completedFormSlice";
 
 export const SuccessForm = () => {
     const router = useRouter()
@@ -24,6 +24,7 @@ export const SuccessForm = () => {
 
     return (
         <>
+        <CssBaseline />
             <Container>
                 <Grid container spacing={3}>
                     <Grid item xs={12} />

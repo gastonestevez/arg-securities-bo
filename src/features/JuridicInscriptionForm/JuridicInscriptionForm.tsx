@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useEffect } from "react"
 import {
     Alert,
     Box,
@@ -14,7 +14,7 @@ import { useSelector } from "react-redux"
 import { useAppDispatch } from "../../app/hooks"
 import { AppState } from "../../app/store"
 import { FormikProvider, useFormik } from "formik"
-import { formatDates } from "../../form/formatDates"
+import { formatJuridicDates } from "../../form/formatDates"
 import { personaFisicaInitialValues } from "../../form/initialValues"
 import { personaFisicaValidationSchema } from "../../validations/validations"
 import { toggleCompletedForm } from "../InscriptionForm/completedFormSlice"
@@ -31,23 +31,26 @@ import { ActividadOrganizacion } from "../../components/Juridic/ActividadOrganiz
 import Message from "../../components/Message"
 import ReCAPTCHA from "react-google-recaptcha"
 import TermsAndConditionsContainer from "../../components/TermsAndConditions"
+import { personaJuridicaInitialValues } from "../../form/juridicInitialValues"
+import { personaJuridicaValidationSchema } from "../../validations/juridicValidations"
+import { CuentasBancarias } from "../../components/Inscription/CuentasBancarias"
 
 export const JuridicInscriptionForm = () => {
     const recaptchaRef = React.useRef(null)
     const dispatch = useAppDispatch()
     const message = useSelector((state: AppState) => state.message)
+    const completedForm = useSelector(
+        (state: AppState) => state.completedForm.completed
+    )
     const router = useRouter()
     const formik = useFormik({
-        initialValues: personaFisicaInitialValues,
-        validationSchema: personaFisicaValidationSchema,
+        initialValues: personaJuridicaInitialValues,
+        validationSchema: personaJuridicaValidationSchema,
         onSubmit: async (values) => {
-            const personaFisicaDTO = {
+            const personaJuridicaDTO = {
                 titular: {
                     personaFisica: false,
                     ...values,
-                    datosConyuge: values.datosConyuge?.nombre
-                        ? [values.datosConyuge]
-                        : [],
                     perfilInversor: {
                         experiencia: "Ninguna",
                         perfilPersonal: "Conservador",
@@ -59,15 +62,28 @@ export const JuridicInscriptionForm = () => {
                     perfilDeInversion: null,
                 },
             }
+            console.log(personaJuridicaDTO)
             try {
-                dispatch(registerPersonaFisica(formatDates(personaFisicaDTO)))
-                dispatch(toggleCompletedForm())
+                dispatch(
+                    registerPersonaFisica(
+                        formatJuridicDates(personaJuridicaDTO)
+                    )
+                )
                 router.push("/registerSuccess")
             } catch (e) {
                 console.error(e)
             }
         },
     })
+    console.log(formik.errors)
+    console.log(formik.values)
+
+    useEffect(() => {
+        if (completedForm) {
+            router.push("/registerSuccess")
+        }
+    }, [completedForm])
+
     return (
         <>
             <Container maxWidth="md">
@@ -122,6 +138,12 @@ export const JuridicInscriptionForm = () => {
                                 </Grid>
 
                                 <DomiciliosUrbanos fmk={formik} />
+
+                                <Grid item xs={12}>
+                                    <Divider sx={{ marginTop: 2 }} />
+                                </Grid>
+
+                                <CuentasBancarias fmk={formik} />
 
                                 <Grid item xs={12}>
                                     <Divider sx={{ marginTop: 2 }} />

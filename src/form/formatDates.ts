@@ -34,3 +34,41 @@ export const formatDates = (payload: any) => {
         }
     }
 } 
+
+export const formatJuridicDates = (payload: any) => {
+    const { datosPersonales, patrimonioYBalance, datosOrganizacion, registro  } = payload.titular
+    
+
+    const formattedDatosPersonales = {
+        ...datosPersonales,
+        fechaNacimiento: format(processDate(datosPersonales.fechaNacimiento), defaultFormat)
+    }
+
+    const formattedDatosOrganizacion = {
+        ...datosOrganizacion,
+        cierreBalance: format(processDate(datosOrganizacion.cierreBalance), defaultFormat),
+        fechaConstitucion: format(processDate(datosOrganizacion.fechaConstitucion), defaultFormat)
+    }
+
+    const formattedPatrimonioYBalance = {
+        ...patrimonioYBalance,
+        fecha: format(processDate(patrimonioYBalance.fecha), defaultFormat),
+    }
+
+    const formattedRegistro = {
+        ...registro,
+        fecha: format(processDate(registro.fecha), defaultFormat),
+    }
+
+    
+    return {
+        ...payload,
+        titular: {
+            ...payload.titular,
+            datosPersonales: formattedDatosPersonales,
+            datosOrganizacion: formattedDatosOrganizacion,
+            patrimonioYBalance: formattedPatrimonioYBalance,
+            registro: formattedRegistro
+        }
+    }
+}

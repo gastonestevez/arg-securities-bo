@@ -39,6 +39,7 @@ export const InscriptionForm = () => {
     const recaptchaRef = React.useRef(null)
     const dispatch = useAppDispatch()
     const message = useSelector((state: AppState) => state.message)
+    const completedForm = useSelector((state: AppState) => state.completedForm.completed)
     const router = useRouter()
 
     const formik = useFormik({
@@ -80,14 +81,18 @@ export const InscriptionForm = () => {
             }
             try {
                 dispatch(registerPersonaFisica(formatDates(personaFisicaDTO)))
-                dispatch(toggleCompletedForm())
-                router.push('/registerSuccess')
             } catch(e){
                 console.error(e);
             }
 
         },
     })
+
+    useEffect(() => {
+        if(completedForm){
+            router.push('/registerSuccess')
+        } 
+    }, [completedForm])
 
     return (
         <Container maxWidth="md">

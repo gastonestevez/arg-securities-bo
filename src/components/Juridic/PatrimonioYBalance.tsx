@@ -44,7 +44,7 @@ export const PatrimonioYBlanace = ({ fmk }) => {
                     required
                     fullWidth
                     type={'number'}
-                    label="Número"
+                    label="Activos"
                     variant="outlined"
                     value={fmk.values.patrimonioYBlanace?.activos}
                     onChange={fmk.handleChange}
@@ -59,7 +59,7 @@ export const PatrimonioYBlanace = ({ fmk }) => {
                     required
                     fullWidth
                     type={'number'}
-                    label="Número"
+                    label="Pasivos"
                     variant="outlined"
                     value={fmk.values.patrimonioYBlanace?.pasivos}
                     onChange={fmk.handleChange}
@@ -74,7 +74,7 @@ export const PatrimonioYBlanace = ({ fmk }) => {
                     required
                     fullWidth
                     type={'number'}
-                    label="Número"
+                    label="Activos corrientes"
                     variant="outlined"
                     value={fmk.values.patrimonioYBlanace?.activosCorrientes}
                     onChange={fmk.handleChange}
@@ -89,7 +89,7 @@ export const PatrimonioYBlanace = ({ fmk }) => {
                     required
                     fullWidth
                     type={'number'}
-                    label="Número"
+                    label="Patrimonio"
                     variant="outlined"
                     value={fmk.values.patrimonioYBlanace?.patrimonio}
                     onChange={fmk.handleChange}
@@ -104,7 +104,7 @@ export const PatrimonioYBlanace = ({ fmk }) => {
                     required
                     fullWidth
                     type={'number'}
-                    label="Número"
+                    label="Ingresos"
                     variant="outlined"
                     value={fmk.values.patrimonioYBlanace?.ingresos}
                     onChange={fmk.handleChange}
@@ -119,7 +119,7 @@ export const PatrimonioYBlanace = ({ fmk }) => {
                     required
                     fullWidth
                     type={'number'}
-                    label="Número"
+                    label="Egresos"
                     variant="outlined"
                     value={fmk.values.patrimonioYBlanace?.egresos}
                     onChange={fmk.handleChange}

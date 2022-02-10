@@ -4,6 +4,7 @@ import type { AppState, AppThunk } from "../../app/store"
 
 import axios from "axios"
 import { createMessage } from "./messageSlice"
+import { toggleCompletedForm } from "./completedFormSlice"
 
 export interface CounterState {
     value: number
@@ -49,23 +50,15 @@ export const registerPersonaFisica =
             })
             const res = await instance.post(endpoint, payload)
             console.log(res)
+            dispatch(toggleCompletedForm())
             return res
-            // const response = await axios.post(
-            //     "http://localhost:1234/api/persona/fisica",
-            //     JSON.stringify(payload),
-            //     {
-            //         headers: {
-            //             "Content-Type": "application/json",
-            //         },
-            //     }
-            // )
         } catch (error) {
-            console.error(error)
+            console.error({error, ez: error.response.data.errors[0].detail})
             dispatch(createMessage({
                 active: true,
-                title: 'Hubo un problema con el formulario',
+                title: 'Ocurrió un problema con el formulario',
                 type: 'error',
-                message: error.errors[0].detail
+                message: error.response.data.errors[0].detail || 'Consultar con el área de soporte.'
             }))
         }
     }

@@ -168,6 +168,7 @@ export const InfoPatrimonial = ({ index, fmk, arrayHelper }) => {
             <Grid item xs={12} sm={6}>
                 <TextField
                     fullWidth
+                    required
                     label="Observaciones"
                     variant="outlined"
                     id={`infoPatrimonial.[${index}].observaciones`}
