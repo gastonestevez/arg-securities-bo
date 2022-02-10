@@ -67,7 +67,7 @@ export const personaJuridicaValidationSchema = yup.object({
             yup.object().shape({
                 cbu: yup.string().required("Este campo es requerido."),
                 tipo: yup.string().required("Este campo es requerido."),
-                numero: yup.string().required("Este campo es requerido."),
+                numero: yup.string().notRequired(),
             })
         )
         .required("Los campos son requeridos."),
@@ -94,6 +94,6 @@ export const personaJuridicaValidationSchema = yup.object({
     declaracionesPI: yup.object().shape({
         inscripcionSujetoObligado: yup
             .bool()
-            .required("Este campo es requerido."),
+            .notRequired(),
     }),
 })

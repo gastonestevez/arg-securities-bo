@@ -34,6 +34,7 @@ import TermsAndConditionsContainer from "../../components/TermsAndConditions"
 import { personaJuridicaInitialValues } from "../../form/juridicInitialValues"
 import { personaJuridicaValidationSchema } from "../../validations/juridicValidations"
 import { CuentasBancarias } from "../../components/Inscription/CuentasBancarias"
+import { DeclaracionPI } from "../../components/Juridic/DeclaracionPI"
 
 export const JuridicInscriptionForm = () => {
     const recaptchaRef = React.useRef(null)
@@ -51,6 +52,14 @@ export const JuridicInscriptionForm = () => {
                 titular: {
                     personaFisica: false,
                     ...values,
+                    registro: [values.registro],
+                    patrimonioYBalance: [
+                        {
+                            ...values.patrimonioYBalance,
+                            procedenciaDeFondos: {},
+                        },
+                    ],
+                    actividadOrganizacion: [values.actividadOrganizacion],
                     perfilInversor: {
                         experiencia: "Ninguna",
                         perfilPersonal: "Conservador",
@@ -167,7 +176,14 @@ export const JuridicInscriptionForm = () => {
                                     <Divider sx={{ marginTop: 2 }} />
                                 </Grid>
 
+                                <DeclaracionPI fmk={formik} />
+
+                                <Grid item xs={12}>
+                                    <Divider sx={{ marginTop: 2 }} />
+                                </Grid>
+
                                 <TermsAndConditionsContainer fmk={formik} />
+
                                 <Grid item xs={12}>
                                     <Divider sx={{ marginTop: 2 }} />
                                 </Grid>

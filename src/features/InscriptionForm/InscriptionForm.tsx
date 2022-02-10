@@ -90,7 +90,7 @@ export const InscriptionForm = () => {
 
     useEffect(() => {
         if(completedForm){
-            router.push('/registerSuccess')
+            //router.push('/registerSuccess')
         } 
     }, [completedForm])
 
