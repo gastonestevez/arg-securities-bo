@@ -3,7 +3,7 @@ import Navbar from "../../components/Navbar"
 import SuccessForm from "../../features/SuccessForm"
 import Head from "next/head"
 
-export const registerSuccess = () => {
+const registerSuccess = () => {
     return (
         <>
             <Head>
@@ -18,3 +18,5 @@ export const registerSuccess = () => {
         </>
     )
 }
+
+export default registerSuccess
