@@ -96,4 +96,5 @@ export const personaJuridicaValidationSchema = yup.object({
             .bool()
             .notRequired(),
     }),
+    terminosCondiciones: yup.boolean().oneOf([true],'Debe aceptar los términos y condiciones.'),
 })
