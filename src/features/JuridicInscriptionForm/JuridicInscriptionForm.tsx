@@ -35,15 +35,15 @@ import { personaJuridicaInitialValues } from "../../form/juridicInitialValues"
 import { personaJuridicaValidationSchema } from "../../validations/juridicValidations"
 import { CuentasBancarias } from "../../components/Inscription/CuentasBancarias"
 import { DeclaracionPI } from "../../components/Juridic/DeclaracionPI"
+import { LoadingButton } from "@mui/lab"
 
 export const JuridicInscriptionForm = () => {
     const recaptchaRef = React.useRef(null)
     const dispatch = useAppDispatch()
     const message = useSelector((state: AppState) => state.message)
-    const completedForm = useSelector(
-        (state: AppState) => state.completedForm.completed
-    )
+    const { isLoading } = useSelector((state: AppState) => state.loading)
     const router = useRouter()
+ 
     const formik = useFormik({
         initialValues: personaJuridicaInitialValues,
         validationSchema: personaJuridicaValidationSchema,
@@ -220,7 +220,7 @@ export const JuridicInscriptionForm = () => {
                                     </Grid>
                                 )}
 
-                                {Object.keys(formik.errors).length && (
+                                {!!Object.keys(formik.errors).length && (
                                     <Grid item xs={12}>
                                         <Message
                                             title={"Hay campos con errores"}
@@ -233,13 +233,15 @@ export const JuridicInscriptionForm = () => {
                                 <Grid item md={8} />
 
                                 <Grid item xs={12} md={4}>
-                                    <Button
+                                    <LoadingButton
                                         fullWidth
                                         type="submit"
                                         variant="contained"
+                                        loading={isLoading}
+                                        loadingPosition="start"
                                     >
                                         Registrarse
-                                    </Button>
+                                    </LoadingButton>
                                 </Grid>
                                 <Grid item xs={12}></Grid>
                             </Grid>

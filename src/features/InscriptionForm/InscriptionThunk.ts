@@ -5,6 +5,7 @@ import type { AppState, AppThunk } from "../../app/store"
 import axios from "axios"
 import { createMessage } from "./messageSlice"
 import { toggleCompletedForm } from "./completedFormSlice"
+import { setLoading } from "./loadingSlice"
 
 export interface CounterState {
     value: number
@@ -50,6 +51,7 @@ export const registerPersonaFisica =
     (payload: any): AppThunk =>
     async (dispatch, getState) => {
         try {
+            dispatch(setLoading(true))
             const {
                 NEXT_PUBLIC_AUNESA_USER: us,
                 NEXT_PUBLIC_AUNESA_PASSWORD: pa,
@@ -57,7 +59,6 @@ export const registerPersonaFisica =
                 NEXT_PUBLIC_AUNESA_LOGIN_ENDPOINT: loginEndpoint
             } = process.env
             process.env.NODE_TLS_REJECT_UNAUTHORIZED = "0"
-            console.log(us, pa, endpoint, loginEndpoint, process.env);
             const loginPayload = {
                 clientId: "0303456",
                 username: us,
@@ -80,10 +81,12 @@ export const registerPersonaFisica =
             })
             const res = await instance.post(endpoint, payload)
             console.log(res)
+            dispatch(setLoading(false))
             return res
         } catch (error) {
             // console.error({error, ez: error.response.data.errors[0].detail})
             console.log(error)
+            dispatch(setLoading(false))
             dispatch(createMessage({
                 active: true,
                 title: 'Ocurrió un problema con el formulario',

@@ -1,7 +1,6 @@
 import {
     Alert,
     Box,
-    Button,
     Container,
     CssBaseline,
     Divider,
@@ -34,14 +33,14 @@ import { AppState } from "../../app/store"
 import Message from "../../components/Message"
 import { toggleCompletedForm } from "./completedFormSlice"
 import { useRouter } from "next/router"
+import LoadingButton from "@mui/lab/LoadingButton"
+import { setLoading } from "./loadingSlice"
 
 export const InscriptionForm = () => {
     const recaptchaRef = React.useRef(null)
     const dispatch = useAppDispatch()
     const message = useSelector((state: AppState) => state.message)
-    const completedForm = useSelector(
-        (state: AppState) => state.completedForm.completed
-    )
+    const { isLoading } = useSelector((state: AppState) => state.loading)
     const router = useRouter()
 
     const formik = useFormik({
@@ -59,22 +58,7 @@ export const InscriptionForm = () => {
                         experiencia: "Ninguna",
                         perfilPersonal: "Conservador",
                     },
-                    mediocomunicacion: [
-                        {
-                            tipo: "E-Mail",
-                            medio: "gaston@asd.com",
-                            uso: "Personal",
-                            principal: true,
-                            notas: "una nota",
-                        },
-                        {
-                            tipo: "Teléfono",
-                            medio: "1158499585",
-                            uso: "Personal",
-                            principal: false,
-                            notas: "una nota",
-                        },
-                    ],
+                    mediocomunicacion: [],
                 },
                 disposicionesGenerales: {
                     horizonteInversion: null,
@@ -90,8 +74,6 @@ export const InscriptionForm = () => {
             }
         },
     })
-
-    console.log(formik.errors)
 
     return (
         <Container maxWidth="md">
@@ -226,7 +208,7 @@ export const InscriptionForm = () => {
                                 </Grid>
                             )}
 
-                            {Object.keys(formik.errors).length && (
+                            {!!Object.keys(formik.errors).length && (
                                 <Grid item xs={12}>
                                     <Message
                                         title={"Hay campos con errores"}
@@ -239,13 +221,16 @@ export const InscriptionForm = () => {
                             <Grid item md={8} />
 
                             <Grid item xs={12} md={4}>
-                                <Button
+                                <LoadingButton
                                     fullWidth
                                     type="submit"
                                     variant="contained"
+                                    loading={isLoading}
+                                    loadingPosition="start"
+                                    
                                 >
                                     Registrarse
-                                </Button>
+                                </LoadingButton>
                             </Grid>
                             <Grid item xs={12}></Grid>
                         </Grid>
