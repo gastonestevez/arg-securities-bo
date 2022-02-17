@@ -25,7 +25,7 @@ import { personaFisicaValidationSchema } from "../../validations/validations"
 import { personaFisicaInitialValues } from "../../form/initialValues"
 import ReCAPTCHA from "react-google-recaptcha"
 import { useAppDispatch } from "../../app/hooks"
-import { registerPersonaFisica } from "./InscriptionThunk"
+import { loginAunesa, registerPersonaFisica } from "./InscriptionThunk"
 import { formatDates } from "../../form/formatDates"
 import TermsAndConditionsContainer from "../../components/TermsAndConditions"
 import { createMessage } from "./messageSlice"
@@ -39,7 +39,9 @@ export const InscriptionForm = () => {
     const recaptchaRef = React.useRef(null)
     const dispatch = useAppDispatch()
     const message = useSelector((state: AppState) => state.message)
-    const completedForm = useSelector((state: AppState) => state.completedForm.completed)
+    const completedForm = useSelector(
+        (state: AppState) => state.completedForm.completed
+    )
     const router = useRouter()
 
     const formik = useFormik({
@@ -79,20 +81,17 @@ export const InscriptionForm = () => {
                     perfilDeInversion: null,
                 },
             }
-            try {
-                dispatch(registerPersonaFisica(formatDates(personaFisicaDTO)))
-            } catch(e){
-                console.error(e);
+            const response = await dispatch(
+                registerPersonaFisica(formatDates(personaFisicaDTO))
+            )
+            if (response != null && response != undefined) {
+                dispatch(toggleCompletedForm())
+                router.push("/registerSuccess")
             }
-
         },
     })
 
-    useEffect(() => {
-        if(completedForm){
-            //router.push('/registerSuccess')
-        } 
-    }, [completedForm])
+    console.log(formik.errors)
 
     return (
         <Container maxWidth="md">
@@ -223,6 +222,16 @@ export const InscriptionForm = () => {
                                         title={message.title}
                                         type={message.type}
                                         message={message.message}
+                                    />
+                                </Grid>
+                            )}
+
+                            {Object.keys(formik.errors).length && (
+                                <Grid item xs={12}>
+                                    <Message
+                                        title={"Hay campos con errores"}
+                                        type={"error"}
+                                        message={`Corroborar campos en color rojo.`}
                                     />
                                 </Grid>
                             )}

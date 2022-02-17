@@ -3,7 +3,7 @@ import Head from 'next/head'
 import Navbar from '../../components/Navbar'
 import JuridicInscriptionForm from '../../features/JuridicInscriptionForm'
 
-const IndexPage: NextPage = () => {
+const PersonaJuridica: NextPage = () => {
   return (
     <div>
       <Head>
@@ -19,4 +19,4 @@ const IndexPage: NextPage = () => {
   )
 }
 
-export default IndexPage
+export default PersonaJuridica

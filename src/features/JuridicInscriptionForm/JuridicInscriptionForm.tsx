@@ -71,27 +71,16 @@ export const JuridicInscriptionForm = () => {
                     perfilDeInversion: null,
                 },
             }
-            console.log(personaJuridicaDTO)
-            try {
-                dispatch(
-                    registerPersonaFisica(
-                        formatJuridicDates(personaJuridicaDTO)
-                    )
-                )
+
+            const response = await dispatch(
+                registerPersonaFisica(formatJuridicDates(personaJuridicaDTO))
+            )
+            if (response != null && response != undefined) {
+                dispatch(toggleCompletedForm())
                 router.push("/registerSuccess")
-            } catch (e) {
-                console.error(e)
             }
         },
     })
-    console.log(formik.errors)
-    console.log(formik.values)
-
-    useEffect(() => {
-        if (completedForm) {
-            router.push("/registerSuccess")
-        }
-    }, [completedForm])
 
     return (
         <>
@@ -227,6 +216,16 @@ export const JuridicInscriptionForm = () => {
                                             title={message.title}
                                             type={message.type}
                                             message={message.message}
+                                        />
+                                    </Grid>
+                                )}
+
+                                {Object.keys(formik.errors).length && (
+                                    <Grid item xs={12}>
+                                        <Message
+                                            title={"Hay campos con errores"}
+                                            type={"error"}
+                                            message={`Corroborar campos en color rojo.`}
                                         />
                                     </Grid>
                                 )}

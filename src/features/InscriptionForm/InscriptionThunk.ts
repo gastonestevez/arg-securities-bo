@@ -16,6 +16,36 @@ const initialState: CounterState = {
     status: "idle",
 }
 
+export const loginAunesa = (payload: any): AppThunk => async (dispatch, getState) => {
+    try {
+        const {
+            NEXT_PUBLIC_AUNESA_USER: us,
+            NEXT_PUBLIC_AUNESA_PASSWORD: pa,
+            NEXT_PUBLIC_AUNESA_OPENING_ACOUNT_ENDPOINT: endpoint,
+            NEXT_PUBLIC_AUNESA_LOGIN_ENDPOINT: loginEndpoint
+        } = process.env
+        process.env.NODE_TLS_REJECT_UNAUTHORIZED = "0"
+        console.log(us, pa, endpoint, loginEndpoint, process.env);
+        const loginPayload = {
+            clientId: "0303456",
+            username: us,
+            password: pa,
+        }
+
+        const config = {
+            headers: {
+                Accept: "application/json",
+                "Content-Type": "application/json",
+            },
+        }
+        const { data } = await axios.post(loginEndpoint, loginPayload, config)
+        const { token } = data
+        console.log({data, token})
+    } catch(e) {
+        console.log(e)
+    }
+}
+
 export const registerPersonaFisica =
     (payload: any): AppThunk =>
     async (dispatch, getState) => {
@@ -50,15 +80,15 @@ export const registerPersonaFisica =
             })
             const res = await instance.post(endpoint, payload)
             console.log(res)
-            dispatch(toggleCompletedForm())
             return res
         } catch (error) {
-            console.error({error, ez: error.response.data.errors[0].detail})
+            // console.error({error, ez: error.response.data.errors[0].detail})
+            console.log(error)
             dispatch(createMessage({
                 active: true,
                 title: 'Ocurrió un problema con el formulario',
                 type: 'error',
-                message: error.response.data.errors[0].detail || 'Consultar con el área de soporte.'
+                message: error.response?.data?.errors[0].detail || 'Consultar con el área de soporte.'
             }))
         }
     }
