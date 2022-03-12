@@ -95,7 +95,7 @@ export const JuridicInscriptionForm = () => {
                     }}
                 >
                     <Typography component="h1" variant="h4">
-                        Registro de Persona Jurídica
+                        Registro de Persona Jurídica {'(En construcción)'}
                     </Typography>
                     <FormikProvider value={formik}>
                         <Box
