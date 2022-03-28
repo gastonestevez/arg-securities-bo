@@ -34,14 +34,14 @@ export const MediosDeComunicacion = ({ fmk }) => {
                 >
                     <Box>
                         <Typography component="h5" variant="h5">
-                            Medios de comunicación
+                            Medios de contacto
                         </Typography>
                     </Box>
                 </Box>
             </Grid>
             <Grid item xs={12} sm={6}>
                 <TextField
-                    label="Tipo de medio"
+                    label="Correo electrónico"
                     fullWidth
                     required
                     id="mediocomunicacion.[0].tipo"
@@ -77,7 +77,7 @@ export const MediosDeComunicacion = ({ fmk }) => {
                 <TextField
                     required
                     fullWidth
-                    label="Medio"
+                    label="Dirección de correo electrónico"
                     variant="outlined"
                     id="mediocomunicacion.[0].medio"
                     name="mediocomunicacion[0].medio"
@@ -129,30 +129,7 @@ export const MediosDeComunicacion = ({ fmk }) => {
             </Grid>
             <Grid item xs={12} sm={6}>
                 <TextField
-                    fullWidth
-                    label="Notas"
-                    variant="outlined"
-                    id="mediocomunicacion.[0].notas"
-                    name="mediocomunicacion[0].notas"
-                    value={fmk.values.mediocomunicacion[0]?.notas}
-                    onChange={fmk.handleChange}
-                    error={
-                        fmk.touched.mediocomunicacion &&
-                        fmk.touched.mediocomunicacion[0]?.notas &&
-                        fmk.errors.mediocomunicacion &&
-                        Boolean(fmk.errors.mediocomunicacion[0]?.notas)
-                    }
-                    helperText={
-                        fmk.touched.mediocomunicacion &&
-                        fmk.touched.mediocomunicacion[0]?.notas &&
-                        fmk.errors.mediocomunicacion &&
-                        fmk.errors.mediocomunicacion[0]?.notas
-                    }
-                />
-            </Grid>
-            <Grid item xs={12} sm={6}>
-                <TextField
-                    label="Tipo de medio"
+                    label="Teléfono"
                     disabled
                     fullWidth
                     required
@@ -187,7 +164,7 @@ export const MediosDeComunicacion = ({ fmk }) => {
                 <TextField
                     required
                     fullWidth
-                    label="Medio"
+                    label="Nro. de teléfono"
                     variant="outlined"
                     id="mediocomunicacion.[1].medio"
                     name="mediocomunicacion[1].medio"
@@ -237,30 +214,6 @@ export const MediosDeComunicacion = ({ fmk }) => {
                     ))}
                 </TextField>
             </Grid>
-            <Grid item xs={12} sm={6}>
-                <TextField
-                    fullWidth
-                    label="Notas"
-                    variant="outlined"
-                    id="mediocomunicacion.[1].notas"
-                    name="mediocomunicacion[1].notas"
-                    value={fmk.values.mediocomunicacion[1]?.notas}
-                    onChange={fmk.handleChange}
-                    error={
-                        fmk.touched.mediocomunicacion &&
-                        fmk.touched.mediocomunicacion[1]?.notas &&
-                        fmk.errors.mediocomunicacion &&
-                        Boolean(fmk.errors.mediocomunicacion[1]?.notas)
-                    }
-                    helperText={
-                        fmk.touched.mediocomunicacion &&
-                        fmk.touched.mediocomunicacion[1]?.notas &&
-                        fmk.errors.mediocomunicacion &&
-                        fmk.errors.mediocomunicacion[1]?.notas
-                    }
-                />
-            </Grid>
-            
         </>
     )
 }

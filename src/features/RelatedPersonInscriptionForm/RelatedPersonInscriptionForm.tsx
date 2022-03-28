@@ -24,20 +24,19 @@ import { personaFisicaValidationSchema } from "../../validations/validations"
 import { personaFisicaInitialValues } from "../../form/initialValues"
 import ReCAPTCHA from "react-google-recaptcha"
 import { useAppDispatch } from "../../app/hooks"
-import { loginAunesa, registerPersonaFisica } from "./InscriptionThunk"
+import { loginAunesa, registerPersonaFisica } from "../InscriptionForm/InscriptionThunk"
 import { formatDates } from "../../form/formatDates"
 import TermsAndConditionsContainer from "../../components/TermsAndConditions"
-import { createMessage } from "./messageSlice"
+import { createMessage } from "../InscriptionForm/messageSlice"
 import { useSelector } from "react-redux"
 import { AppState } from "../../app/store"
 import Message from "../../components/Message"
-import { toggleCompletedForm } from "./completedFormSlice"
+import { toggleCompletedForm } from "../InscriptionForm/completedFormSlice"
 import { useRouter } from "next/router"
 import LoadingButton from "@mui/lab/LoadingButton"
-import { setLoading } from "./loadingSlice"
 import { PersonasRelacionadas } from "../../components/Inscription/PersonasRelacionadas"
 
-export const InscriptionForm = () => {
+export const RelatedPersonInscriptionForm = () => {
     const recaptchaRef = React.useRef(null)
     const dispatch = useAppDispatch()
     const message = useSelector((state: AppState) => state.message)
@@ -88,9 +87,8 @@ export const InscriptionForm = () => {
                 }}
             >
                 <Typography component="h1" variant="h4">
-                    Registro de Persona Física {"(En construcción)"}
+                    Registro de Persona Relacionada {"(En construcción)"}
                 </Typography>
-
                 <FormikProvider value={formik}>
                     <Box
                         component="form"
@@ -99,19 +97,6 @@ export const InscriptionForm = () => {
                         sx={{ mt: 4 }}
                     >
                         <Grid container spacing={2}>
-                            <Grid item xs={12}>
-                                <Message
-                                    type="info"
-                                    title="Estimado Inversor:"
-                                    message={`
-                Bienvenido a ARG SECURITIES ADVISORS S.A. Agente de Negociación Matricula CNV Nro. 719
-                Para iniciar el proceso de apertura de cuenta comitente deberá completar el siguiente formulario con la información de cada uno de los titulares. Una vez completada la información, deberá adjuntar la documentación solicitada en cada apartado.  
-                Una vez recibida la información, nos pondremos en contacto con Ud. a la brevedad para finalizar el proceso de apertura.
-                Muchas gracias!
-                
-                `}
-                                />
-                            </Grid>
                             <DatosPrincipales fmk={formik} />
 
                             <Grid item xs={12}>
@@ -178,82 +163,85 @@ export const InscriptionForm = () => {
                                 <Divider sx={{ marginTop: 2 }} />
                             </Grid>
 
+                            <PersonasRelacionadas fmk={formik} />
+
+                            <Grid item xs={12}>
+                                <Divider sx={{ marginTop: 2 }} />
+                            </Grid>
+
                             <TermsAndConditionsContainer fmk={formik} />
                             <Grid item xs={12}>
                                 <Divider sx={{ marginTop: 2 }} />
                             </Grid>
 
                             <Grid item md={8} />
+                            
                         </Grid>
                     </Box>
                 </FormikProvider>
-                <Grid container spacing={2}>
-                    <PersonasRelacionadas />
+                <Grid
+                                item
+                                xs={12}
+                                sx={{
+                                    display: "flex",
+                                    justifyContent: "flex-end",
+                                }}
+                            >
+                                <ReCAPTCHA
+                                    sitekey="6LcPTAweAAAAAJslpywllHcuD4SJy0rZhnXk0zOx"
+                                    ref={recaptchaRef}
+                                    badge={"bottomright"}
+                                    onChange={(response) => {
+                                        formik.setFieldValue(
+                                            "recaptcha",
+                                            response
+                                        )
+                                    }}
+                                />
+                            </Grid>
+                            {formik.errors.recaptcha && (
+                                <Grid item xs={12}>
+                                    <Alert severity="error" variant="outlined">
+                                        {formik.errors.recaptcha}
+                                    </Alert>
+                                </Grid>
+                            )}
+                            <Grid item md={8} />
 
-                    <Grid item xs={12}>
-                        <Divider sx={{ marginTop: 2 }} />
-                    </Grid>
-                    <Grid
-                        item
-                        xs={12}
-                        sx={{
-                            display: "flex",
-                            justifyContent: "flex-end",
-                        }}
-                    >
-                        <ReCAPTCHA
-                            sitekey="6LcPTAweAAAAAJslpywllHcuD4SJy0rZhnXk0zOx"
-                            ref={recaptchaRef}
-                            badge={"bottomright"}
-                            onChange={(response) => {
-                                formik.setFieldValue("recaptcha", response)
-                            }}
-                        />
-                    </Grid>
-                    {formik.errors.recaptcha && (
-                        <Grid item xs={12}>
-                            <Alert severity="error" variant="outlined">
-                                {formik.errors.recaptcha}
-                            </Alert>
-                        </Grid>
-                    )}
-                    <Grid item md={8} />
+                            {message.active && (
+                                <Grid item xs={12}>
+                                    <Message
+                                        title={message.title}
+                                        type={message.type}
+                                        message={message.message}
+                                    />
+                                </Grid>
+                            )}
 
-                    {message.active && (
-                        <Grid item xs={12}>
-                            <Message
-                                title={message.title}
-                                type={message.type}
-                                message={message.message}
-                            />
-                        </Grid>
-                    )}
+                            {!!Object.keys(formik.errors).length && (
+                                <Grid item xs={12}>
+                                    <Message
+                                        title={"Hay campos con errores"}
+                                        type={"error"}
+                                        message={`Corroborar campos en color rojo.`}
+                                    />
+                                </Grid>
+                            )}
 
-                    {!!Object.keys(formik.errors).length && (
-                        <Grid item xs={12}>
-                            <Message
-                                title={"Hay campos con errores"}
-                                type={"error"}
-                                message={`Corroborar campos en color rojo.`}
-                            />
-                        </Grid>
-                    )}
+                            <Grid item md={8} />
 
-                    <Grid item md={8} />
-
-                    <Grid item xs={12} md={4}>
-                        <LoadingButton
-                            fullWidth
-                            type="submit"
-                            variant="contained"
-                            loading={isLoading}
-                            loadingPosition="start"
-                        >
-                            Registrarse
-                        </LoadingButton>
-                    </Grid>
-                    <Grid item xs={12}></Grid>
-                </Grid>
+                            <Grid item xs={12} md={4}>
+                                <LoadingButton
+                                    fullWidth
+                                    type="submit"
+                                    variant="contained"
+                                    loading={isLoading}
+                                    loadingPosition="start"
+                                >
+                                    Registrarse
+                                </LoadingButton>
+                            </Grid>
+                            <Grid item xs={12}></Grid>
             </Box>
         </Container>
     )

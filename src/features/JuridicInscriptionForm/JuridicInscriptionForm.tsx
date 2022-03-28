@@ -43,7 +43,7 @@ export const JuridicInscriptionForm = () => {
     const message = useSelector((state: AppState) => state.message)
     const { isLoading } = useSelector((state: AppState) => state.loading)
     const router = useRouter()
- 
+
     const formik = useFormik({
         initialValues: personaJuridicaInitialValues,
         validationSchema: personaJuridicaValidationSchema,
@@ -170,6 +170,8 @@ export const JuridicInscriptionForm = () => {
                                 <Grid item xs={12}>
                                     <Divider sx={{ marginTop: 2 }} />
                                 </Grid>
+
+                                
 
                                 <TermsAndConditionsContainer fmk={formik} />
 

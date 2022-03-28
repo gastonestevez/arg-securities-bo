@@ -57,10 +57,14 @@ export const CuentaBancariaExterior = ({ index, fmk, arrayHelper }) => {
                     required
                     fullWidth
                     label="Moneda"
+                    disabled
+                    inputProps={
+                        { readOnly: true, }
+                    }
                     variant="outlined"
                     id={`cuentaBancariaExterior.[${index}].moneda`}
                     name={`cuentaBancariaExterior[${index}].moneda`}
-                    value={fmk.values.cuentaBancariaExterior?.moneda}
+                    value={"USDC"}
                     onChange={fmk.handleChange}
                     error={
                         fmk.touched.domiciliosUrbanos &&
@@ -135,7 +139,7 @@ export const CuentaBancariaExterior = ({ index, fmk, arrayHelper }) => {
                 <TextField
                     required
                     fullWidth
-                    label="Dirección (Address)"
+                    label="País"
                     variant="outlined"
                     id={`cuentaBancariaExterior.[${index}].direccion`}
                     name={`cuentaBancariaExterior[${index}].direccion`}
@@ -159,7 +163,7 @@ export const CuentaBancariaExterior = ({ index, fmk, arrayHelper }) => {
                 <TextField
                     required
                     fullWidth
-                    label="Número de banco ABA"
+                    label="Número ABA"
                     variant="outlined"
                     id={`cuentaBancariaExterior.[${index}].nroBancoABA`}
                     name={`cuentaBancariaExterior[${index}].nroBancoABA`}
@@ -205,9 +209,6 @@ export const CuentaBancariaExterior = ({ index, fmk, arrayHelper }) => {
                         fmk.errors.cuentaBancariaExterior[index]?.idSWIFT
                     }
                 />
-            </Grid>
-            <Grid item xs={12} sm={6}>
-                <TextField fullWidth label="Notas" variant="outlined" />
             </Grid>
         </>
     )

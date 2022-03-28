@@ -1,9 +1,24 @@
 import { Alert, Box, Checkbox, FormControlLabel, FormGroup, Grid, IconButton, MenuItem, TextField, Typography } from "@mui/material"
 import React from "react"
 import RemoveCircleIcon from "@mui/icons-material/RemoveCircle"
+import NumberFormat from "react-number-format"
+import { CustomNumberFormat } from "../../CustomNumberFormat/CustomNumberFormat"
 
 export const InfoPatrimonial = ({ index, fmk, arrayHelper }) => {
-    const procedencias = ["Actividad principal", "Renta", "Otro"]
+    const procedencias = [
+        {
+            title: "Ocupación Actual",
+            value: "Actividad principal"
+        },
+        {
+            title: "Renta",
+            value: "Renta"
+        },
+        {
+            title: "Otro",
+            value: "Otro"
+        }
+    ]
     const fondeos = [
         "Transferencia en pesos",
         "Transferencia en dólares",
@@ -46,7 +61,8 @@ export const InfoPatrimonial = ({ index, fmk, arrayHelper }) => {
                     variant="outlined"
                     InputLabelProps={{ shrink: true }}
                     onChange={fmk.handleChange}
-                    value={fmk.values.infoPatrimonial?.fecha}
+                    disabled
+                    value={new Date().toISOString().substring(0, 10)}
                     error={
                         fmk.touched.infoPatrimonial &&
                         fmk.touched.infoPatrimonial[index]?.fecha &&
@@ -66,7 +82,6 @@ export const InfoPatrimonial = ({ index, fmk, arrayHelper }) => {
                     fullWidth
                     label="Patrimonio (ARS)"
                     variant="outlined"
-                    type={"number"}
                     id={`infoPatrimonial.[${index}].patrimonio`}
                     name={`infoPatrimonial[${index}].patrimonio`}
                     value={fmk.values.infoPatrimonial?.patrimonio}
@@ -83,6 +98,9 @@ export const InfoPatrimonial = ({ index, fmk, arrayHelper }) => {
                         fmk.errors.infoPatrimonial &&
                         fmk.errors.infoPatrimonial[index]?.patrimonio
                     }
+                    InputProps={{
+                        inputComponent: CustomNumberFormat as any,
+                    }}
                 />
             </Grid>
             <Grid item xs={12} sm={6}>
@@ -91,7 +109,6 @@ export const InfoPatrimonial = ({ index, fmk, arrayHelper }) => {
                     fullWidth
                     label="Ingresos anuales (ARS)"
                     variant="outlined"
-                    type={"number"}
                     id={`infoPatrimonial.[${index}].ingresos`}
                     name={`infoPatrimonial[${index}].ingresos`}
                     value={fmk.values.infoPatrimonial?.ingresos}
@@ -108,6 +125,9 @@ export const InfoPatrimonial = ({ index, fmk, arrayHelper }) => {
                         fmk.errors.infoPatrimonial &&
                         fmk.errors.infoPatrimonial[index]?.ingresos
                     }
+                    InputProps={{
+                        inputComponent: CustomNumberFormat as any,
+                    }}
                 />
             </Grid>
             <Grid item xs={12} sm={6}>
@@ -138,7 +158,7 @@ export const InfoPatrimonial = ({ index, fmk, arrayHelper }) => {
             <Grid item xs={12} sm={6}>
                 <TextField
                     select
-                    label="Procedencia de fondos"
+                    label="Origen de fondos operados"
                     fullWidth
                     required
                     id={`infoPatrimonial.[${index}].procedenciaFondos`}
@@ -159,7 +179,7 @@ export const InfoPatrimonial = ({ index, fmk, arrayHelper }) => {
                     }
                 >
                     {procedencias.map((option) => (
-                        <MenuItem key={option} value={option}>
+                        <MenuItem key={option.title} value={option.value}>
                             {option}
                         </MenuItem>
                     ))}
@@ -191,7 +211,7 @@ export const InfoPatrimonial = ({ index, fmk, arrayHelper }) => {
             </Grid>
             <Grid item xs={12} sm={12}>
                 <Typography component="h6" variant="h6">
-                    Medio de fondeo
+                    Medios utilizados para fondear la cuenta
                 </Typography>
             </Grid>
             <Grid item xs={12} sm={12}>

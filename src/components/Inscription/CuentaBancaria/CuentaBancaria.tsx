@@ -7,11 +7,9 @@ export const CuentaBancaria = ({index, fmk, arrayHelper}) => {
     const tipoCuentas = [
         "Cuenta corriente",
         "Caja de ahorro",
-        "Cuenta judicial",
-        "Otros",
     ]
-    const monedas = ["ARS", "EUR", "EURC", "USD", "USDC", "USDL"]
-    const usos = ["Personal", "Comercial", "Débitos", "Créditos", "Otro"]
+    const monedas = ["ARS", "USD"]
+    // const usos = ["Personal", "Comercial", "Débitos", "Créditos", "Otro"]
 
 
     return (
@@ -25,7 +23,7 @@ export const CuentaBancaria = ({index, fmk, arrayHelper}) => {
                     }}
                 >
                     <Typography component="p">
-                        Cuenta Bancaria {`${index + 1}`}
+                        Cuenta Bancaria local {`${index + 1}`}
                     </Typography>
                     <IconButton
                         onClick={() => arrayHelper.remove(index)}
@@ -176,6 +174,7 @@ export const CuentaBancaria = ({index, fmk, arrayHelper}) => {
             <Grid item xs={12} sm={6}>
                 <TextField
                     fullWidth
+                    required
                     label="Número"
                     variant="outlined"
                     id={`cuentaBancaria.[${index}].numero`}
@@ -198,38 +197,9 @@ export const CuentaBancaria = ({index, fmk, arrayHelper}) => {
             </Grid>
             <Grid item xs={12} sm={6}>
                 <TextField
-                    select
-                    label="Uso"
                     fullWidth
+                    label="Titularidad de la Cuenta"
                     required
-                    id={`cuentaBancaria.[${index}].uso`}
-                    name={`cuentaBancaria[${index}].uso`}
-                    value={fmk.values.cuentaBancaria?.uso}
-                    onChange={fmk.handleChange}
-                    error={
-                        fmk.touched.cuentaBancaria &&
-                        fmk.touched.cuentaBancaria[index]?.uso &&
-                        fmk.errors.cuentaBancaria &&
-                        Boolean(fmk.errors.cuentaBancaria[index]?.uso)
-                    }
-                    helperText={
-                        fmk.touched.cuentaBancaria &&
-                        fmk.touched.cuentaBancaria[index]?.uso &&
-                        fmk.errors.cuentaBancaria &&
-                        fmk.errors.cuentaBancaria[index]?.uso
-                    }
-                >
-                    {usos.map((option) => (
-                        <MenuItem key={option} value={option}>
-                            {option}
-                        </MenuItem>
-                    ))}
-                </TextField>
-            </Grid>
-            <Grid item xs={12} sm={6}>
-                <TextField
-                    fullWidth
-                    label="Denominación"
                     variant="outlined"
                     id={`cuentaBancaria.[${index}].denominacion`}
                     name={`cuentaBancaria[${index}].denominacion`}
@@ -246,29 +216,6 @@ export const CuentaBancaria = ({index, fmk, arrayHelper}) => {
                         fmk.touched.cuentaBancaria[index]?.denominacion &&
                         fmk.errors.cuentaBancaria &&
                         fmk.errors.cuentaBancaria[index]?.denominacion
-                    }
-                />
-            </Grid>
-            <Grid item xs={12} sm={12}>
-                <TextField
-                    fullWidth
-                    label="Notas"
-                    variant="outlined"
-                    id={`cuentaBancaria.[${index}].notas`}
-                    name={`cuentaBancaria[${index}].notas`}
-                    value={fmk.values.cuentaBancaria?.notas}
-                    onChange={fmk.handleChange}
-                    error={
-                        fmk.touched.cuentaBancaria &&
-                        fmk.touched.cuentaBancaria[index]?.notas &&
-                        fmk.errors.cuentaBancaria &&
-                        Boolean(fmk.errors.cuentaBancaria[index]?.notas)
-                    }
-                    helperText={
-                        fmk.touched.cuentaBancaria &&
-                        fmk.touched.cuentaBancaria[index]?.notas &&
-                        fmk.errors.cuentaBancaria &&
-                        fmk.errors.cuentaBancaria[index]?.notas
                     }
                 />
             </Grid>

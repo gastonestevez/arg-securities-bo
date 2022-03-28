@@ -24,7 +24,7 @@ export const DatosFiscalesNacionales = ({ fmk }) => {
         <>
             <Grid item xs={12} sm={12}>
                 <Typography component="h5" variant="h5">
-                    Datos fiscales nacionales
+                    Datos fiscales
                 </Typography>
             </Grid>
             <Grid item xs={12} sm={6}>
@@ -51,7 +51,7 @@ export const DatosFiscalesNacionales = ({ fmk }) => {
                 <TextField
                     required
                     fullWidth
-                    label="Clave fiscal"
+                    label="Número de CUIT/CUIL/CDI"
                     variant="outlined"
                     id="datosFiscales.cuit"
                     name="datosFiscales.cuit"
