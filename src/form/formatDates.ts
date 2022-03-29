@@ -10,10 +10,7 @@ const processDate = (newdt: Date): Date => {
 export const formatDates = (payload: any) => {
     const { datosPersonales, infoPatrimonial } = payload.titular
     const { personaRelacionada } = payload
-    console.log(`FORMAT PERSSONA RELACIONADA`)
-    console.log({personaRelacionada})
     const formattedPersonaRelacionada = personaRelacionada.map(p => {
-        console.log({p})
         return {
             ...p,
             persona: {
@@ -33,7 +30,6 @@ export const formatDates = (payload: any) => {
             }
         }
     })
-    console.log({formattedPersonaRelacionada})
     const formattedDatosPersonales = {
         ...datosPersonales,
         fechaNacimiento: format(

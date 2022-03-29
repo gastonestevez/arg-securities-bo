@@ -56,7 +56,6 @@ export const PersonasRelacionadas = () => {
         dispatch(onChangeRelacion({tipo: e.target.value, index}))
         setTipo(e.target.value)
     }
-    console.log(forms)
     return (
         <>
             <Grid item xs={12} sm={12}>

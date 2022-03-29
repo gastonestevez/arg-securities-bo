@@ -85,7 +85,6 @@ export const InscriptionForm = () => {
                 personaRelacionada
             }
 
-            console.log(formatDates(personaFisicaDTO))
 
             const response = await dispatch(
                 registerPersonaFisica(formatDates(personaFisicaDTO))
@@ -96,7 +95,6 @@ export const InscriptionForm = () => {
             }
         },
     })
-    console.log(formik.errors)
     return (
         <Container maxWidth="md">
             <CssBaseline />
