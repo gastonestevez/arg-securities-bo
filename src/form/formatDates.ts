@@ -38,8 +38,6 @@ export const formatDates = (payload: any) => {
 
 export const formatJuridicDates = (payload: any) => {
     const { patrimonioYBalance, datosOrganizacion, registro } = payload.titular
-    console.log({patrimonioYBalance, datosOrganizacion, registro})
-    console.log(registro[0])
     const formattedDatosOrganizacion = {
         ...datosOrganizacion,
         cierreBalance: format(

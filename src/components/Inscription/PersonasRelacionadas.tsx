@@ -13,9 +13,6 @@ export const PersonasRelacionadas = () => {
         setForms ([...forms, forms.length+1 ])
     }
 
-    const setFmk = (fm) => {
-        console.log(fm)
-    }
 
     return (
         <>

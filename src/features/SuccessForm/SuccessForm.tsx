@@ -15,7 +15,6 @@ export const SuccessForm = () => {
             router.back()
         }
     }, [])
-    console.log(completed);
 
     const handleGoHome = () => {
         dispatch(toggleCompletedForm())

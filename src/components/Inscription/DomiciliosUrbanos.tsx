@@ -11,7 +11,6 @@ import { DomicilioUrbano } from "./DomicilioUrbano/DomicilioUrbano"
 import { FieldArray } from "formik"
 
 export const DomiciliosUrbanos = ({ fmk }) => {
-    console.log({fmk})
     return (
         <>
             <FieldArray
@@ -61,8 +60,6 @@ export const DomiciliosUrbanos = ({ fmk }) => {
                             </Grid>
                         )}
                         {fmk.values.domicilioUrbano.map((dom, index) => {
-                            console.log({dom})
-                            console.log({arrayHelpers})
                             return (<DomicilioUrbano index={index} fmk={fmk} arrayHelper={arrayHelpers} />)
                         })}
                     </>

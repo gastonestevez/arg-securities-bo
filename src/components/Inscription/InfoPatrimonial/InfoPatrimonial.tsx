@@ -1,35 +1,55 @@
-import { Alert, Box, Checkbox, FormControlLabel, FormGroup, Grid, IconButton, MenuItem, TextField, Typography } from "@mui/material"
-import React from "react"
+import {
+    Alert,
+    Box,
+    Checkbox,
+    FormControlLabel,
+    FormGroup,
+    Grid,
+    IconButton,
+    MenuItem,
+    TextField,
+    Typography,
+} from "@mui/material"
+import React, { useState } from "react"
 import RemoveCircleIcon from "@mui/icons-material/RemoveCircle"
 import NumberFormat from "react-number-format"
 import { CustomNumberFormat } from "../../CustomNumberFormat/CustomNumberFormat"
 
 export const InfoPatrimonial = ({ index, fmk, arrayHelper }) => {
+    const [otros, setOtros] = useState(false)
+
     const procedencias = [
         {
             title: "Ocupación Actual",
-            value: "Actividad principal"
+            value: "Actividad principal",
         },
         {
             title: "Renta",
-            value: "Renta"
+            value: "Renta",
         },
         {
             title: "Otro",
-            value: "Otro"
-        }
+            value: "Otro",
+        },
     ]
     const fondeos = [
-        "Transferencia en pesos",
-        "Transferencia en dólares",
+        "Transferencia en $",
+        "Transferencia en u$s",
         "Cheques propios",
         "Cheques de terceros",
-        "Títulos",
+        "Plazos fijos transferibles",
+        "Otros",
     ]
+
+    const handleFondeoChange = (e) => {
+        const { value } = e.target
+        if (value === "Otros") setOtros(!otros)
+        fmk.handleChange(e)
+    }
 
     return (
         <>
-        <Grid item xs={12}>
+            <Grid item xs={12}>
                 <Box
                     sx={{
                         display: "flex",
@@ -169,7 +189,9 @@ export const InfoPatrimonial = ({ index, fmk, arrayHelper }) => {
                         fmk.touched.infoPatrimonial &&
                         fmk.touched.infoPatrimonial[index]?.procedenciaFondos &&
                         fmk.errors.infoPatrimonial &&
-                        Boolean(fmk.errors.infoPatrimonial[index]?.procedenciaFondos)
+                        Boolean(
+                            fmk.errors.infoPatrimonial[index]?.procedenciaFondos
+                        )
                     }
                     helperText={
                         fmk.touched.infoPatrimonial &&
@@ -180,35 +202,12 @@ export const InfoPatrimonial = ({ index, fmk, arrayHelper }) => {
                 >
                     {procedencias.map((option) => (
                         <MenuItem key={option.title} value={option.value}>
-                            {option}
+                            {option.title}
                         </MenuItem>
                     ))}
                 </TextField>
             </Grid>
-            <Grid item xs={12} sm={6}>
-                <TextField
-                    fullWidth
-                    required
-                    label="Observaciones"
-                    variant="outlined"
-                    id={`infoPatrimonial.[${index}].observaciones`}
-                    name={`infoPatrimonial[${index}].observaciones`}
-                    value={fmk.values.infoPatrimonial?.observaciones}
-                    onChange={fmk.handleChange}
-                    error={
-                        fmk.touched.infoPatrimonial &&
-                        fmk.touched.infoPatrimonial[index]?.observaciones &&
-                        fmk.errors.infoPatrimonial &&
-                        Boolean(fmk.errors.infoPatrimonial[index]?.observaciones)
-                    }
-                    helperText={
-                        fmk.touched.infoPatrimonial &&
-                        fmk.touched.infoPatrimonial[index]?.observaciones &&
-                        fmk.errors.infoPatrimonial &&
-                        fmk.errors.infoPatrimonial[index]?.observaciones
-                    }
-                />
-            </Grid>
+
             <Grid item xs={12} sm={12}>
                 <Typography component="h6" variant="h6">
                     Medios utilizados para fondear la cuenta
@@ -227,7 +226,9 @@ export const InfoPatrimonial = ({ index, fmk, arrayHelper }) => {
                                                 id={`infoPatrimonial.[${index}].fondeo`}
                                                 name={`infoPatrimonial[${index}].fondeo`}
                                                 value={f}
-                                                onChange={fmk.handleChange}
+                                                onChange={(e) =>
+                                                    handleFondeoChange(e)
+                                                }
                                             />
                                         }
                                         label={f}
@@ -238,6 +239,34 @@ export const InfoPatrimonial = ({ index, fmk, arrayHelper }) => {
                     </Grid>
                 </FormGroup>
             </Grid>
+            {otros && (
+                <Grid item xs={12} sm={12}>
+                    <TextField
+                        fullWidth
+                        required
+                        label="Observaciones"
+                        variant="outlined"
+                        id={`infoPatrimonial.[${index}].observaciones`}
+                        name={`infoPatrimonial[${index}].observaciones`}
+                        value={fmk.values.infoPatrimonial?.observaciones}
+                        onChange={fmk.handleChange}
+                        error={
+                            fmk.touched.infoPatrimonial &&
+                            fmk.touched.infoPatrimonial[index]?.observaciones &&
+                            fmk.errors.infoPatrimonial &&
+                            Boolean(
+                                fmk.errors.infoPatrimonial[index]?.observaciones
+                            )
+                        }
+                        helperText={
+                            fmk.touched.infoPatrimonial &&
+                            fmk.touched.infoPatrimonial[index]?.observaciones &&
+                            fmk.errors.infoPatrimonial &&
+                            fmk.errors.infoPatrimonial[index]?.observaciones
+                        }
+                    />
+                </Grid>
+            )}
         </>
     )
 }

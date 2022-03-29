@@ -26,7 +26,6 @@ export const loginAunesa = (payload: any): AppThunk => async (dispatch, getState
             NEXT_PUBLIC_AUNESA_LOGIN_ENDPOINT: loginEndpoint
         } = process.env
         process.env.NODE_TLS_REJECT_UNAUTHORIZED = "0"
-        console.log(us, pa, endpoint, loginEndpoint, process.env);
         const loginPayload = {
             clientId: "0303456",
             username: us,
@@ -41,7 +40,6 @@ export const loginAunesa = (payload: any): AppThunk => async (dispatch, getState
         }
         const { data } = await axios.post(loginEndpoint, loginPayload, config)
         const { token } = data
-        console.log({data, token})
     } catch(e) {
         console.log(e)
     }
@@ -80,7 +78,6 @@ export const registerPersonaFisica =
                 },
             })
             const res = await instance.post(endpoint, payload)
-            console.log(res)
             dispatch(setLoading(false))
             return res
         } catch (error) {

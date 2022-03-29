@@ -75,7 +75,6 @@ export const InscriptionForm = () => {
             }
         },
     })
-    console.log(formik)
     return (
         <Container maxWidth="md">
             <CssBaseline />
