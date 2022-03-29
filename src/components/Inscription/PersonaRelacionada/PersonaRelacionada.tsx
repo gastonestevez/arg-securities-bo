@@ -13,13 +13,17 @@ import RemoveCircleIcon from "@mui/icons-material/RemoveCircle"
 import { FormikProvider, useFormik } from "formik"
 import { personaRelacionadaInitialValues } from "../../../form/initialValues"
 import { personaRelacionadaValidationSchema } from "../../../validations/validations"
-const PersonaRelacionada = ({ index, onClickRemove }) => {
+const PersonaRelacionada = ({ index, onClickRemove, onChange }) => {
     const formik = useFormik({
         initialValues: personaRelacionadaInitialValues,
         validationSchema: personaRelacionadaValidationSchema,
         onSubmit: async (values) => {
             console.log(values)
         },
+        validate: (values) => {
+            onChange(values, index)
+        }
+        
     })
 
     return (
@@ -54,9 +58,9 @@ const PersonaRelacionada = ({ index, onClickRemove }) => {
                 <InformacionPatrimonial fmk={formik} />
                 <Actividades fmk={formik} />
                 <Declaraciones fmk={formik} />
-                <Grid item xs={12}>
+                {/* <Grid item xs={12}>
                     <Button variant="contained">Agregar titular</Button>
-                </Grid>
+                </Grid> */}
             </FormikProvider>
         </>
     )

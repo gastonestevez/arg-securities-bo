@@ -4,6 +4,8 @@ import counterReducer from "../features/counter/counterSlice"
 import messageReducer from "../features/InscriptionForm/messageSlice"
 import completedFormReducer from "../features/InscriptionForm/completedFormSlice"
 import loadingReducer from "../features/InscriptionForm/loadingSlice"
+import personasRelacionadasReducer from "../components/Inscription/personasRelacionadasSlice"
+
 export function makeStore() {
     return configureStore({
         reducer: {
@@ -11,6 +13,7 @@ export function makeStore() {
             message: messageReducer,
             completedForm: completedFormReducer,
             loading: loadingReducer,
+            personasRelacionadas: personasRelacionadasReducer
         },
     })
 }

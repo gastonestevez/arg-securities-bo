@@ -42,12 +42,29 @@ export const InscriptionForm = () => {
     const dispatch = useAppDispatch()
     const message = useSelector((state: AppState) => state.message)
     const { isLoading } = useSelector((state: AppState) => state.loading)
+    const { personas } = useSelector(
+        (state: AppState) => state.personasRelacionadas
+    )
     const router = useRouter()
 
     const formik = useFormik({
         initialValues: personaFisicaInitialValues,
         validationSchema: personaFisicaValidationSchema,
         onSubmit: async (values) => {
+            const personaRelacionada = personas.map(p => {
+                return {
+                    tipo: p.tipo,
+                    orden: p.index,
+                    persona: {
+                        personaFisica: true,
+                        perfilInversor: {
+                            experiencia: "Ninguna",
+                            perfilPersonal: "Conservador",
+                        },
+                        ...p
+                    }
+                }
+            })
             const personaFisicaDTO = {
                 titular: {
                     personaFisica: true,
@@ -65,7 +82,11 @@ export const InscriptionForm = () => {
                     horizonteInversion: null,
                     perfilDeInversion: null,
                 },
+                personaRelacionada
             }
+
+            console.log(formatDates(personaFisicaDTO))
+
             const response = await dispatch(
                 registerPersonaFisica(formatDates(personaFisicaDTO))
             )
@@ -75,6 +96,7 @@ export const InscriptionForm = () => {
             }
         },
     })
+    console.log(formik.errors)
     return (
         <Container maxWidth="md">
             <CssBaseline />
@@ -183,76 +205,78 @@ export const InscriptionForm = () => {
                             </Grid>
 
                             <Grid item md={8} />
+
+                            <PersonasRelacionadas />
+
+                            <Grid item xs={12}>
+                                <Divider sx={{ marginTop: 2 }} />
+                            </Grid>
+                            <Grid
+                                item
+                                xs={12}
+                                sx={{
+                                    display: "flex",
+                                    justifyContent: "flex-end",
+                                }}
+                            >
+                                <ReCAPTCHA
+                                    sitekey="6LcPTAweAAAAAJslpywllHcuD4SJy0rZhnXk0zOx"
+                                    ref={recaptchaRef}
+                                    badge={"bottomright"}
+                                    onChange={(response) => {
+                                        formik.setFieldValue(
+                                            "recaptcha",
+                                            response
+                                        )
+                                    }}
+                                />
+                            </Grid>
+                            {formik.errors.recaptcha && (
+                                <Grid item xs={12}>
+                                    <Alert severity="error" variant="outlined">
+                                        {formik.errors.recaptcha}
+                                    </Alert>
+                                </Grid>
+                            )}
+                            <Grid item md={8} />
+
+                            {message.active && (
+                                <Grid item xs={12}>
+                                    <Message
+                                        title={message.title}
+                                        type={message.type}
+                                        message={message.message}
+                                    />
+                                </Grid>
+                            )}
+
+                            {!!Object.keys(formik.errors).length && (
+                                <Grid item xs={12}>
+                                    <Message
+                                        title={"Hay campos con errores"}
+                                        type={"error"}
+                                        message={`Corroborar campos en color rojo.`}
+                                    />
+                                </Grid>
+                            )}
+
+                            <Grid item md={8} />
+
+                            <Grid item xs={12} md={4}>
+                                <LoadingButton
+                                    fullWidth
+                                    type="submit"
+                                    variant="contained"
+                                    loading={isLoading}
+                                    loadingPosition="start"
+                                >
+                                    Registrarse
+                                </LoadingButton>
+                            </Grid>
+                            <Grid item xs={12}></Grid>
                         </Grid>
                     </Box>
                 </FormikProvider>
-                <Grid container spacing={2}>
-                    <PersonasRelacionadas />
-
-                    <Grid item xs={12}>
-                        <Divider sx={{ marginTop: 2 }} />
-                    </Grid>
-                    <Grid
-                        item
-                        xs={12}
-                        sx={{
-                            display: "flex",
-                            justifyContent: "flex-end",
-                        }}
-                    >
-                        <ReCAPTCHA
-                            sitekey="6LcPTAweAAAAAJslpywllHcuD4SJy0rZhnXk0zOx"
-                            ref={recaptchaRef}
-                            badge={"bottomright"}
-                            onChange={(response) => {
-                                formik.setFieldValue("recaptcha", response)
-                            }}
-                        />
-                    </Grid>
-                    {formik.errors.recaptcha && (
-                        <Grid item xs={12}>
-                            <Alert severity="error" variant="outlined">
-                                {formik.errors.recaptcha}
-                            </Alert>
-                        </Grid>
-                    )}
-                    <Grid item md={8} />
-
-                    {message.active && (
-                        <Grid item xs={12}>
-                            <Message
-                                title={message.title}
-                                type={message.type}
-                                message={message.message}
-                            />
-                        </Grid>
-                    )}
-
-                    {!!Object.keys(formik.errors).length && (
-                        <Grid item xs={12}>
-                            <Message
-                                title={"Hay campos con errores"}
-                                type={"error"}
-                                message={`Corroborar campos en color rojo.`}
-                            />
-                        </Grid>
-                    )}
-
-                    <Grid item md={8} />
-
-                    <Grid item xs={12} md={4}>
-                        <LoadingButton
-                            fullWidth
-                            type="submit"
-                            variant="contained"
-                            loading={isLoading}
-                            loadingPosition="start"
-                        >
-                            Registrarse
-                        </LoadingButton>
-                    </Grid>
-                    <Grid item xs={12}></Grid>
-                </Grid>
             </Box>
         </Container>
     )

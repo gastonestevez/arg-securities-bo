@@ -41,7 +41,7 @@ export const InformacionPatrimonial = ({ fmk }) => {
                                     <IconButton
                                         onClick={() =>
                                             arrayHelpers.push({
-                                                fecha: "",
+                                                fecha: new Date().toISOString().substring(0, 10),
                                                 patrimonio: 0,
                                                 ingresos: 0,
                                                 inversion: 0,

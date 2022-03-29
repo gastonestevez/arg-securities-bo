@@ -27,7 +27,7 @@ export const personaFisicaInitialValues = {
     },
     mediocomunicacion: [
         {
-            tipo: "E-mail",
+            tipo: "E-Mail",
             medio: "",
             uso: "",
             notas: "",
@@ -154,7 +154,7 @@ export const personaRelacionadaInitialValues = {
     
     mediocomunicacion: [
         {
-            tipo: "E-mail",
+            tipo: "E-Mail",
             medio: "",
             uso: "",
             notas: "",

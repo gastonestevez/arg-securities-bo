@@ -59,7 +59,7 @@ export const Actividad = ({ index, fmk, arrayHelper }) => {
                     <Typography component="p">
                         {index === 0
                             ? "Ocupación actual"
-                            : `Actividad ${index + 1}`}
+                            : `Actividad secundaria`}
                     </Typography>
                     <IconButton
                         onClick={() => arrayHelper.remove(index)}
@@ -196,30 +196,6 @@ export const Actividad = ({ index, fmk, arrayHelper }) => {
                         fmk.touched.actividadPersona[index]?.puesto &&
                         fmk.errors.actividadPersona &&
                         fmk.errors.actividadPersona[index]?.puesto
-                    }
-                />
-            </Grid>
-            <Grid item xs={12} sm={6}>
-                <TextField
-                    fullWidth
-                    label="Profesión"
-                    required
-                    variant="outlined"
-                    id={`actividadPersona.[${index}].rubro`}
-                    name={`actividadPersona[${index}].rubro`}
-                    value={fmk.values.actividadPersona[index]?.rubro}
-                    onChange={fmk.handleChange}
-                    error={
-                        fmk.touched.actividadPersona &&
-                        fmk.touched.actividadPersona[index]?.rubro &&
-                        fmk.errors.actividadPersona &&
-                        Boolean(fmk.errors.actividadPersona[index]?.rubro)
-                    }
-                    helperText={
-                        fmk.touched.actividadPersona &&
-                        fmk.touched.actividadPersona[index]?.rubro &&
-                        fmk.errors.actividadPersona &&
-                        fmk.errors.actividadPersona[index]?.rubro
                     }
                 />
             </Grid>

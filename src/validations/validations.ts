@@ -114,7 +114,7 @@ export const personaFisicaValidationSchema = yup.object({
         .array()
         .of(
             yup.object().shape({
-                fecha: yup.string().required("Este campo es requerido."),
+                fecha: yup.string(),
                 patrimonio: yup.number().notRequired(),
                 ingresos: yup.number().required("Este campo es requerido."),
                 inversion: yup.number().required("Este campo es requerido."),
@@ -122,8 +122,7 @@ export const personaFisicaValidationSchema = yup.object({
                     .string()
                     .required("Este campo es requerido"),
                 observaciones: yup
-                    .string()
-                    .required("Este campo es requerido."),
+                    .string(),
             })
         )
         .min(1, "Debe establecer al menos un patrimonio.")
@@ -193,7 +192,7 @@ export const personaRelacionadaValidationSchema = yup.object({
         .array()
         .of(
             yup.object().shape({
-                fecha: yup.string().required("Este campo es requerido."),
+                fecha: yup.string(),
                 patrimonio: yup.number().notRequired(),
                 ingresos: yup.number().required("Este campo es requerido."),
                 inversion: yup.number().required("Este campo es requerido."),
@@ -201,8 +200,7 @@ export const personaRelacionadaValidationSchema = yup.object({
                     .string()
                     .required("Este campo es requerido"),
                 observaciones: yup
-                    .string()
-                    .required("Este campo es requerido."),
+                    .string(),
             })
         )
         .min(1, "Debe establecer al menos un patrimonio.")

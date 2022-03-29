@@ -9,7 +9,31 @@ const processDate = (newdt: Date): Date => {
 
 export const formatDates = (payload: any) => {
     const { datosPersonales, infoPatrimonial } = payload.titular
-
+    const { personaRelacionada } = payload
+    console.log(`FORMAT PERSSONA RELACIONADA`)
+    console.log({personaRelacionada})
+    const formattedPersonaRelacionada = personaRelacionada.map(p => {
+        console.log({p})
+        return {
+            ...p,
+            persona: {
+                ...p.persona,
+    
+                datosPersonales: {
+                    ...p.persona.datosPersonales,
+                    fechaNacimiento: format(processDate(p.persona.datosPersonales.fechaNacimiento), defaultFormat)
+                },
+                infoPatrimonial: p.persona.infoPatrimonial.map(ip => {
+                    return {
+                        ...ip,
+                        procedenciaFondos: [ip.procedenciaFondos],
+                        fecha: format(processDate(ip.fecha), defaultFormat)
+                    }
+                })
+            }
+        }
+    })
+    console.log({formattedPersonaRelacionada})
     const formattedDatosPersonales = {
         ...datosPersonales,
         fechaNacimiento: format(
@@ -33,6 +57,7 @@ export const formatDates = (payload: any) => {
             datosPersonales: formattedDatosPersonales,
             infoPatrimonial: formattedInfoPatrimonial,
         },
+        personaRelacionada: formattedPersonaRelacionada
     }
 }
 

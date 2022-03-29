@@ -35,6 +35,10 @@ export const Actividades = ({ fmk }) => {
                                 </Box>
                                 <Box>
                                     <IconButton
+                                        disabled={
+                                            fmk.values.actividadPersona
+                                                .length === 2
+                                        }
                                         onClick={() =>
                                             arrayHelpers.push({
                                                 actividad: "",
@@ -56,15 +60,17 @@ export const Actividades = ({ fmk }) => {
                                 </Box>
                             </Box>
                         </Grid>
-                        <Grid item xs={12}>
-                            <Message
-                                type={"info"}
-                                title={"Estimado inversor:"}
-                                message={
-                                    "Si adicionalmente a su actividad principal, realiza alguna otra actividad que le genere ingresos, por favor agregue la “Actividad Secundaria” y descríbala brevemente."
-                                }
-                            />
-                        </Grid>
+                        {!!(fmk.values.actividadPersona.length > 0) && (
+                            <Grid item xs={12}>
+                                <Message
+                                    type={"info"}
+                                    title={"Estimado inversor:"}
+                                    message={
+                                        "Si adicionalmente a su actividad principal, realiza alguna otra actividad que le genere ingresos, por favor agregue la “Actividad Secundaria” y descríbala brevemente."
+                                    }
+                                />
+                            </Grid>
+                        )}
                         {typeof fmk.errors.actividadPersona === "string" && (
                             <Grid item xs={12}>
                                 <Alert severity="error" variant="outlined">

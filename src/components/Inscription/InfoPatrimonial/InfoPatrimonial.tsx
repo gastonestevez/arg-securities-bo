@@ -80,8 +80,11 @@ export const InfoPatrimonial = ({ index, fmk, arrayHelper }) => {
                     defaultValue={""}
                     variant="outlined"
                     InputLabelProps={{ shrink: true }}
+                    inputProps={
+                        { readOnly: true, }
+                    }
                     onChange={fmk.handleChange}
-                    disabled
+
                     value={new Date().toISOString().substring(0, 10)}
                     error={
                         fmk.touched.infoPatrimonial &&
