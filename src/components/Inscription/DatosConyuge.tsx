@@ -126,7 +126,7 @@ export const DatosConyuge = ({ fmk }) => {
             <Grid item xs={12} sm={6}>
                 <TextField
                     fullWidth
-                    label="Clave fiscal"
+                    label="Número de CUIT/CUIL/CDI"
                     variant="outlined"
                     id={"datosConyuge.claveFiscal"}
                     name={"datosConyuge.claveFiscal"}

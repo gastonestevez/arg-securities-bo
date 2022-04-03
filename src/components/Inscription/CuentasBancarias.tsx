@@ -29,7 +29,7 @@ export const CuentasBancarias = ({ fmk }) => {
                             >
                                 <Box>
                                     <Typography component="h5" variant="h5">
-                                        Cuentas bancarias
+                                        Cuentas bancarias locales
                                     </Typography>
                                 </Box>
                                 <Box>

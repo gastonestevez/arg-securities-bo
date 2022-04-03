@@ -12,10 +12,13 @@ export const completedFormSlice = createSlice({
     initialState,
     reducers: {
         toggleCompletedForm: (state) => {
-            state.completed = !state.completed
+            state.completed = true
+        },
+        resetForm: (state) => {
+            state.completed = false
         }
     }
 })
 
-export const { toggleCompletedForm } = completedFormSlice.actions
+export const { toggleCompletedForm, resetForm } = completedFormSlice.actions
 export default completedFormSlice.reducer

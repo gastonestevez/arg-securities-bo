@@ -4,6 +4,8 @@ import type { AppState, AppThunk } from "../../app/store"
 
 import axios from "axios"
 import { createMessage } from "./messageSlice"
+import { toggleCompletedForm } from "./completedFormSlice"
+import { setLoading } from "./loadingSlice"
 
 export interface CounterState {
     value: number
@@ -15,10 +17,39 @@ const initialState: CounterState = {
     status: "idle",
 }
 
+export const loginAunesa = (payload: any): AppThunk => async (dispatch, getState) => {
+    try {
+        const {
+            NEXT_PUBLIC_AUNESA_USER: us,
+            NEXT_PUBLIC_AUNESA_PASSWORD: pa,
+            NEXT_PUBLIC_AUNESA_OPENING_ACOUNT_ENDPOINT: endpoint,
+            NEXT_PUBLIC_AUNESA_LOGIN_ENDPOINT: loginEndpoint
+        } = process.env
+        process.env.NODE_TLS_REJECT_UNAUTHORIZED = "0"
+        const loginPayload = {
+            clientId: "0303456",
+            username: us,
+            password: pa,
+        }
+
+        const config = {
+            headers: {
+                Accept: "application/json",
+                "Content-Type": "application/json",
+            },
+        }
+        const { data } = await axios.post(loginEndpoint, loginPayload, config)
+        const { token } = data
+    } catch(e) {
+        console.log(e)
+    }
+}
+
 export const registerPersonaFisica =
     (payload: any): AppThunk =>
     async (dispatch, getState) => {
         try {
+            dispatch(setLoading(true))
             const {
                 NEXT_PUBLIC_AUNESA_USER: us,
                 NEXT_PUBLIC_AUNESA_PASSWORD: pa,
@@ -26,7 +57,6 @@ export const registerPersonaFisica =
                 NEXT_PUBLIC_AUNESA_LOGIN_ENDPOINT: loginEndpoint
             } = process.env
             process.env.NODE_TLS_REJECT_UNAUTHORIZED = "0"
-            console.log(us, pa, endpoint, loginEndpoint, process.env);
             const loginPayload = {
                 clientId: "0303456",
                 username: us,
@@ -48,24 +78,17 @@ export const registerPersonaFisica =
                 },
             })
             const res = await instance.post(endpoint, payload)
-            console.log(res)
+            dispatch(setLoading(false))
             return res
-            // const response = await axios.post(
-            //     "http://localhost:1234/api/persona/fisica",
-            //     JSON.stringify(payload),
-            //     {
-            //         headers: {
-            //             "Content-Type": "application/json",
-            //         },
-            //     }
-            // )
         } catch (error) {
-            console.error(error)
+            // console.error({error, ez: error.response.data.errors[0].detail})
+            console.log(error)
+            dispatch(setLoading(false))
             dispatch(createMessage({
                 active: true,
-                title: 'Hubo un problema con el formulario',
+                title: 'Ocurrió un problema con el formulario',
                 type: 'error',
-                message: error.errors[0].detail
+                message: error.response?.data?.errors[0].detail || 'Consultar con el área de soporte.'
             }))
         }
     }

@@ -24,47 +24,29 @@ import { personaFisicaValidationSchema } from "../../validations/validations"
 import { personaFisicaInitialValues } from "../../form/initialValues"
 import ReCAPTCHA from "react-google-recaptcha"
 import { useAppDispatch } from "../../app/hooks"
-import { loginAunesa, registerPersonaFisica } from "./InscriptionThunk"
+import { loginAunesa, registerPersonaFisica } from "../InscriptionForm/InscriptionThunk"
 import { formatDates } from "../../form/formatDates"
 import TermsAndConditionsContainer from "../../components/TermsAndConditions"
-import { createMessage } from "./messageSlice"
+import { createMessage } from "../InscriptionForm/messageSlice"
 import { useSelector } from "react-redux"
 import { AppState } from "../../app/store"
 import Message from "../../components/Message"
-import { toggleCompletedForm } from "./completedFormSlice"
+import { toggleCompletedForm } from "../InscriptionForm/completedFormSlice"
 import { useRouter } from "next/router"
 import LoadingButton from "@mui/lab/LoadingButton"
-import { setLoading } from "./loadingSlice"
 import { PersonasRelacionadas } from "../../components/Inscription/PersonasRelacionadas"
 
-export const InscriptionForm = () => {
+export const RelatedPersonInscriptionForm = () => {
     const recaptchaRef = React.useRef(null)
     const dispatch = useAppDispatch()
     const message = useSelector((state: AppState) => state.message)
     const { isLoading } = useSelector((state: AppState) => state.loading)
-    const { personas } = useSelector(
-        (state: AppState) => state.personasRelacionadas
-    )
     const router = useRouter()
 
     const formik = useFormik({
         initialValues: personaFisicaInitialValues,
         validationSchema: personaFisicaValidationSchema,
         onSubmit: async (values) => {
-            const personaRelacionada = personas.map(p => {
-                return {
-                    tipo: p.tipo,
-                    orden: p.index,
-                    persona: {
-                        personaFisica: true,
-                        perfilInversor: {
-                            experiencia: "Ninguna",
-                            perfilPersonal: "Conservador",
-                        },
-                        ...p
-                    }
-                }
-            })
             const personaFisicaDTO = {
                 titular: {
                     personaFisica: true,
@@ -82,10 +64,7 @@ export const InscriptionForm = () => {
                     horizonteInversion: null,
                     perfilDeInversion: null,
                 },
-                personaRelacionada
             }
-
-
             const response = await dispatch(
                 registerPersonaFisica(formatDates(personaFisicaDTO))
             )
@@ -107,9 +86,8 @@ export const InscriptionForm = () => {
                 }}
             >
                 <Typography component="h1" variant="h4">
-                    Registro de Persona Física {"(En construcción)"}
+                    Registro de Persona Relacionada {"(En construcción)"}
                 </Typography>
-
                 <FormikProvider value={formik}>
                     <Box
                         component="form"
@@ -118,19 +96,6 @@ export const InscriptionForm = () => {
                         sx={{ mt: 4 }}
                     >
                         <Grid container spacing={2}>
-                            <Grid item xs={12}>
-                                <Message
-                                    type="info"
-                                    title="Estimado Inversor:"
-                                    message={`
-                Bienvenido a ARG SECURITIES ADVISORS S.A. Agente de Negociación Matricula CNV Nro. 719
-                Para iniciar el proceso de apertura de cuenta comitente deberá completar el siguiente formulario con la información de cada uno de los titulares. Una vez completada la información, deberá adjuntar la documentación solicitada en cada apartado.  
-                Una vez recibida la información, nos pondremos en contacto con Ud. a la brevedad para finalizar el proceso de apertura.
-                Muchas gracias!
-                
-                `}
-                                />
-                            </Grid>
                             <DatosPrincipales fmk={formik} />
 
                             <Grid item xs={12}>
@@ -197,19 +162,23 @@ export const InscriptionForm = () => {
                                 <Divider sx={{ marginTop: 2 }} />
                             </Grid>
 
+                            <PersonasRelacionadas fmk={formik} />
+
+                            <Grid item xs={12}>
+                                <Divider sx={{ marginTop: 2 }} />
+                            </Grid>
+
                             <TermsAndConditionsContainer fmk={formik} />
                             <Grid item xs={12}>
                                 <Divider sx={{ marginTop: 2 }} />
                             </Grid>
 
                             <Grid item md={8} />
-
-                            <PersonasRelacionadas />
-
-                            <Grid item xs={12}>
-                                <Divider sx={{ marginTop: 2 }} />
-                            </Grid>
-                            <Grid
+                            
+                        </Grid>
+                    </Box>
+                </FormikProvider>
+                <Grid
                                 item
                                 xs={12}
                                 sx={{
@@ -272,9 +241,6 @@ export const InscriptionForm = () => {
                                 </LoadingButton>
                             </Grid>
                             <Grid item xs={12}></Grid>
-                        </Grid>
-                    </Box>
-                </FormikProvider>
             </Box>
         </Container>
     )

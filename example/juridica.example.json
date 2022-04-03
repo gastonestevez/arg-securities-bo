@@ -1,0 +1,60 @@
+{
+    "titular": {
+        "personaFisica": false,
+        "datosPrincipalesIdeal": {},
+        "datosFiscales": {
+            "actividades": []
+        },
+        "residenciaFiscalExterior": [],
+        "datosOrganizacion": {
+            "idioma": "español"
+        },
+        "registro": [
+            {}
+        ],
+        "mediocomunicacion": [
+            {
+                "tipo": "E-Mail",
+                "uso": "Personal",
+                "principal": true
+            },
+            {
+                "tipo": "Teléfono",
+                "uso": "Laboral",
+                "principal": false
+            },
+            {
+                "tipo": "Movil",
+                "uso": "Personal",
+                "principal": false
+            }
+        ],
+        "domicilioUrbano": [],
+        "domicilioSimple": [
+            {},
+            {}
+        ],
+        "domicilioRural": [],
+        "cuentaBancaria": [],
+        "cuentaBancariaExterior": [],
+        "autoridad": [],
+        "accionista": [],
+        "patrimonioYBalance": [
+            {
+                "procedenciaFondos": [
+                    null
+                ]
+            }
+        ],
+        "actividadOrganizacion": [],
+        "declaracionesPI": {},
+        "perfilInversor": {}
+    },
+    "disposicionesGenerales": {},
+    "usoFirma": [],
+    "medioComunicacion": [],
+    "domicilioUrbano": [],
+    "domicilioSimple": [],
+    "domicilioRural": [],
+    "cuentaBancaria": []
+}

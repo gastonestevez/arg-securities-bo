@@ -1,5 +1,5 @@
 export const personaFisicaInitialValues = {
-    recaptcha: '',
+    recaptcha: "",
     datosPrincipalesFisicas: {
         nombre: "",
         apellido: "",
@@ -11,7 +11,7 @@ export const personaFisicaInitialValues = {
         cuit: "",
         tipoResponsableIVA: "",
         tipoResponsableGanancias: "",
-        codigosActividades: []
+        codigosActividades: [],
     },
     datosPersonales: {
         fechaNacimiento: "",
@@ -25,21 +25,22 @@ export const personaFisicaInitialValues = {
         cie: "",
         actividad: "",
     },
-    mediocomunicacion: [{
-        tipo: "E-mail",
-        medio: "",
-        uso: "",
-        notas: "",
-        principal: false,
-    },
-    {
-        tipo: "Teléfono",
-        medio: "",
-        uso: "",
-        notas: "",
-        principal: true,
-    }
-],
+    mediocomunicacion: [
+        {
+            tipo: "E-Mail",
+            medio: "",
+            uso: "",
+            notas: "",
+            principal: false,
+        },
+        {
+            tipo: "Teléfono",
+            medio: "",
+            uso: "",
+            notas: "",
+            principal: true,
+        },
+    ],
     domicilioUrbano: [],
     // domiciliosUrbanos: {
     //     uso: "",
@@ -122,4 +123,63 @@ export const personaFisicaInitialValues = {
     // firmaElectronica: false,
     // internetSign: false,
     // articuloClientesNoPresenciales: false,
+}
+
+export const personaRelacionadaInitialValues = {
+    datosPrincipalesFisicas: {
+        nombre: "",
+        apellido: "",
+        tipoID: "",
+        id: "",
+    },
+    datosFiscales: {
+        tipoCodigo: "",
+        cuit: "",
+        tipoResponsableIVA: "",
+        tipoResponsableGanancias: "",
+        codigosActividades: [],
+    },
+    datosPersonales: {
+        fechaNacimiento: "",
+        sexo: "",
+        estadoCivil: "",
+        idioma: "",
+        nacionalidad: "",
+        paisResidencia: "",
+        paisOrigen: "",
+        lugarNacimiento: "",
+        cie: "",
+        actividad: "",
+    },
+    
+    mediocomunicacion: [
+        {
+            tipo: "E-Mail",
+            medio: "",
+            uso: "",
+            notas: "",
+            principal: false,
+        },
+        {
+            tipo: "Teléfono",
+            medio: "",
+            uso: "",
+            notas: "",
+            principal: true,
+        },
+    ],
+    domicilioUrbano: [],
+    cuentaBancaria: [],
+    cuentaBancariaExterior: [],
+    infoPatrimonial: [],
+    actividadPersona: [],
+    declaracionesPF: {
+        expuestaPoliticamente: false,
+        detalleExpPoliticamente: "",
+        sujetoObligado: false,
+        numeroInscripcion: 0,
+        sujetoObligadoUIF: "",
+        personaEEUU: false,
+        observacionesFATCA: "",
+    },
 }

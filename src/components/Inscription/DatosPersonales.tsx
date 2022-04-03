@@ -107,7 +107,7 @@ export const DatosPersonales = ({ fmk }) => {
                     fullWidth
                     label="Idioma"
                     variant="outlined"
-                    id="datosPersonales.idimoa"
+                    id="datosPersonales.idioma"
                     name="datosPersonales.idioma"
                     value={fmk.values.datosPersonales?.idioma}
                     onChange={fmk.handleChange}

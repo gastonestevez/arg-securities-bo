@@ -1,10 +1,9 @@
-import { Box } from '@mui/system'
 import type { NextPage } from 'next'
 import Head from 'next/head'
 import Navbar from '../../components/Navbar'
-import InscriptionForm from '../../features/InscriptionForm'
+import JuridicInscriptionForm from '../../features/JuridicInscriptionForm'
 
-const IndexPage: NextPage = () => {
+const PersonaJuridica: NextPage = () => {
   return (
     <div>
       <Head>
@@ -14,10 +13,10 @@ const IndexPage: NextPage = () => {
       <header>
         <Navbar />
       </header>
-        <InscriptionForm />
+        <JuridicInscriptionForm />
         
     </div>
   )
 }
 
-export default IndexPage
+export default PersonaJuridica
