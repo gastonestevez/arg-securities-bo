@@ -1,6 +1,7 @@
 import {
     Alert,
     Box,
+    Button,
     Container,
     CssBaseline,
     Divider,
@@ -24,7 +25,7 @@ import { personaFisicaValidationSchema } from "../../validations/validations"
 import { personaFisicaInitialValues } from "../../form/initialValues"
 import ReCAPTCHA from "react-google-recaptcha"
 import { useAppDispatch } from "../../app/hooks"
-import { loginAunesa, registerPersonaFisica } from "./InscriptionThunk"
+import { loginAunesa, registerPersonaFisica, sendMailDocumentation } from "./InscriptionThunk"
 import { formatDates } from "../../form/formatDates"
 import TermsAndConditionsContainer from "../../components/TermsAndConditions"
 import { createMessage } from "./messageSlice"
@@ -49,9 +50,9 @@ export const InscriptionForm = () => {
 
     const formik = useFormik({
         initialValues: personaFisicaInitialValues,
-        validationSchema: personaFisicaValidationSchema,
+        //validationSchema: personaFisicaValidationSchema,
         onSubmit: async (values) => {
-            const personaRelacionada = personas.map(p => {
+            const personaRelacionada = personas.map((p) => {
                 return {
                     tipo: p.tipo,
                     orden: p.index,
@@ -61,8 +62,8 @@ export const InscriptionForm = () => {
                             experiencia: "Ninguna",
                             perfilPersonal: "Conservador",
                         },
-                        ...p
-                    }
+                        ...p,
+                    },
                 }
             })
             const personaFisicaDTO = {
@@ -82,17 +83,22 @@ export const InscriptionForm = () => {
                     horizonteInversion: null,
                     perfilDeInversion: null,
                 },
-                personaRelacionada
+                personaRelacionada,
             }
-
-
-            const response = await dispatch(
-                registerPersonaFisica(formatDates(personaFisicaDTO))
-            )
-            if (response != null && response != undefined) {
-                dispatch(toggleCompletedForm())
-                router.push("/registerSuccess")
-            }
+            
+            await dispatch(sendMailDocumentation({
+                dniFrenteDorso: values.dniFrenteDorso,
+                constanciaOrigenDeFondos: values.constanciaOrigenDeFondos,
+                nombre: `${values.datosPrincipalesFisicas.nombre} ${values.datosPrincipalesFisicas.apellido}`,
+                cuit: `${values.datosFiscales.cuit}`
+            }))
+            // const response = await dispatch(
+            //     registerPersonaFisica(formatDates(personaFisicaDTO))
+            // )
+            // if (response != null && response != undefined) {
+            //     dispatch(toggleCompletedForm())
+            //     router.push("/registerSuccess")
+            // }
         },
     })
     return (
@@ -209,6 +215,28 @@ export const InscriptionForm = () => {
                             <Grid item xs={12}>
                                 <Divider sx={{ marginTop: 2 }} />
                             </Grid>
+                            <Grid item xs={12} md={3}>
+                                <Button variant="contained" component="label">
+                                    Cargar DNI Frente
+                                    <input type="file" name='dniFrenteDorso' hidden onChange={(e) => {
+                                        console.log(e.target.files[0])
+                                        formik.setFieldValue('dniFrenteDorso', e.target.files[0])
+                                    }} />
+                                </Button>
+                                <small>{formik.errors.dniFrenteDorso}.</small>
+                            </Grid>
+                            <Grid item xs={12} md={3}>
+                                <Button variant="contained" component="label">
+                                    Cargar DNI Dorso
+                                    <input type="file" name='constanciaOrigenDeFondos' hidden onChange={(e) => {
+                                        formik.setFieldValue('constanciaOrigenDeFondos', e.target.files[0])
+                                    }} />
+                                </Button>
+                                    <small>{formik.errors.constanciaOrigenDeFondos}.</small>
+                            </Grid>
+                            
+                            <Grid item xs={12} md={6} />
+                            
                             <Grid
                                 item
                                 xs={12}

@@ -1,4 +1,8 @@
 import * as yup from "yup"
+import { mixed } from "yup"
+
+const FILE_SIZE = 2 * 1000 * 1024
+const SUPPORTED_FORMATS = ["image/jpg", "image/jpeg", "image/gif", "image/png", "document/pdf"]
 
 export const personaFisicaValidationSchema = yup.object({
     recaptcha: yup.string().nullable().required("Debe completar el captcha."),
@@ -80,8 +84,15 @@ export const personaFisicaValidationSchema = yup.object({
             direccion: yup.string().required("Este campo es requerido."),
             holderType: yup.string().notRequired(),
             accountType: yup.string().notRequired(),
-            nroBancoABA: yup.string().max(9).required("Este campo es requerido."),
-            idSWIFT: yup.string().required("Este campo es requerido.").min(8, 'Minimo 8 caracteres').max(11, 'Máximo 11 caracteres'),
+            nroBancoABA: yup
+                .string()
+                .max(9)
+                .required("Este campo es requerido."),
+            idSWIFT: yup
+                .string()
+                .required("Este campo es requerido.")
+                .min(8, "Minimo 8 caracteres")
+                .max(11, "Máximo 11 caracteres"),
             notas: yup.string().notRequired(),
         })
     ),
@@ -121,8 +132,7 @@ export const personaFisicaValidationSchema = yup.object({
                 procedenciaFondos: yup
                     .string()
                     .required("Este campo es requerido"),
-                observaciones: yup
-                    .string(),
+                observaciones: yup.string(),
             })
         )
         .min(1, "Debe establecer al menos un patrimonio.")
@@ -142,6 +152,32 @@ export const personaFisicaValidationSchema = yup.object({
     // firmaElectronica: yup.bool().required('Debe aceptar los términos y condiciones.'),
     // internetSign: yup.bool().required('Debe aceptar los términos y condiciones.'),
     // articuloClientesNoPresenciales: yup.bool().required('Debe aceptar los términos y condiciones.'),
+    dniFrenteDorso: mixed()
+        .test(
+            "fileSize",
+            "Archivo demasiado pesado",
+            (value) => value === null || (value && value.size <= FILE_SIZE)
+        )
+        .test(
+            "fileFormat",
+            "Formato no soportado",
+            (value) =>
+                value === null ||
+                (value && SUPPORTED_FORMATS.includes(value.type))
+        ),
+    constanciaOrigenDeFondos: mixed()
+        .test(
+            "fileSize",
+            "Archivo demasiado pesado",
+            (value) => value === null || (value && value.size <= FILE_SIZE)
+        )
+        .test(
+            "fileFormat",
+            "Formato no soportado",
+            (value) =>
+                value === null ||
+                (value && SUPPORTED_FORMATS.includes(value.type))
+        ),
 })
 
 export const personaRelacionadaValidationSchema = yup.object({
@@ -199,8 +235,7 @@ export const personaRelacionadaValidationSchema = yup.object({
                 procedenciaFondos: yup
                     .string()
                     .required("Este campo es requerido"),
-                observaciones: yup
-                    .string(),
+                observaciones: yup.string(),
             })
         )
         .min(1, "Debe establecer al menos un patrimonio.")
@@ -267,7 +302,11 @@ export const personaRelacionadaValidationSchema = yup.object({
             holderType: yup.string().notRequired(),
             accountType: yup.string().notRequired(),
             nroBancoABA: yup.string().required("Este campo es requerido."),
-            idSWIFT: yup.string().required("Este campo es requerido.").min(8, 'Minimo 8 caracteres').max(11, 'Máximo 11 caracteres'),
+            idSWIFT: yup
+                .string()
+                .required("Este campo es requerido.")
+                .min(8, "Minimo 8 caracteres")
+                .max(11, "Máximo 11 caracteres"),
             notas: yup.string().notRequired(),
         })
     ),

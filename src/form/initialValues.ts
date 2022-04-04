@@ -123,6 +123,8 @@ export const personaFisicaInitialValues = {
     // firmaElectronica: false,
     // internetSign: false,
     // articuloClientesNoPresenciales: false,
+    dniFrenteDorso: undefined,
+    constanciaOrigenDeFondos: undefined,
 }
 
 export const personaRelacionadaInitialValues = {
