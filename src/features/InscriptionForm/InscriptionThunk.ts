@@ -47,7 +47,7 @@ export const loginAunesa =
             )
             const { token } = data
         } catch (e) {
-            console.log(e)
+            console.error(e)
         }
     }
 
@@ -92,7 +92,7 @@ export const registerPersonaFisica =
             return res
         } catch (error) {
             // console.error({error, ez: error.response.data.errors[0].detail})
-            console.log(error)
+            console.error(error)
             dispatch(setLoading(false))
             dispatch(
                 createMessage({
@@ -113,11 +113,11 @@ export const sendMailDocumentation =
         try {
             dispatch(setLoading(true))
             let formData = new FormData()
-            formData.append("dniFrenteDorso", payload.dniFrenteDorso)
-            formData.append("constanciaOrigenDeFondos", payload.constanciaOrigenDeFondos)
+            // formData.append("dniFrenteDorso", payload.dniFrenteDorso)
+            // formData.append("constanciaOrigenDeFondos", payload.constanciaOrigenDeFondos)
             formData.append("nombre", payload.nombre)
             formData.append("cuit", payload.cuit)
-            console.log(payload)
+            formData.append("email", payload.email)
 
             const { data } = await axios.post(
                 process.env.NEXT_PUBLIC_EMAIL_ENDPOINT,
@@ -128,7 +128,6 @@ export const sendMailDocumentation =
                     },
                 }
             )
-            console.log(data)
         } catch (error) {
             console.error(error)
             dispatch(setLoading(false))

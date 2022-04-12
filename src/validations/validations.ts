@@ -152,32 +152,32 @@ export const personaFisicaValidationSchema = yup.object({
     // firmaElectronica: yup.bool().required('Debe aceptar los términos y condiciones.'),
     // internetSign: yup.bool().required('Debe aceptar los términos y condiciones.'),
     // articuloClientesNoPresenciales: yup.bool().required('Debe aceptar los términos y condiciones.'),
-    dniFrenteDorso: mixed()
-        .test(
-            "fileSize",
-            "Archivo demasiado pesado",
-            (value) => value === null || (value && value.size <= FILE_SIZE)
-        )
-        .test(
-            "fileFormat",
-            "Formato no soportado",
-            (value) =>
-                value === null ||
-                (value && SUPPORTED_FORMATS.includes(value.type))
-        ),
-    constanciaOrigenDeFondos: mixed()
-        .test(
-            "fileSize",
-            "Archivo demasiado pesado",
-            (value) => value === null || (value && value.size <= FILE_SIZE)
-        )
-        .test(
-            "fileFormat",
-            "Formato no soportado",
-            (value) =>
-                value === null ||
-                (value && SUPPORTED_FORMATS.includes(value.type))
-        ),
+    // dniFrenteDorso: mixed()
+    //     .test(
+    //         "fileSize",
+    //         "Archivo demasiado pesado",
+    //         (value) => value === null || (value && value.size <= FILE_SIZE)
+    //     )
+    //     .test(
+    //         "fileFormat",
+    //         "Formato no soportado",
+    //         (value) =>
+    //             value === null ||
+    //             (value && SUPPORTED_FORMATS.includes(value.type))
+    //     ),
+    // constanciaOrigenDeFondos: mixed()
+    //     .test(
+    //         "fileSize",
+    //         "Archivo demasiado pesado",
+    //         (value) => value === null || (value && value.size <= FILE_SIZE)
+    //     )
+    //     .test(
+    //         "fileFormat",
+    //         "Formato no soportado",
+    //         (value) =>
+    //             value === null ||
+    //             (value && SUPPORTED_FORMATS.includes(value.type))
+    //     ),
 })
 
 export const personaRelacionadaValidationSchema = yup.object({

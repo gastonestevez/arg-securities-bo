@@ -18,7 +18,7 @@ const PersonaRelacionada = ({ index, onClickRemove, onChange }) => {
         initialValues: personaRelacionadaInitialValues,
         validationSchema: personaRelacionadaValidationSchema,
         onSubmit: async (values) => {
-            console.log(values)
+            console.info(values)
         },
         validate: (values) => {
             onChange(values, index)

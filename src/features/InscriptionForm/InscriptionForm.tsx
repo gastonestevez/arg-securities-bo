@@ -50,7 +50,7 @@ export const InscriptionForm = () => {
 
     const formik = useFormik({
         initialValues: personaFisicaInitialValues,
-        //validationSchema: personaFisicaValidationSchema,
+        validationSchema: personaFisicaValidationSchema,
         onSubmit: async (values) => {
             const personaRelacionada = personas.map((p) => {
                 return {
@@ -86,19 +86,21 @@ export const InscriptionForm = () => {
                 personaRelacionada,
             }
             
+            const response = await dispatch(
+                registerPersonaFisica(formatDates(personaFisicaDTO))
+                )
+            
             await dispatch(sendMailDocumentation({
-                dniFrenteDorso: values.dniFrenteDorso,
-                constanciaOrigenDeFondos: values.constanciaOrigenDeFondos,
+                // dniFrenteDorso: values.dniFrenteDorso,
+                // constanciaOrigenDeFondos: values.constanciaOrigenDeFondos,
                 nombre: `${values.datosPrincipalesFisicas.nombre} ${values.datosPrincipalesFisicas.apellido}`,
-                cuit: `${values.datosFiscales.cuit}`
+                cuit: `${values.datosFiscales.cuit}`,
+                email: `${values.mediocomunicacion[0].medio}`,
             }))
-            // const response = await dispatch(
-            //     registerPersonaFisica(formatDates(personaFisicaDTO))
-            // )
-            // if (response != null && response != undefined) {
-            //     dispatch(toggleCompletedForm())
-            //     router.push("/registerSuccess")
-            // }
+            if (response != null && response != undefined) {
+                dispatch(toggleCompletedForm())
+                router.push("/registerSuccess")
+            }
         },
     })
     return (
@@ -215,7 +217,7 @@ export const InscriptionForm = () => {
                             <Grid item xs={12}>
                                 <Divider sx={{ marginTop: 2 }} />
                             </Grid>
-                            <Grid item xs={12} md={3}>
+                            {/* <Grid item xs={12} md={3}>
                                 <Button variant="contained" component="label">
                                     Cargar DNI Frente
                                     <input type="file" name='dniFrenteDorso' hidden onChange={(e) => {
@@ -235,7 +237,7 @@ export const InscriptionForm = () => {
                                     <small>{formik.errors.constanciaOrigenDeFondos}.</small>
                             </Grid>
                             
-                            <Grid item xs={12} md={6} />
+                            <Grid item xs={12} md={6} /> */}
                             
                             <Grid
                                 item

@@ -17,6 +17,7 @@ import {
     removePersonas,
     onChangeRelacion,
 } from "./personasRelacionadasSlice"
+
 export const PersonasRelacionadas = () => {
     const dispatch = useAppDispatch()
     const [forms, setForms] = useState([])
@@ -30,7 +31,11 @@ export const PersonasRelacionadas = () => {
     ]
     const remove = (index) => {
         const filteredForms = forms.filter((f) => f.index !== index)
-        setForms(filteredForms)
+        const decreaseIndexFromForms = filteredForms.map((f) => ({
+            ...f,
+            index: f.index > index ? (f.index - 1) : f.index,
+        }))
+        setForms(decreaseIndexFromForms)
         dispatch(removePersonas({ index }))
     }
 
@@ -53,7 +58,7 @@ export const PersonasRelacionadas = () => {
         dispatch(onChangePersonas({ ...f, index }))
     }
     const onChangeTipo = (e, index: number) => {
-        dispatch(onChangeRelacion({tipo: e.target.value, index}))
+        dispatch(onChangeRelacion({ tipo: e.target.value, index }))
         setTipo(e.target.value)
     }
     return (
