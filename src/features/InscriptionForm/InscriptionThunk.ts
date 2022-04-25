@@ -94,6 +94,7 @@ export const registerPersonaFisica =
             // console.error({error, ez: error.response.data.errors[0].detail})
             console.error(error)
             dispatch(setLoading(false))
+
             dispatch(
                 createMessage({
                     active: true,
@@ -104,6 +105,7 @@ export const registerPersonaFisica =
                         "Consultar con el área de soporte.",
                 })
             )
+            throw error
         }
     }
 

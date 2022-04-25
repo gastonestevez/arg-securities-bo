@@ -48,6 +48,10 @@ export const InscriptionForm = () => {
     )
     const router = useRouter()
 
+    useEffect(() => {
+        dispatch(setLoading(false))
+    }, [dispatch])
+
     const formik = useFormik({
         initialValues: personaFisicaInitialValues,
         validationSchema: personaFisicaValidationSchema,
@@ -85,21 +89,24 @@ export const InscriptionForm = () => {
                 },
                 personaRelacionada,
             }
-            
-            const response = await dispatch(
-                registerPersonaFisica(formatDates(personaFisicaDTO))
-                )
-            
-            await dispatch(sendMailDocumentation({
-                // dniFrenteDorso: values.dniFrenteDorso,
-                // constanciaOrigenDeFondos: values.constanciaOrigenDeFondos,
-                nombre: `${values.datosPrincipalesFisicas.nombre} ${values.datosPrincipalesFisicas.apellido}`,
-                cuit: `${values.datosFiscales.cuit}`,
-                email: `${values.mediocomunicacion[0].medio}`,
-            }))
-            if (response != null && response != undefined) {
-                dispatch(toggleCompletedForm())
-                router.push("/registerSuccess")
+            try {
+                const response = await dispatch(
+                    registerPersonaFisica(formatDates(personaFisicaDTO))
+                    )
+
+                await dispatch(sendMailDocumentation({
+                    // dniFrenteDorso: values.dniFrenteDorso,
+                    // constanciaOrigenDeFondos: values.constanciaOrigenDeFondos,
+                    nombre: `${values.datosPrincipalesFisicas.nombre} ${values.datosPrincipalesFisicas.apellido}`,
+                    cuit: `${values.datosFiscales.cuit}`,
+                    email: `${values.mediocomunicacion[0].medio}`,
+                }))
+                if (response !== null) {
+                    dispatch(toggleCompletedForm())
+                    await router.push("/registerSuccess")
+                }
+            }catch (error) {
+                console.error(error)
             }
         },
     })
@@ -204,15 +211,15 @@ export const InscriptionForm = () => {
                             <Grid item xs={12}>
                                 <Divider sx={{ marginTop: 2 }} />
                             </Grid>
-
-                            <TermsAndConditionsContainer fmk={formik} />
+                            <PersonasRelacionadas />
                             <Grid item xs={12}>
                                 <Divider sx={{ marginTop: 2 }} />
                             </Grid>
 
                             <Grid item md={8} />
 
-                            <PersonasRelacionadas />
+                            <TermsAndConditionsContainer fmk={formik} />
+
 
                             <Grid item xs={12}>
                                 <Divider sx={{ marginTop: 2 }} />

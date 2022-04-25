@@ -55,7 +55,7 @@ export const PersonasRelacionadas = () => {
     const onChange = (f, index: number) => {
         const filteredForms = forms.filter((f) => f.index !== index)
         setForms([...filteredForms, { ...f, index }])
-        dispatch(onChangePersonas({ ...f, index }))
+        dispatch(onChangePersonas({ ...f, index, tipo }))
     }
     const onChangeTipo = (e, index: number) => {
         dispatch(onChangeRelacion({ tipo: e.target.value, index }))
