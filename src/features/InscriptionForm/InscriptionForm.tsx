@@ -139,7 +139,7 @@ export const InscriptionForm = () => {
                                     title="Estimado Inversor:"
                                     message={`
                 Bienvenido a ARG SECURITIES ADVISORS S.A. Agente de Negociación Matricula CNV Nro. 719
-                Para iniciar el proceso de apertura de cuenta comitente deberá completar el siguiente formulario con la información de cada uno de los titulares. Una vez completada la información, deberá adjuntar la documentación solicitada en cada apartado.  
+                Para iniciar el proceso de apertura de cuenta comitente deberá completar el siguiente formulario con la información de cada uno de los titulares.  
                 Una vez recibida la información, nos pondremos en contacto con Ud. a la brevedad para finalizar el proceso de apertura.
                 Muchas gracias!
                 
@@ -191,11 +191,11 @@ export const InscriptionForm = () => {
                                 <Divider sx={{ marginTop: 2 }} />
                             </Grid>
 
-                            <CuentasBancariasExterior fmk={formik} />
+                            {/*<CuentasBancariasExterior fmk={formik} />*/}
 
-                            <Grid item xs={12}>
-                                <Divider sx={{ marginTop: 2 }} />
-                            </Grid>
+                            {/*<Grid item xs={12}>*/}
+                            {/*    <Divider sx={{ marginTop: 2 }} />*/}
+                            {/*</Grid>*/}
 
                             <InformacionPatrimonial fmk={formik} />
                             <Grid item xs={12}>

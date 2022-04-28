@@ -24,10 +24,10 @@ export const PersonasRelacionadas = () => {
     const [tipo, setTipo] = useState("")
     const tiposDeRelaciones = [
         "Condómino",
-        "Firmante",
-        "Autorizado",
-        "Beneficiario",
-        "Apoderado",
+        // "Firmante",
+        // "Autorizado",
+        // "Beneficiario",
+        // "Apoderado",
     ]
     const remove = (index) => {
         const filteredForms = forms.filter((f) => f.index !== index)
