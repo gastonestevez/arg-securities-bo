@@ -13,7 +13,7 @@ import RemoveCircleIcon from "@mui/icons-material/RemoveCircle"
 import { FormikProvider, useFormik } from "formik"
 import { personaRelacionadaInitialValues } from "../../../form/initialValues"
 import { personaRelacionadaValidationSchema } from "../../../validations/validations"
-const PersonaRelacionada = ({ index, onClickRemove, onChange }) => {
+const PersonaRelacionada = ({ index, onClickRemove, onChange, juridic }) => {
     const formik = useFormik({
         initialValues: personaRelacionadaInitialValues,
         validationSchema: personaRelacionadaValidationSchema,
@@ -38,7 +38,7 @@ const PersonaRelacionada = ({ index, onClickRemove, onChange }) => {
                         }}
                     >
                         <Typography component="p">
-                            Titular {`${index + 1}`}
+                            {juridic ? 'Apoderado' : 'Titular'} {`${index + 1}`}
                         </Typography>
                         <IconButton
                             onClick={() => onClickRemove(index)}
@@ -54,10 +54,16 @@ const PersonaRelacionada = ({ index, onClickRemove, onChange }) => {
                 <DatosPersonales fmk={formik} />
                 <MediosDeComunicacion fmk={formik} />
                 <DomiciliosUrbanos fmk={formik} />
-                <CuentasBancarias fmk={formik} />
-                <InformacionPatrimonial fmk={formik} />
-                <Actividades fmk={formik} />
-                <Declaraciones fmk={formik} />
+                {
+                    !juridic && (
+                        <>
+                            <CuentasBancarias fmk={formik}/>
+                            <InformacionPatrimonial fmk={formik}/>
+                            <Actividades fmk={formik} />
+                        </>
+                    )
+                }
+                <Declaraciones fmk={formik} juridic={juridic} />
                 {/* <Grid item xs={12}>
                     <Button variant="contained">Agregar titular</Button>
                 </Grid> */}

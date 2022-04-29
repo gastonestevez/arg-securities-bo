@@ -14,11 +14,11 @@ import { useSelector } from "react-redux"
 import { useAppDispatch } from "../../app/hooks"
 import { AppState } from "../../app/store"
 import { FormikProvider, useFormik } from "formik"
-import { formatJuridicDates } from "../../form/formatDates"
+import {formatDates, formatJuridicDates} from "../../form/formatDates"
 import { personaFisicaInitialValues } from "../../form/initialValues"
 import { personaFisicaValidationSchema } from "../../validations/validations"
 import { toggleCompletedForm } from "../InscriptionForm/completedFormSlice"
-import { registerPersonaFisica } from "../InscriptionForm/InscriptionThunk"
+import {registerPersonaFisica, sendMailDocumentation} from "../InscriptionForm/InscriptionThunk"
 import { DatosPrincipalesIdeal } from "../../components/Juridic/DatosPrincipalesIdeal"
 import { DatosOrganizacion } from "../../components/Juridic/DatosOrganizacion"
 import { DatosFiscalesNacionales } from "../../components/Inscription/DatosFiscalesNacionales"
@@ -36,6 +36,8 @@ import { personaJuridicaValidationSchema } from "../../validations/juridicValida
 import { CuentasBancarias } from "../../components/Inscription/CuentasBancarias"
 import { DeclaracionPI } from "../../components/Juridic/DeclaracionPI"
 import { LoadingButton } from "@mui/lab"
+import WelcomeDisclaimer from "../../components/WelcomeDisclaimer";
+import {PersonasRelacionadas} from "../../components/Inscription/PersonasRelacionadas";
 
 export const JuridicInscriptionForm = () => {
     const recaptchaRef = React.useRef(null)
@@ -43,11 +45,28 @@ export const JuridicInscriptionForm = () => {
     const message = useSelector((state: AppState) => state.message)
     const { isLoading } = useSelector((state: AppState) => state.loading)
     const router = useRouter()
+    const { personas } = useSelector(
+        (state: AppState) => state.personasRelacionadas
+    )
 
     const formik = useFormik({
         initialValues: personaJuridicaInitialValues,
         validationSchema: personaJuridicaValidationSchema,
         onSubmit: async (values) => {
+            const personaRelacionada = personas.map((p) => {
+                return {
+                    tipo: p.tipo,
+                    orden: p.index,
+                    persona: {
+                        personaFisica: true,
+                        perfilInversor: {
+                            experiencia: "Ninguna",
+                            perfilPersonal: "Conservador",
+                        },
+                        ...p,
+                    },
+                }
+            })
             const personaJuridicaDTO = {
                 titular: {
                     personaFisica: false,
@@ -70,15 +89,28 @@ export const JuridicInscriptionForm = () => {
                     horizonteInversion: null,
                     perfilDeInversion: null,
                 },
+                personaRelacionada,
             }
 
-            const response = await dispatch(
-                registerPersonaFisica(formatJuridicDates(personaJuridicaDTO))
-            )
-            if (response != null && response != undefined) {
-                dispatch(toggleCompletedForm())
-                router.push("/registerSuccess")
+            try {
+                const response = await dispatch(
+                    registerPersonaFisica(formatJuridicDates(personaJuridicaDTO))
+                )
+
+                await dispatch(sendMailDocumentation({
+                    dto: formatDates(personaJuridicaDTO),
+                    email: `${values.mediocomunicacion[0].medio}`,
+                }))
+
+                if (response != null) {
+                    dispatch(toggleCompletedForm())
+                    await router.push("/registerSuccess")
+                }
+            } catch (error) {
+                console.log(error)
             }
+
+
         },
     })
 
@@ -95,7 +127,7 @@ export const JuridicInscriptionForm = () => {
                     }}
                 >
                     <Typography component="h1" variant="h4">
-                        Registro de Persona Jurídica {'(En construcción)'}
+                        Registro de Persona Jurídica
                     </Typography>
                     <FormikProvider value={formik}>
                         <Box
@@ -105,6 +137,14 @@ export const JuridicInscriptionForm = () => {
                             sx={{ mt: 4 }}
                         >
                             <Grid container spacing={2}>
+                                <Grid item xs={12}>
+                                    <WelcomeDisclaimer />
+                                </Grid>
+
+                                <Grid item xs={12}>
+                                    <Divider sx={{ marginTop: 2 }} />
+                                </Grid>
+
                                 <DatosPrincipalesIdeal fmk={formik} />
 
                                 <Grid item xs={12}>
@@ -153,7 +193,7 @@ export const JuridicInscriptionForm = () => {
                                     <Divider sx={{ marginTop: 2 }} />
                                 </Grid>
 
-                                <Declaraciones fmk={formik} />
+                                <Declaraciones fmk={formik} juridic={true} />
 
                                 <Grid item xs={12}>
                                     <Divider sx={{ marginTop: 2 }} />
@@ -165,13 +205,17 @@ export const JuridicInscriptionForm = () => {
                                     <Divider sx={{ marginTop: 2 }} />
                                 </Grid>
 
-                                <DeclaracionPI fmk={formik} />
+                                {/*<DeclaracionPI fmk={formik} />*/}
+
+                                {/*<Grid item xs={12}>*/}
+                                {/*    <Divider sx={{ marginTop: 2 }} />*/}
+                                {/*</Grid>*/}
+
+                                <PersonasRelacionadas juridic={true} />
 
                                 <Grid item xs={12}>
                                     <Divider sx={{ marginTop: 2 }} />
                                 </Grid>
-
-                                
 
                                 <TermsAndConditionsContainer fmk={formik} />
 

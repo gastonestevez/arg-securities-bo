@@ -174,11 +174,14 @@ export const DatosPersonales = ({ fmk }) => {
                         fmk.errors.datosPersonales?.paisResidencia
                     }
                 >
-                    {countries.map((option) => (
-                        <MenuItem key={option} value={option}>
-                            {option}
-                        </MenuItem>
-                    ))}
+                    {/*{countries.map((option) => (*/}
+                    {/*    <MenuItem key={option} value={option}>*/}
+                    {/*        {option}*/}
+                    {/*    </MenuItem>*/}
+                    {/*))}*/}
+                    <MenuItem key={'country'} value={'Argentina'}>
+                        Argentina
+                    </MenuItem>
                 </TextField>
             </Grid>
             <Grid item xs={12} sm={6}>

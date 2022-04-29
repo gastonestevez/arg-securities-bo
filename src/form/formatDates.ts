@@ -15,7 +15,7 @@ export const formatDates = (payload: any) => {
             ...p,
             persona: {
                 ...p.persona,
-    
+
                 datosPersonales: {
                     ...p.persona.datosPersonales,
                     fechaNacimiento: format(processDate(p.persona.datosPersonales.fechaNacimiento), defaultFormat)
@@ -59,6 +59,8 @@ export const formatDates = (payload: any) => {
 
 export const formatJuridicDates = (payload: any) => {
     const { patrimonioYBalance, datosOrganizacion, registro } = payload.titular
+    const { personaRelacionada } = payload
+
     const formattedDatosOrganizacion = {
         ...datosOrganizacion,
         cierreBalance: format(
@@ -70,6 +72,26 @@ export const formatJuridicDates = (payload: any) => {
             defaultFormat
         ),
     }
+    const formattedPersonaRelacionada = personaRelacionada.map(p => {
+        return {
+            ...p,
+            persona: {
+                ...p.persona,
+
+                datosPersonales: {
+                    ...p.persona.datosPersonales,
+                    fechaNacimiento: format(processDate(p.persona.datosPersonales.fechaNacimiento), defaultFormat)
+                },
+                infoPatrimonial: p.persona.infoPatrimonial.map(ip => {
+                    return {
+                        ...ip,
+                        procedenciaFondos: [ip.procedenciaFondos],
+                        fecha: format(processDate(ip.fecha), defaultFormat)
+                    }
+                })
+            }
+        }
+    })
 
     const formattedPatrimonioYBalance = patrimonioYBalance.map((i) => {
         return {
@@ -94,5 +116,6 @@ export const formatJuridicDates = (payload: any) => {
             patrimonioYBalance: formattedPatrimonioYBalance,
             registro: formattedRegistro,
         },
+        personaRelacionada: formattedPersonaRelacionada,
     }
 }

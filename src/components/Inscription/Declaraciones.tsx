@@ -7,7 +7,7 @@ import {
 } from "@mui/material"
 import React from "react"
 
-export const Declaraciones = ({fmk}) => {
+export const Declaraciones = ({fmk, juridic}) => {
     return (
         <>
             <Grid item xs={12} sm={12}>
@@ -15,19 +15,23 @@ export const Declaraciones = ({fmk}) => {
                     Declaraciones
                 </Typography>
             </Grid>
-            <Grid item xs={12} sm={12}>
-                <FormControlLabel
-                    control={
-                        <Switch
-                            id={"declaracionesPF.expuestaPoliticamente"}
-                            name={"declaracionesPF.expuestaPoliticamente"}
-                            value={true}
-                            onChange={fmk.handleChange}
+            {
+                !juridic && (
+                    <Grid item xs={12} sm={12}>
+                        <FormControlLabel
+                            control={
+                                <Switch
+                                    id={"declaracionesPF.expuestaPoliticamente"}
+                                    name={"declaracionesPF.expuestaPoliticamente"}
+                                    value={true}
+                                    onChange={fmk.handleChange}
+                                />
+                            }
+                            label={"NO/SI ¿La persona está expuesta políticamente?"}
                         />
-                    }
-                    label={"NO/SI ¿La persona está expuesta políticamente?"}
-                />
-            </Grid>
+                    </Grid>
+                )
+            }
             {
                 !!fmk.values.declaracionesPF?.expuestaPoliticamente && (
                     <Grid item xs={12} sm={12}>

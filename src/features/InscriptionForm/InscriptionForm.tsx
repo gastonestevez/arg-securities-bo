@@ -37,6 +37,7 @@ import { useRouter } from "next/router"
 import LoadingButton from "@mui/lab/LoadingButton"
 import { setLoading } from "./loadingSlice"
 import { PersonasRelacionadas } from "../../components/Inscription/PersonasRelacionadas"
+import WelcomeDisclaimer from "../../components/WelcomeDisclaimer";
 
 export const InscriptionForm = () => {
     const recaptchaRef = React.useRef(null)
@@ -81,7 +82,7 @@ export const InscriptionForm = () => {
                         experiencia: "Ninguna",
                         perfilPersonal: "Conservador",
                     },
-                    mediocomunicacion: [],
+                    // mediocomunicacion: [],
                 },
                 disposicionesGenerales: {
                     horizonteInversion: null,
@@ -95,10 +96,7 @@ export const InscriptionForm = () => {
                     )
 
                 await dispatch(sendMailDocumentation({
-                    // dniFrenteDorso: values.dniFrenteDorso,
-                    // constanciaOrigenDeFondos: values.constanciaOrigenDeFondos,
-                    nombre: `${values.datosPrincipalesFisicas.nombre} ${values.datosPrincipalesFisicas.apellido}`,
-                    cuit: `${values.datosFiscales.cuit}`,
+                    dto: formatDates(personaFisicaDTO),
                     email: `${values.mediocomunicacion[0].medio}`,
                 }))
                 if (response !== null) {
@@ -122,7 +120,7 @@ export const InscriptionForm = () => {
                 }}
             >
                 <Typography component="h1" variant="h4">
-                    Registro de Persona Física {"(En construcción)"}
+                    Registro de Persona Física
                 </Typography>
 
                 <FormikProvider value={formik}>
@@ -134,17 +132,7 @@ export const InscriptionForm = () => {
                     >
                         <Grid container spacing={2}>
                             <Grid item xs={12}>
-                                <Message
-                                    type="info"
-                                    title="Estimado Inversor:"
-                                    message={`
-                Bienvenido a ARG SECURITIES ADVISORS S.A. Agente de Negociación Matricula CNV Nro. 719
-                Para iniciar el proceso de apertura de cuenta comitente deberá completar el siguiente formulario con la información de cada uno de los titulares.  
-                Una vez recibida la información, nos pondremos en contacto con Ud. a la brevedad para finalizar el proceso de apertura.
-                Muchas gracias!
-                
-                `}
-                                />
+                                <WelcomeDisclaimer />
                             </Grid>
                             <DatosPrincipales fmk={formik} />
 

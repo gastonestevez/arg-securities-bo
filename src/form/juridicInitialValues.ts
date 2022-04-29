@@ -32,7 +32,7 @@ export const personaJuridicaInitialValues = {
     },
     mediocomunicacion: [
         {
-            tipo: "E-mail",
+            tipo: "E-Mail",
             medio: "",
             uso: "",
             notas: "",

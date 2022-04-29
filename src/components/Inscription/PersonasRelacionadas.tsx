@@ -18,17 +18,12 @@ import {
     onChangeRelacion,
 } from "./personasRelacionadasSlice"
 
-export const PersonasRelacionadas = () => {
+export const PersonasRelacionadas = ({juridic}) => {
     const dispatch = useAppDispatch()
     const [forms, setForms] = useState([])
     const [tipo, setTipo] = useState("")
-    const tiposDeRelaciones = [
-        "Condómino",
-        // "Firmante",
-        // "Autorizado",
-        // "Beneficiario",
-        // "Apoderado",
-    ]
+    const tiposDeRelaciones = juridic ? ["Apoderado"] : ["Condómino"]
+
     const remove = (index) => {
         const filteredForms = forms.filter((f) => f.index !== index)
         const decreaseIndexFromForms = filteredForms.map((f) => ({
@@ -73,7 +68,9 @@ export const PersonasRelacionadas = () => {
                 >
                     <Box>
                         <Typography component="h5" variant="h5">
-                            Titulares
+                            {
+                                juridic ? 'Apoderados' : 'Titulares'
+                            }
                         </Typography>
                     </Box>
                     <Box>
@@ -116,6 +113,7 @@ export const PersonasRelacionadas = () => {
                             index={i}
                             onClickRemove={(index: number) => remove(index)}
                             onChange={(p, index: number) => onChange(p, index)}
+                            juridic={juridic}
                         />
                     </>
                 )
