@@ -69,7 +69,7 @@ export const PersonasRelacionadas = ({juridic}) => {
                     <Box>
                         <Typography component="h5" variant="h5">
                             {
-                                juridic ? 'Apoderados' : 'Titulares'
+                                juridic ? 'Apoderados' : 'Agregar otro titular'
                             }
                         </Typography>
                     </Box>

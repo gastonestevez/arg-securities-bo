@@ -1,6 +1,6 @@
 export const personaJuridicaInitialValues = {
     recaptcha: "",
-    terminosCondiciones: false,
+    // terminosCondiciones: false,
     datosPrincipalesIdeal: {
         denominacion: "",
         tipoDeOrganizacion: "",
@@ -62,5 +62,6 @@ export const personaJuridicaInitialValues = {
     },
     declaracionesPI: {
         inscripcionSujetoObligado: "",
-    }
+    },
+    datosConyuge: []
 }

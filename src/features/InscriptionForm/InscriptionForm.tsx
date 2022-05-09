@@ -25,7 +25,11 @@ import { personaFisicaValidationSchema } from "../../validations/validations"
 import { personaFisicaInitialValues } from "../../form/initialValues"
 import ReCAPTCHA from "react-google-recaptcha"
 import { useAppDispatch } from "../../app/hooks"
-import { loginAunesa, registerPersonaFisica, sendMailDocumentation } from "./InscriptionThunk"
+import {
+    loginAunesa,
+    registerPersonaFisica,
+    sendMailDocumentation,
+} from "./InscriptionThunk"
 import { formatDates } from "../../form/formatDates"
 import TermsAndConditionsContainer from "../../components/TermsAndConditions"
 import { createMessage } from "./messageSlice"
@@ -37,7 +41,7 @@ import { useRouter } from "next/router"
 import LoadingButton from "@mui/lab/LoadingButton"
 import { setLoading } from "./loadingSlice"
 import { PersonasRelacionadas } from "../../components/Inscription/PersonasRelacionadas"
-import WelcomeDisclaimer from "../../components/WelcomeDisclaimer";
+import WelcomeDisclaimer from "../../components/WelcomeDisclaimer"
 
 export const InscriptionForm = () => {
     const recaptchaRef = React.useRef(null)
@@ -72,6 +76,7 @@ export const InscriptionForm = () => {
                 }
             })
             const personaFisicaDTO = {
+                isPersonaJuridica: false,
                 titular: {
                     personaFisica: true,
                     ...values,
@@ -93,17 +98,21 @@ export const InscriptionForm = () => {
             try {
                 const response = await dispatch(
                     registerPersonaFisica(formatDates(personaFisicaDTO))
-                    )
+                )
 
-                await dispatch(sendMailDocumentation({
-                    dto: formatDates(personaFisicaDTO),
-                    email: `${values.mediocomunicacion[0].medio}`,
-                }))
+                await dispatch(
+                    sendMailDocumentation({
+                        email: `${values.mediocomunicacion[0].medio}`,
+                        cuit: `${personaFisicaDTO.titular.datosFiscales.cuit}`,
+                        name: `${personaFisicaDTO.titular.datosPrincipalesFisicas.nombre} ${personaFisicaDTO.titular.datosPrincipalesFisicas.apellido}`,
+                        ...formatDates(personaFisicaDTO),
+                    })
+                )
                 if (response !== null) {
                     dispatch(toggleCompletedForm())
                     await router.push("/registerSuccess")
                 }
-            }catch (error) {
+            } catch (error) {
                 console.error(error)
             }
         },
@@ -195,23 +204,23 @@ export const InscriptionForm = () => {
                                 <Divider sx={{ marginTop: 2 }} />
                             </Grid>
 
-                            <Declaraciones fmk={formik} />
+                            <Declaraciones fmk={formik} juridic={false} />
                             <Grid item xs={12}>
                                 <Divider sx={{ marginTop: 2 }} />
                             </Grid>
-                            <PersonasRelacionadas />
+                            <PersonasRelacionadas juridic={false} />
                             <Grid item xs={12}>
                                 <Divider sx={{ marginTop: 2 }} />
                             </Grid>
 
                             <Grid item md={8} />
 
-                            <TermsAndConditionsContainer fmk={formik} />
+                            {/* <TermsAndConditionsContainer fmk={formik} />
 
 
                             <Grid item xs={12}>
                                 <Divider sx={{ marginTop: 2 }} />
-                            </Grid>
+                            </Grid> */}
                             {/* <Grid item xs={12} md={3}>
                                 <Button variant="contained" component="label">
                                     Cargar DNI Frente
@@ -233,7 +242,7 @@ export const InscriptionForm = () => {
                             </Grid>
                             
                             <Grid item xs={12} md={6} /> */}
-                            
+
                             <Grid
                                 item
                                 xs={12}

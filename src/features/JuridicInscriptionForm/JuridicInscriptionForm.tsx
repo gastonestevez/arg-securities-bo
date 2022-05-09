@@ -68,6 +68,7 @@ export const JuridicInscriptionForm = () => {
                 }
             })
             const personaJuridicaDTO = {
+                isPersonaJuridica: true,
                 titular: {
                     personaFisica: false,
                     ...values,
@@ -83,7 +84,6 @@ export const JuridicInscriptionForm = () => {
                         experiencia: "Ninguna",
                         perfilPersonal: "Conservador",
                     },
-                    mediocomunicacion: [],
                 },
                 disposicionesGenerales: {
                     horizonteInversion: null,
@@ -98,8 +98,10 @@ export const JuridicInscriptionForm = () => {
                 )
 
                 await dispatch(sendMailDocumentation({
-                    dto: formatDates(personaJuridicaDTO),
                     email: `${values.mediocomunicacion[0].medio}`,
+                    cuit: `${personaJuridicaDTO.titular.datosFiscales.cuit}`,
+                    name: `una nueva empresa`,
+                    ...formatJuridicDates(personaJuridicaDTO),
                 }))
 
                 if (response != null) {
@@ -217,11 +219,11 @@ export const JuridicInscriptionForm = () => {
                                     <Divider sx={{ marginTop: 2 }} />
                                 </Grid>
 
-                                <TermsAndConditionsContainer fmk={formik} />
+                                {/* <TermsAndConditionsContainer fmk={formik} />
 
                                 <Grid item xs={12}>
                                     <Divider sx={{ marginTop: 2 }} />
-                                </Grid>
+                                </Grid> */}
 
                                 <Grid item md={8} />
                                 <Grid

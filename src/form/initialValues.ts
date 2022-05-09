@@ -119,7 +119,7 @@ export const personaFisicaInitialValues = {
         personaEEUU: false,
         observacionesFATCA: "",
     },
-    terminosCondiciones: false,
+    // terminosCondiciones: false,
     // firmaElectronica: false,
     // internetSign: false,
     // articuloClientesNoPresenciales: false,
@@ -184,4 +184,5 @@ export const personaRelacionadaInitialValues = {
         personaEEUU: false,
         observacionesFATCA: "",
     },
+    datosConyuge: []
 }

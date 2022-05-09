@@ -114,22 +114,17 @@ export const sendMailDocumentation =
     async (dispatch, getState) => {
         try {
             dispatch(setLoading(true))
-            let formData = new FormData()
-            // formData.append("dniFrenteDorso", payload.dniFrenteDorso)
-            // formData.append("constanciaOrigenDeFondos", payload.constanciaOrigenDeFondos)
-            formData.append("nombre", payload.nombre)
-            formData.append("cuit", payload.cuit)
-            formData.append("email", payload.email)
 
             const { data } = await axios.post(
                 process.env.NEXT_PUBLIC_EMAIL_ENDPOINT,
-                formData,
+                payload,
                 {
                     headers: {
-                        "Content-Type": "multipart/form-data",
+                        "Content-Type": "application/json",
                     },
                 }
             )
+            console.log({data})
         } catch (error) {
             console.error(error)
             dispatch(setLoading(false))
