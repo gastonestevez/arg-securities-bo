@@ -190,6 +190,7 @@ export const DatosPersonales = ({ fmk }) => {
                     fullWidth
                     label="País de origen"
                     variant="outlined"
+                    required
                     id="datosPersonales.paisOrigen"
                     name="datosPersonales.paisOrigen"
                     value={fmk.values.datosPersonales?.paisOrigen}

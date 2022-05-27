@@ -93,7 +93,7 @@ export const Registro = ({ fmk }) => {
                 <TextField
                     id="registro.folio"
                     name="registro.folio"
-                    required
+                    // required
                     fullWidth
                     label="Folio"
                     variant="outlined"
@@ -107,7 +107,7 @@ export const Registro = ({ fmk }) => {
                 <TextField
                     id="registro.libro"
                     name="registro.libro"
-                    required
+                    // required
                     fullWidth
                     label="Libro"
                     variant="outlined"
@@ -121,7 +121,7 @@ export const Registro = ({ fmk }) => {
                 <TextField
                     id="registro.tomo"
                     name="registro.tomo"
-                    required
+                    // required
                     fullWidth
                     label="Tomo"
                     variant="outlined"
